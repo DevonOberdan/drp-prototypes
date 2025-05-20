@@ -983,7 +983,7 @@ MonoBehaviour:
   OnBoost:
     m_PersistentCalls:
       m_Calls: []
-  boostFactor: 5
+  boostFactor: 2.5
   boostMovingFactor: 0.85
   canBoostInAir: 1
   hasAfterburn: 0
@@ -2733,11 +2733,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8845840987248763622, guid: 770298038e52f214d988a643b57774fd, type: 3}
       propertyPath: jumpFactor
-      value: 16
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8845840987248763622, guid: 770298038e52f214d988a643b57774fd, type: 3}
       propertyPath: defaultMoveSpeed
-      value: 11
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8845840987248763622, guid: 770298038e52f214d988a643b57774fd, type: 3}
+      propertyPath: sprintSpeedFactor
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 8845840987248763624, guid: 770298038e52f214d988a643b57774fd, type: 3}
       propertyPath: gSource
