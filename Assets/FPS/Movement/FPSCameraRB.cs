@@ -35,6 +35,7 @@ public class FPSCameraRB : MonoBehaviour
     public enum RotationStyle { Raw, Lerp }
     public RotationStyle rotationBehaviour = new RotationStyle();
 
+    float previousInput,currentInput;
 
     void Awake()
     {
@@ -67,6 +68,16 @@ public class FPSCameraRB : MonoBehaviour
 
     void CameraRotation()
     {
+        currentInput = Input.GetAxisRaw("Mouse Y");
+
+        if(Mathf.Abs(currentInput-previousInput) > 10f)
+        {
+            previousInput = currentInput;
+            return;
+        }
+
+        previousInput = currentInput;
+
         verticalRotation += Input.GetAxisRaw("Mouse Y") * lookVerticalSensitivity * Time.deltaTime;
         verticalRotation = Mathf.Clamp(verticalRotation, minAngle, maxAngle);
 
