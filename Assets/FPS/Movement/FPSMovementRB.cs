@@ -53,6 +53,8 @@ public class FPSMovementRB : FPSMovement
 
     int playerMask, jumpCounter;
     bool inAir;
+    public bool freeze;
+    public bool activeGrapple;
 
     readonly int MAX_JUMPS = 1;
 
@@ -117,13 +119,18 @@ public class FPSMovementRB : FPSMovement
         PlayerMovementHelper();
         PlayerJump();
         Juice.Instance.ExpandFOV(IsSprinting);
+
+        if (freeze)
+        {
+            playerRB.linearVelocity = Vector3.zero;
+        }
     }
 
     private void PlayerMovement()
     {
         playerRB.MovePosition(playerRB.position + transform.TransformDirection(movementAmount)* Time.fixedDeltaTime);
 
-        if (IsGrounded)
+        if (IsGrounded && !activeGrapple)
         {
             standingTime += Time.fixedDeltaTime;
             standingTime = Mathf.Clamp(standingTime, 0, 1);
@@ -137,7 +144,6 @@ public class FPSMovementRB : FPSMovement
 
     private void PlayerMovementHelper()
     {
-
         HandleInput();
 
         if (!stallInput)
@@ -225,6 +231,28 @@ public class FPSMovementRB : FPSMovement
 
         if (timeSinceJump < jumpCooldown)
             timeSinceJump += Time.deltaTime;
+    }
+    private Vector3 velocityToSet;
+    private void SetVelocity()
+    {
+        playerRB.linearVelocity = velocityToSet;
+    }
+    public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
+    {
+        activeGrapple = true;
+        velocityToSet = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
+        Invoke(nameof(SetVelocity), 0.1f);
+    }
+
+    public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
+    {
+        float gravity = Physics.gravity.y;
+        float displacementY = endPoint.y - startPoint.y;
+        Vector3 displacementXZ = new Vector3(endPoint.x - startPoint.x, 0f, endPoint.z - startPoint.z);
+
+        Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * trajectoryHeight);
+        Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * trajectoryHeight / gravity) + Mathf.Sqrt(2 * displacementY - trajectoryHeight) / gravity);
+        return velocityXZ + velocityY;
     }
 
     public void ForceJump(float factor, ForceMode force = ForceMode.VelocityChange) => playerRB.AddForce(transform.up * factor, force);
