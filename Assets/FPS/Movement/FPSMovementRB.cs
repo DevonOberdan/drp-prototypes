@@ -53,8 +53,12 @@ public class FPSMovementRB : FPSMovement
 
     int playerMask, jumpCounter;
     bool inAir;
+    private bool enableMovementOnNextTouch;
     public bool freeze;
     public bool activeGrapple;
+
+    public FPSCameraRB playerCam;
+    public float grappleFOV = 90f;
 
     readonly int MAX_JUMPS = 1;
 
@@ -123,6 +127,7 @@ public class FPSMovementRB : FPSMovement
         if (freeze)
         {
             playerRB.linearVelocity = Vector3.zero;
+            playerRB.angularVelocity = Vector3.zero;
         }
     }
 
@@ -232,16 +237,38 @@ public class FPSMovementRB : FPSMovement
         if (timeSinceJump < jumpCooldown)
             timeSinceJump += Time.deltaTime;
     }
+    public void ResetRestrictions()
+    {
+        playerCam.DoFOV(80f);
+        activeGrapple = false;
+
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (enableMovementOnNextTouch)
+        {
+            enableMovementOnNextTouch = false;
+            ResetRestrictions();
+
+            GetComponent<Grapple>().StopGrapple();
+        }
+    }
     private Vector3 velocityToSet;
     private void SetVelocity()
     {
+        enableMovementOnNextTouch = true;
         playerRB.linearVelocity = velocityToSet;
+        playerRB.angularVelocity = velocityToSet;
+
+        playerCam.DoFOV(grappleFOV);
     }
     public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
     {
         activeGrapple = true;
         velocityToSet = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
         Invoke(nameof(SetVelocity), 0.1f);
+
+        Invoke(nameof(ResetRestrictions), 3f);
     }
 
     public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)

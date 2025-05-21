@@ -70,11 +70,12 @@ public class Grapple : MonoBehaviour
         Invoke(nameof(StopGrapple), 1f);
     }
 
-    private void StopGrapple()
+    public void StopGrapple()
     {
         fpsMovement.freeze = false;
         grappling = false;
         grappleCdTimer = grappleCd;
+
 
         grappleLr.enabled = false;
     }

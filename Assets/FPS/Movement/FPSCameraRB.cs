@@ -5,6 +5,7 @@
  * 4. See FirstPersonMovementRB script to set up player object if needed
  */
 
+using DG.Tweening;
 using UnityEngine;
 
 public class FPSCameraRB : MonoBehaviour
@@ -86,6 +87,11 @@ public class FPSCameraRB : MonoBehaviour
             transform.localEulerAngles = Vector3.left * verticalRotation;
         else
             transform.localRotation = Quaternion.Lerp(gameObject.transform.localRotation, Quaternion.Euler(Vector3.left*verticalRotation), rotationLerpSpeed * Time.deltaTime);
+    }
+
+    public void DoFOV(float endValue)
+    {
+        GetComponent<Camera>().DOFieldOfView(endValue, 0.25f);
     }
     
 }
