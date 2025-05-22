@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     [SerializeField] List<GunConfig> gunModes;
 
     [SerializeField] Transform barrelPoint;
+    [SerializeField] private float relativeVelocityFactor = 5f;
 
     GunConfig data;
     Camera mainCamera;
@@ -59,14 +60,14 @@ public class Gun : MonoBehaviour
     bool IsChargeTriggered => data.InstantRelease || Input.GetKeyUp(fireButton);
     bool ShouldFireSingleChargeShot => data.ChargeSingleShot && Input.GetKeyUp(fireButton);
 
-    void Start()
+    private void Start()
     {
         mainCamera = Camera.main;
         Data = gunModes[0];
         fireButton = KeyCode.Mouse0;
     }
 
-    void GetGunMode()
+    private void GetGunMode()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -80,7 +81,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         timeSinceFired += Time.deltaTime;
 
@@ -111,7 +112,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
         if (CanShoot)
         {
@@ -137,7 +138,7 @@ public class Gun : MonoBehaviour
             ProcessChargeInput();
     }
 
-    void ProcessChargeTime()
+    private void ProcessChargeTime()
     {
         if (charging && Input.GetKey(fireButton))
             timeHeld += Time.deltaTime;
@@ -148,7 +149,7 @@ public class Gun : MonoBehaviour
             charged = true;
     }
 
-    void ProcessChargeInput()
+    private void ProcessChargeInput()
     {
         if (Input.GetKeyDown(fireButton))
         {
@@ -164,14 +165,14 @@ public class Gun : MonoBehaviour
         }
     }
 
-    bool HoldingFire()
+    private bool HoldingFire()
     {
         bool chargeBool = Data.ChargeUp ? charged : true;
 
         return CanShoot && chargeBool && FireInput;
     }
 
-    void ProcessHoldCharge()
+    private void ProcessHoldCharge()
     {
         if (charged)
         {
@@ -181,7 +182,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    void ProcessNonHoldCharge()
+    private void ProcessNonHoldCharge()
     {
         if (charged)
         {
@@ -199,22 +200,16 @@ public class Gun : MonoBehaviour
         }
     }
 
-    [SerializeField] private float relativeVelocityFactor=5f;
-
     #region Shoot Mode Functions
-    void ShootSingle()
+    private void ShootSingle()
     {
-        FPSMovementRB parentRb = GetComponentInParent<FPSMovementRB>();
-        Vector3 parentVel = parentRb.CurrentVelocity;
-        Debug.Log(parentRb.gameObject.name);
+        Vector3 parentVel = GetComponentInParent<FPSMovementRB>().CurrentVelocity;
 
         Projectile p = Instantiate(Data.Projectile, barrelPoint.position, Quaternion.identity).GetComponent<Projectile>();
 
         Vector3 shotDir = FindShotLine();
 
         float magInDirection = Vector3.Dot(parentVel, shotDir);
-
-        Debug.Log($"vel: {parentVel} magInDir: {magInDirection}");
 
         p.Fire(FindShotLine(), data.BulletSpeed + (magInDirection* relativeVelocityFactor));
 
@@ -233,18 +228,18 @@ public class Gun : MonoBehaviour
         }
     }
 
-    void ShootBurst()
+    private void ShootBurst()
     {
         StartCoroutine(ProcessBurst());
     }
 
-    void ShootAutomatic()
+    private void ShootAutomatic()
     {
         if (timeSinceFired > data.TimeBetweenRounds)
             ShootSingle();
     }
 
-    void ShootBeam()
+    private void ShootBeam()
     {
         Vector3 rayCastStart = mainCamera.ScreenToWorldPoint(new Vector3(mainCamera.pixelWidth / 2, mainCamera.pixelHeight / 2, mainCamera.nearClipPlane));
 
@@ -266,7 +261,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    IEnumerator ProcessBurst()
+    private IEnumerator ProcessBurst()
     {
         midFire = true;
         ShootSingle();
