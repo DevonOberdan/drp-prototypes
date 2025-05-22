@@ -20,6 +20,26 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 31b413a017eb3834087e1a9e3d4e1328
+    m_Address: Assets/SceneManagement/Events
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 361efb4a9b9d88a4cbb0d8c4d4265320
+    m_Address: Assets/SceneManagement/Scenes/ManagerScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 99c9720ab356a0642a771bea13969a05
+    m_Address: Assets/_Prototypes/BrutalistCity/SampleScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e87665287a3f99641999cc3ff7d53d40
+    m_Address: Assets/SceneManagement/SceneConfigs
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0857ded706f31cd47b76b4a0be8a3eae, type: 2}
   m_SchemaSet:
