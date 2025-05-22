@@ -20,6 +20,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
+using UnityEditor.XR;
 
 public class FPSMovementRB : FPSMovement
 {
@@ -48,6 +49,8 @@ public class FPSMovementRB : FPSMovement
 
     float jumpBuffer, jumpCooldown, timeSinceJump;
     float timeToLerpAirSpeed, speedAtJump, inAirSmoothLerpTime;
+
+    public float wallrunSpeed;
     
     float standingTime;
 
@@ -56,6 +59,7 @@ public class FPSMovementRB : FPSMovement
     private bool enableMovementOnNextTouch;
     public bool freeze;
     public bool activeGrapple;
+    public bool wallRunning;
 
     public FPSCameraRB playerCam;
     public float grappleFOV = 90f;
@@ -127,7 +131,6 @@ public class FPSMovementRB : FPSMovement
         if (freeze)
         {
             playerRB.linearVelocity = Vector3.zero;
-            playerRB.angularVelocity = Vector3.zero;
         }
     }
 
@@ -145,6 +148,11 @@ public class FPSMovementRB : FPSMovement
         {
             standingTime = 0f;
         }
+        if (wallRunning)
+        {
+            currentMoveSpeed = wallrunSpeed;
+        }
+
     }
 
     private void PlayerMovementHelper()
@@ -258,7 +266,6 @@ public class FPSMovementRB : FPSMovement
     {
         enableMovementOnNextTouch = true;
         playerRB.linearVelocity = velocityToSet;
-        playerRB.angularVelocity = velocityToSet;
 
         playerCam.DoFOV(grappleFOV);
     }
