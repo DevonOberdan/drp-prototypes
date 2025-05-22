@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6507290055333469345}
+  - component: {fileID: 5504118884832611469}
   m_Layer: 7
   m_Name: Booster
   m_TagString: Untagged
@@ -31,6 +32,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8766268403179082965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5504118884832611469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6507290055333469344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b28eafa3cd22ab4ab6bba7f00785a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: 1
+  verticalMode: 1
+  OnBoost:
+    m_PersistentCalls:
+      m_Calls: []
+  boostFactor: 2.5
+  boostMovingFactor: 0.85
+  canBoostInAir: 1
+  hasAfterburn: 0
+  afterBurnerTime: 2.5
+  afterburnFactor: 0.15
 --- !u!1 &6507290056106874523
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,7 +66,7 @@ GameObject:
   - component: {fileID: 6507290056106874524}
   - component: {fileID: 6507290056106874525}
   m_Layer: 7
-  m_Name: GunContainer
+  m_Name: ItemContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,13 +100,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRB: {fileID: 8766268403179082961}
-  mouseSwayForce: 1.5
-  movementSwayForce: 1.5
+  mouseSwayForce: 0.5
+  movementSwayForce: 0.5
   smoothVal: 5
-  walkFactor: 4
-  jumpRange: 5
+  walkFactor: 1
+  jumpRange: 1
   tiltOnJump: 1
-  jumpTiltVal: 2.5
+  jumpTiltVal: 1
 --- !u!1 &6507290056798851244
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,9 +354,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6ab809d2eed404e826589a66fd7026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpFactor: 8
-  defaultMoveSpeed: 6
-  sprintSpeedFactor: 1.5
+  jumpFactor: 12
+  defaultMoveSpeed: 15
+  sprintSpeedFactor: 1.75
   timeToLerpAirSpeedFromMoving: 2
   timeToLerpAirSpeedFromStill: 0.2
   airSpeedQuotient: 2
@@ -363,6 +387,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8766268403179082965}
     m_Modifications:
+    - target: {fileID: 3427062633220628936, guid: ca4722da455b42b45b46359d5cd69413, type: 3}
+      propertyPath: lookVerticalSensitivity
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3427062633220628936, guid: ca4722da455b42b45b46359d5cd69413, type: 3}
+      propertyPath: lookHorizontalSensitivity
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 8584275472345333504, guid: ca4722da455b42b45b46359d5cd69413, type: 3}
       propertyPath: m_Dithering
       value: 1

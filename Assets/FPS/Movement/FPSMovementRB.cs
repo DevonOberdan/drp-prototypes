@@ -119,9 +119,13 @@ public class FPSMovementRB : FPSMovement
         Juice.Instance.ExpandFOV(IsSprinting);
     }
 
+    private Vector3 movementVelocity;
+    public Vector3 CurrentVelocity => playerRB.linearVelocity + movementVelocity;
+
     private void PlayerMovement()
     {
-        playerRB.MovePosition(playerRB.position + transform.TransformDirection(movementAmount)* Time.fixedDeltaTime);
+        movementVelocity = transform.TransformDirection(movementAmount);
+        playerRB.MovePosition(playerRB.position + movementVelocity * Time.fixedDeltaTime);
 
         if (IsGrounded)
         {
