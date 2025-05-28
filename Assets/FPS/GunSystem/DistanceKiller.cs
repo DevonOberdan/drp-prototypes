@@ -4,13 +4,11 @@ using UnityEngine.Events;
 public class DistanceKiller : MonoBehaviour
 {
     [SerializeField] UnityEvent OnDistanceReached;
-
-    readonly float MAX_DISTANCE = 100;
-    readonly Vector3 origin = Vector3.zero;
+    [SerializeField] private float MAX_DISTANCE = 1000f;
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, origin) > MAX_DISTANCE)
+        if (Mathf.Abs(Vector3.Distance(transform.position, Camera.main.transform.position)) > MAX_DISTANCE)
         {
             OnDistanceReached.Invoke();
         }

@@ -53,8 +53,7 @@ public class Gun : MonoBehaviour
 
     public bool FireInput => Data.CanHoldFire ? Input.GetKey(fireButton) : Input.GetKeyDown(fireButton);
 
-    bool CanShoot => (!data.RequiresAmmo || !Restricted) &&
-                     timeSinceFired > data.TimeBetweenShots &&
+    bool CanShoot => !Restricted && timeSinceFired > data.TimeBetweenShots &&
                      !midFire && (data.CanHoldFire || !chargeFired);
 
     bool IsChargeTriggered => data.InstantRelease || Input.GetKeyUp(fireButton);

@@ -162,6 +162,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   gunModes:
-  - {fileID: 11400000, guid: 115995a3f1f56ac4a872a82ca1f61a86, type: 2}
+  - {fileID: 11400000, guid: 45f74393d96a9304a888d72cb99e420e, type: 2}
   barrelPoint: {fileID: 3334187673761887040}
   relativeVelocityFactor: 10

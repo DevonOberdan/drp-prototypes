@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -21,9 +20,8 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private IEnumerator OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        yield return new WaitForEndOfFrame();
         Kill();
     }
 }
