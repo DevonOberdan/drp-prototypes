@@ -388,7 +388,7 @@ MeshCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7045408781283292537, guid: 5ae34265e1e301141b48bc6a9fc6b40f, type: 3}
 --- !u!4 &210946431 stripped
@@ -961,34 +961,6 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
---- !u!1 &445492867 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6507290055333469344, guid: 770298038e52f214d988a643b57774fd, type: 3}
-  m_PrefabInstance: {fileID: 1335555015}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &445492869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 445492867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b28eafa3cd22ab4ab6bba7f00785a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: 1
-  verticalMode: 1
-  OnBoost:
-    m_PersistentCalls:
-      m_Calls: []
-  boostFactor: 2.5
-  boostMovingFactor: 0.85
-  canBoostInAir: 1
-  hasAfterburn: 0
-  afterBurnerTime: 2.5
-  afterburnFactor: 0.15
 --- !u!1 &508639581 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bae82597d45f2f144a7688b75acb37c4, type: 3}
@@ -2731,18 +2703,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8845840987248763622, guid: 770298038e52f214d988a643b57774fd, type: 3}
-      propertyPath: jumpFactor
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 8845840987248763622, guid: 770298038e52f214d988a643b57774fd, type: 3}
-      propertyPath: defaultMoveSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8845840987248763622, guid: 770298038e52f214d988a643b57774fd, type: 3}
-      propertyPath: sprintSpeedFactor
-      value: 1.75
-      objectReference: {fileID: 0}
     - target: {fileID: 8845840987248763624, guid: 770298038e52f214d988a643b57774fd, type: 3}
       propertyPath: gSource
       value: 
@@ -2755,22 +2715,10 @@ PrefabInstance:
       propertyPath: cameraMouseSensitivity
       value: 200
       objectReference: {fileID: 0}
-    - target: {fileID: 8845840988164583520, guid: 770298038e52f214d988a643b57774fd, type: 3}
-      propertyPath: lookVerticalSensitivity
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8845840988164583520, guid: 770298038e52f214d988a643b57774fd, type: 3}
-      propertyPath: lookHorizontalSensitivity
-      value: 200
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6507290056106874525, guid: 770298038e52f214d988a643b57774fd, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6507290055333469344, guid: 770298038e52f214d988a643b57774fd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 445492869}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 770298038e52f214d988a643b57774fd, type: 3}
 --- !u!1 &1360767479 stripped
 GameObject:
