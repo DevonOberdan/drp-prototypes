@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcd4c2b9f6436415aa807d0094324964, type: 3}
+  m_Name: Automatic
+  m_EditorClassIdentifier: 
+  fireType: 2
+  projectile: {fileID: 8464758777605922187, guid: 22d6fb973a3e6a24ea63edfa03610623, type: 3}
+  <RequiresAmmo>k__BackingField: 1
+  timeBetweenShots: 0
+  bulletSpeed: 3000
+  rpm: 897
+  burstCount: 3
+  chargeUp: 1
+  chargeTime: 2
+  chargeSingleShot: 0
+  instantRelease: 1
