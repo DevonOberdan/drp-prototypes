@@ -263,7 +263,6 @@ public class FPSMovementRB : FPSMovement
     {
         enableMovementOnNextTouch = true;
         playerRB.linearVelocity = velocityToSet;
-        playerRB.angularVelocity = velocityToSet;
 
         playerCam.DoFOV(grappleFOV);
     }
