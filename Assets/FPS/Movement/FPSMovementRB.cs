@@ -16,6 +16,7 @@
  * 1. Weird behavior with crouching, but we likely just won't use it.
  */
 
+using FinishOne.GeneralUtilities;
 using System.Security.Cryptography;
 using UnityEngine;
 
@@ -53,16 +54,16 @@ public class FPSMovementRB : FPSMovement
 
     private int playerMask, jumpCounter;
     private bool inAir;
-    private bool enableMovementOnNextTouch;
-    private Vector3 velocityToSet;
-	
 	
     private readonly int MAX_JUMPS = 1;
-	
+
+    private bool enableMovementOnNextTouch;
+    private Vector3 velocityToSet;
     public FPSCameraRB playerCam;
     public float grappleFOV = 90f;
-    public bool freeze;
-    public bool activeGrapple;
+
+    public bool Freeze { get; set; }
+    public bool InFreeMovement { get; set; }
 
     public float AirSpeedQuotient { get => airSpeedQuotient; set => airSpeedQuotient = value; }
     public float OldAirSpeedQuotient { get => oldAirSpeedQuotient; set => oldAirSpeedQuotient = value; }
@@ -126,7 +127,7 @@ public class FPSMovementRB : FPSMovement
         PlayerJump();
         Juice.Instance.ExpandFOV(IsSprinting);
 
-        if (freeze)
+        if (Freeze)
         {
             playerRB.linearVelocity = Vector3.zero;
             playerRB.angularVelocity = Vector3.zero;
@@ -138,7 +139,7 @@ public class FPSMovementRB : FPSMovement
         movementVelocity = transform.TransformDirection(movementAmount);
         playerRB.MovePosition(playerRB.position + movementVelocity * Time.fixedDeltaTime);
 
-        if (IsGrounded && !activeGrapple)
+        if (IsGrounded && InFreeMovement)
         {
             standingTime += Time.fixedDeltaTime;
             standingTime = Mathf.Clamp(standingTime, 0, 1);
@@ -241,13 +242,6 @@ public class FPSMovementRB : FPSMovement
             timeSinceJump += Time.deltaTime;
     }
 	
-    public void ResetRestrictions()
-    {
-        playerCam.DoFOV(80f);
-        activeGrapple = false;
-
-    }
-	
     private void OnCollisionEnter(Collision collision)
     {
         if (enableMovementOnNextTouch)
@@ -258,34 +252,50 @@ public class FPSMovementRB : FPSMovement
             GetComponent<Grapple>().StopGrapple();
         }
     }
-	
+
+    #region Grapple
+    public void ResetRestrictions()
+    {
+        playerCam.DoFOV(80f);
+        InFreeMovement = true;
+    }
+
     private void SetVelocity()
     {
         enableMovementOnNextTouch = true;
         playerRB.linearVelocity = velocityToSet;
+        playerRB.angularVelocity = velocityToSet;
 
         playerCam.DoFOV(grappleFOV);
     }
 	
     public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
     {
-        activeGrapple = true;
+        InFreeMovement = false;
         velocityToSet = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
         Invoke(nameof(SetVelocity), 0.1f);
 
         Invoke(nameof(ResetRestrictions), 3f);
     }
 
-    public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
+    private Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
     {
-        float gravity = Physics.gravity.y;
+        float gravityForce = Mathf.Abs(Physics.gravity.y);
         float displacementY = endPoint.y - startPoint.y;
-        Vector3 displacementXZ = new Vector3(endPoint.x - startPoint.x, 0f, endPoint.z - startPoint.z);
+        Vector3 displacementXZ = (endPoint - startPoint).NewY(0);
 
-        Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * trajectoryHeight);
-        Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * trajectoryHeight / gravity) + Mathf.Sqrt(2 * displacementY - trajectoryHeight) / gravity);
+        // will pull us down if we grapple below us
+        float dir = Mathf.Sign(trajectoryHeight);
+        Vector3 velocityY = dir * Mathf.Sqrt(Mathf.Abs(2 * gravityForce * trajectoryHeight)) * Vector3.up;
+
+        float heightGravCalc = Mathf.Sqrt(Mathf.Abs(2 * trajectoryHeight / gravityForce));
+        float displacementHeightCalc = Mathf.Sqrt(Mathf.Abs(2 * displacementY - trajectoryHeight)) / gravityForce;
+        
+        Vector3 velocityXZ = displacementXZ / (heightGravCalc + displacementHeightCalc);
         return velocityXZ + velocityY;
     }
+
+    #endregion
 
     public void ForceJump(float factor, ForceMode force = ForceMode.VelocityChange) => playerRB.AddForce(transform.up * factor, force);
     public void ForceForwardJump(float factor, ForceMode force = ForceMode.VelocityChange) => playerRB.AddForce(transform.TransformDirection(movementAmount).normalized * factor, force);
