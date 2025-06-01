@@ -64,7 +64,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6507290056106874524}
-  - component: {fileID: 6507290056106874525}
+  - component: {fileID: 1305795152575371881}
   m_Layer: 7
   m_Name: GunContainer
   m_TagString: Untagged
@@ -88,7 +88,7 @@ Transform:
   - {fileID: 4911269525404797136}
   m_Father: {fileID: 2480528760156155563}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6507290056106874525
+--- !u!114 &1305795152575371881
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,13 +101,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRB: {fileID: 8766268403179082961}
-  mouseSwayForce: 1.5
-  movementSwayForce: 0.75
-  smoothVal: 5
-  walkFactor: 4
-  jumpRange: 6
-  tiltOnJump: 1
-  jumpTiltVal: 2.5
+  mouseSwayForce: 1
+  movementSwayForce: 1
+  smoothVal: 2.5
+  walkFactor: 16
+  jumpRange: 5
+  tiltOnJump: 0
+  jumpTiltVal: 10
 --- !u!1 &6507290056798851244
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +214,6 @@ GameObject:
   - component: {fileID: 8766268403179082961}
   - component: {fileID: 8845840987248763622}
   - component: {fileID: 8845840987248763624}
-  - component: {fileID: 5820021198772666794}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -230,7 +229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8766268403179082975}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.9101751, z: -0, w: 0.41422373}
+  m_LocalRotation: {x: 0, y: -0.91017467, z: 0, w: 0.4142247}
   m_LocalPosition: {x: 10.37, y: 24.96, z: 8.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -362,8 +361,6 @@ MonoBehaviour:
   timeToLerpAirSpeedFromMoving: 2
   timeToLerpAirSpeedFromStill: 0.2
   airSpeedQuotient: 2
-  freeze: 0
-  activeGrapple: 0
   playerCam: {fileID: 8845840988164583520}
   grappleFOV: 105
 --- !u!114 &8845840987248763624
@@ -385,29 +382,6 @@ MonoBehaviour:
   capForce: 0
   rotationSpeed: 0
   <GravityFactor>k__BackingField: 1
---- !u!114 &5820021198772666794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8766268403179082975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e29082f8231a3d9418d4e32747143b15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 2480528760156155563}
-  grappleTip: {fileID: 398288030165219454}
-  grappleLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  grappleLr: {fileID: 7977001057045191452}
-  maxGrappleDistance: 50
-  grappleDelayTime: 0.1
-  overshootYAxis: 7
-  grappleCd: 0.6
-  grappleKey: 324
 --- !u!1001 &1492663518433858976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -477,19 +451,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b368bab31ab60248afcdbc7cb4b65d8, type: 3}
---- !u!4 &398288030165219454 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1238491365015743966, guid: 9b368bab31ab60248afcdbc7cb4b65d8, type: 3}
-  m_PrefabInstance: {fileID: 1492663518433858976}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4911269525404797136 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5809454484922506608, guid: 9b368bab31ab60248afcdbc7cb4b65d8, type: 3}
-  m_PrefabInstance: {fileID: 1492663518433858976}
-  m_PrefabAsset: {fileID: 0}
---- !u!120 &7977001057045191452 stripped
-LineRenderer:
-  m_CorrespondingSourceObject: {fileID: 8791872810083897020, guid: 9b368bab31ab60248afcdbc7cb4b65d8, type: 3}
   m_PrefabInstance: {fileID: 1492663518433858976}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6146818433624478120
@@ -521,12 +485,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8584275472345333506, guid: ca4722da455b42b45b46359d5cd69413, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584275472345333506, guid: ca4722da455b42b45b46359d5cd69413, type: 3}
       propertyPath: field of view
       value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8584275472345333506, guid: ca4722da455b42b45b46359d5cd69413, type: 3}
       propertyPath: far clip plane
-      value: 10000
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 8584275472345333506, guid: ca4722da455b42b45b46359d5cd69413, type: 3}
       propertyPath: near clip plane

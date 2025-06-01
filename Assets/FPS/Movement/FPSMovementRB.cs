@@ -17,6 +17,7 @@
  */
 
 using FinishOne.GeneralUtilities;
+using System;
 using System.Security.Cryptography;
 using UnityEngine;
 
@@ -61,6 +62,8 @@ public class FPSMovementRB : FPSMovement
     private Vector3 velocityToSet;
     public FPSCameraRB playerCam;
     public float grappleFOV = 90f;
+
+    public Action onCollision;
 
     public bool Freeze { get; set; }
     public bool InFreeMovement { get; set; }
@@ -249,7 +252,7 @@ public class FPSMovementRB : FPSMovement
             enableMovementOnNextTouch = false;
             ResetRestrictions();
 
-            GetComponent<Grapple>().StopGrapple();
+            onCollision?.Invoke();
         }
     }
 

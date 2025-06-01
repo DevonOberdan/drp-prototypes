@@ -3,22 +3,21 @@ using UnityEngine;
 public class Grapple : MonoBehaviour
 {
     [Header("Reference")]
-    private FPSMovementRB fpsMovement;
-
-    public Transform grappleTip;
-    public LayerMask grappleLayers;
-    public LineRenderer grappleLr;
+    [SerializeField] private Transform grappleTip;
+    [SerializeField] private LayerMask grappleLayers;
+    [SerializeField] private LineRenderer grappleLr;
 
     [Header("Grappling")]
-    public float maxGrappleDistance;
-    public float grappleDelayTime;
-    public float overshootYAxis;
+    [SerializeField] private float maxGrappleDistance;
+    [SerializeField] private float grappleDelayTime;
+    [SerializeField] private float overshootYAxis;
 
     [Header("Cooldown")]
-    public float grappleCd;
+    [SerializeField] private float grappleCd;
     [Header("Input")]
-    public KeyCode grappleKey = KeyCode.Mouse1;
+    [SerializeField] private KeyCode grappleKey = KeyCode.Mouse1;
 
+    private FPSMovementRB playerController;
     private Camera cam;
     private Vector3 grapplePoint;
     private float grappleCdTimer;
@@ -33,7 +32,8 @@ public class Grapple : MonoBehaviour
         }
 
         cam = Camera.main;
-        fpsMovement = GetComponent<FPSMovementRB>();
+        playerController = GetComponentInParent<FPSMovementRB>();
+        playerController.onCollision += StopGrapple;
     }
 
     private void Update()
@@ -64,7 +64,7 @@ public class Grapple : MonoBehaviour
 
         grappling = true;
 
-        fpsMovement.Freeze = true;
+        playerController.Freeze = true;
 
         if (Physics.Raycast(cam.transform.position, cam.transform.transform.forward, out RaycastHit hit, maxGrappleDistance, grappleLayers))
         {
@@ -83,19 +83,18 @@ public class Grapple : MonoBehaviour
 
     private void ExecuteGrapple()
     {
-        fpsMovement.Freeze = false;
+        playerController.Freeze = false;
 
         float grapplePointRelativeYPos = grapplePoint.y - (transform.position.y - 1f);
         float highestPointOnArc = grapplePointRelativeYPos + overshootYAxis;
 
-        // if grapple downwards, do not add velocity in y-direction
-        fpsMovement.JumpToPosition(grapplePoint, highestPointOnArc);
+        playerController.JumpToPosition(grapplePoint, highestPointOnArc);
         Invoke(nameof(StopGrapple), 1f);
     }
 
     public void StopGrapple()
     {
-        fpsMovement.Freeze = false;
+        playerController.Freeze = false;
         grappling = false;
         grappleCdTimer = grappleCd;
 
