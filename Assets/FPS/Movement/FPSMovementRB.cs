@@ -16,6 +16,8 @@
  * 1. Weird behavior with crouching, but we likely just won't use it.
  */
 
+using FinishOne.GeneralUtilities;
+using System;
 using System.Security.Cryptography;
 using UnityEngine;
 
@@ -53,8 +55,18 @@ public class FPSMovementRB : FPSMovement
 
     private int playerMask, jumpCounter;
     private bool inAir;
-
+	
     private readonly int MAX_JUMPS = 1;
+
+    private bool enableMovementOnNextTouch;
+    private Vector3 velocityToSet;
+    public FPSCameraRB playerCam;
+    public float grappleFOV = 90f;
+
+    public Action onCollision;
+
+    public bool Freeze { get; set; }
+    public bool InFreeMovement { get; set; }
 
     public float AirSpeedQuotient { get => airSpeedQuotient; set => airSpeedQuotient = value; }
     public float OldAirSpeedQuotient { get => oldAirSpeedQuotient; set => oldAirSpeedQuotient = value; }
@@ -117,6 +129,12 @@ public class FPSMovementRB : FPSMovement
         PlayerMovementHelper();
         PlayerJump();
         Juice.Instance.ExpandFOV(IsSprinting);
+
+        if (Freeze)
+        {
+            playerRB.linearVelocity = Vector3.zero;
+            playerRB.angularVelocity = Vector3.zero;
+        }
     }
 
     private void PlayerMovement()
@@ -124,7 +142,7 @@ public class FPSMovementRB : FPSMovement
         movementVelocity = transform.TransformDirection(movementAmount);
         playerRB.MovePosition(playerRB.position + movementVelocity * Time.fixedDeltaTime);
 
-        if (IsGrounded)
+        if (IsGrounded && InFreeMovement)
         {
             standingTime += Time.fixedDeltaTime;
             standingTime = Mathf.Clamp(standingTime, 0, 1);
@@ -138,7 +156,6 @@ public class FPSMovementRB : FPSMovement
 
     private void PlayerMovementHelper()
     {
-
         HandleInput();
 
         if (!stallInput)
@@ -227,6 +244,61 @@ public class FPSMovementRB : FPSMovement
         if (timeSinceJump < jumpCooldown)
             timeSinceJump += Time.deltaTime;
     }
+	
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (enableMovementOnNextTouch)
+        {
+            enableMovementOnNextTouch = false;
+            ResetRestrictions();
+
+            onCollision?.Invoke();
+        }
+    }
+
+    #region Grapple
+    public void ResetRestrictions()
+    {
+        playerCam.DoFOV(80f);
+        InFreeMovement = true;
+    }
+
+    private void SetVelocity()
+    {
+        enableMovementOnNextTouch = true;
+        playerRB.linearVelocity = velocityToSet;
+        playerRB.angularVelocity = velocityToSet;
+
+        playerCam.DoFOV(grappleFOV);
+    }
+	
+    public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
+    {
+        InFreeMovement = false;
+        velocityToSet = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
+        Invoke(nameof(SetVelocity), 0.1f);
+
+        Invoke(nameof(ResetRestrictions), 3f);
+    }
+
+    private Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
+    {
+        float gravityForce = Mathf.Abs(Physics.gravity.y);
+        float displacementY = endPoint.y - startPoint.y;
+        Vector3 displacementXZ = (endPoint - startPoint).NewY(0);
+
+        // will pull us down if we grapple below us
+        float dir = Mathf.Sign(trajectoryHeight);
+        Vector3 velocityY = dir * Mathf.Sqrt(Mathf.Abs(2 * gravityForce * trajectoryHeight)) * Vector3.up;
+
+        float heightGravCalc = Mathf.Sqrt(Mathf.Abs(2 * trajectoryHeight / gravityForce));
+        float displacementHeightCalc = Mathf.Sqrt(Mathf.Abs(2 * displacementY - trajectoryHeight)) / gravityForce;
+        
+        Vector3 velocityXZ = displacementXZ / (heightGravCalc + displacementHeightCalc);
+        return velocityXZ + velocityY;
+    }
+
+    #endregion
 
     public void ForceJump(float factor, ForceMode force = ForceMode.VelocityChange) => playerRB.AddForce(transform.up * factor, force);
     public void ForceForwardJump(float factor, ForceMode force = ForceMode.VelocityChange) => playerRB.AddForce(transform.TransformDirection(movementAmount).normalized * factor, force);
