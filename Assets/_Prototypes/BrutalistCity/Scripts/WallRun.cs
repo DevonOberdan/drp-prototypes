@@ -1,4 +1,3 @@
-using FinishOne.GeneralUtilities;
 using UnityEngine;
 
 public class WallRun : MonoBehaviour
@@ -10,9 +9,8 @@ public class WallRun : MonoBehaviour
     [SerializeField] private float wallJumpUpForce;
     [SerializeField] private float wallJumpSideForce;
     [SerializeField] private float maxWallRunTime;
-
-    [Header("Input")]
-    [SerializeField] private KeyCode wallJumpKey = KeyCode.Space;
+    [Range(0f, 1f)]
+    [SerializeField] private float verticalVelocityDampening = 0.25f;
 
     [Header("Detection")]
     [SerializeField] private float wallCheckDistance;
@@ -32,13 +30,22 @@ public class WallRun : MonoBehaviour
 
     private bool wallRunning;
 
+    private readonly float CooldownMax = 1.0f;
+    private float cooldownTimer;
+
     private Transform Player => playerMovement.transform;
+
+    private int flagIndex;
 
     private void Start()
     {
         playerMovement = GetComponentInParent<FPSMovementRB>();
         rb = GetComponentInParent<Rigidbody>();
         cam = Camera.main;
+
+        playerMovement.onJumped += WallJump;
+
+        flagIndex = playerMovement.JumpOverrideHandler.AddFlag();
     }
 
     private void Update()
@@ -53,6 +60,11 @@ public class WallRun : MonoBehaviour
         {
             WallRunMovement();
         }
+        else if(cooldownTimer > 0)
+        {
+            cooldownTimer -= Time.deltaTime;
+            cooldownTimer = Mathf.Clamp01(cooldownTimer);
+        }
     }
 
     private void CheckForWall()
@@ -63,21 +75,31 @@ public class WallRun : MonoBehaviour
 
     private void StateMachine()
     {
+        playerMovement.JumpOverrideHandler.SetFlag(flagIndex, wallLeft || wallRight);
+
+        if (!playerMovement.IsGrounded && (wallLeft || wallRight))
+        {
+            playerMovement.ResetJumps();
+        }
+
         //conditions for wall-running
-        if((wallLeft || wallRight) && playerMovement.MovementInputDir.z > 0 && !playerMovement.IsGrounded)
+        if ((wallLeft || wallRight) && playerMovement.MovementInputDir.z > 0 && !playerMovement.IsGrounded)
         {
             if (!wallRunning)
             {
-                StartWallRun();
+                if(cooldownTimer <= 0f)
+                {
+                    StartWallRun();
+                }
+                else
+                {
+                    return;
+                }
             }
-            else if(wallRunTimer > 0)
+            
+            if (wallRunTimer > 0)
             {
                 wallRunTimer -= Time.deltaTime;
-            }
-
-            if (Input.GetKeyDown(wallJumpKey))
-            {
-                WallJump();
             }
 
             if (wallRunTimer <= 0 && wallRunning)
@@ -93,6 +115,7 @@ public class WallRun : MonoBehaviour
 
     private void StartWallRun()
     {
+        playerMovement.InFreeMovement = false;
         wallRunning = true;
         wallRunTimer = maxWallRunTime;
     }
@@ -100,6 +123,8 @@ public class WallRun : MonoBehaviour
     private void WallRunMovement()
     {
         rb.useGravity = false;
+
+        rb.linearVelocity = Vector3.Scale(rb.linearVelocity, new(1, verticalVelocityDampening, 1));
 
         Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
         Vector3 wallRunDir = Vector3.Cross(wallNormal, transform.up);
@@ -120,14 +145,22 @@ public class WallRun : MonoBehaviour
 
     private void StopWallRun()
     {
+        playerMovement.InFreeMovement = true;
         wallRunning = false;
+        cooldownTimer = CooldownMax;
     }
 
     private void WallJump()
     {
+        if (!wallRunning)
+        {
+            return;
+        }
+
+        wallRunning = false;
+
         Vector3 wallNormal = wallRight ? rightWallHit.normal: leftWallHit.normal;
         Vector3 forceToApply = transform.up * wallJumpUpForce + wallNormal * wallJumpSideForce;
-        rb.linearVelocity = rb.linearVelocity.WithNew(y: 0f);
         rb.AddForce(forceToApply, ForceMode.Impulse);
     }
 }

@@ -18,10 +18,7 @@
 
 using FinishOne.GeneralUtilities;
 using System;
-using System.Security.Cryptography;
 using UnityEngine;
-using UnityEngine.Events;
-using DG.Tweening;
 
 public class FPSMovementRB : FPSMovement
 {
@@ -45,7 +42,6 @@ public class FPSMovementRB : FPSMovement
 
     private Vector3 inputVect, targetMoveAmount, movementAmount;
     private Vector3 smoothMoveVel;
-
     private Vector3 movementVelocity;
 
     private float currentMoveSpeed, sprintSpeed, activeGroundSpeed, moveLerpSpeed;
@@ -66,6 +62,9 @@ public class FPSMovementRB : FPSMovement
     public float grappleFOV = 90f;
 
     public Action onCollision;
+    public Action onJumped;
+
+    [field: SerializeField] public OverrideFlagHandler JumpOverrideHandler { get; private set; }
 
     public bool Freeze { get; set; }
     public bool InFreeMovement { get; set; }
@@ -101,11 +100,14 @@ public class FPSMovementRB : FPSMovement
         }
     }
 
-
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody>();
         playerGravity = GetComponent<GravityObject>();
+
+        JumpOverrideHandler = new OverrideFlagHandler();
+
+        InFreeMovement = true;
     }
 
     private void Start()
@@ -227,7 +229,7 @@ public class FPSMovementRB : FPSMovement
 
     private void PlayerJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && (IsGrounded || jumpBuffer >= 0.0f) && jumpCounter<MAX_JUMPS)
+        if (Input.GetKeyDown(KeyCode.Space) && ((IsGrounded || jumpBuffer >= 0.0f) || JumpOverrideHandler.AnyOverride) && jumpCounter<MAX_JUMPS)
         {
             ForceJump(jumpFactor);
             jumpCounter++;
@@ -240,8 +242,7 @@ public class FPSMovementRB : FPSMovement
         }
         else if (IsGrounded && jumpCounter>0 && timeSinceJump > jumpCooldown)
         {
-            jumpBuffer = 0.25f;
-            jumpCounter = 0;
+            ResetJumps();
         }
 
         if (timeSinceJump < jumpCooldown)
@@ -257,6 +258,12 @@ public class FPSMovementRB : FPSMovement
 
             onCollision?.Invoke();
         }
+    }
+
+    public void ResetJumps()
+    {
+        jumpBuffer = 0.25f;
+        jumpCounter = 0;
     }
 
     #region Grapple
@@ -302,6 +309,11 @@ public class FPSMovementRB : FPSMovement
 
     #endregion
 
-    public void ForceJump(float factor, ForceMode force = ForceMode.VelocityChange) => playerRB.AddForce(transform.up * factor, force);
+    public void ForceJump(float factor, ForceMode force = ForceMode.VelocityChange)
+    {
+        playerRB.AddForce(transform.up * factor, force);
+        onJumped?.Invoke();
+    }
+
     public void ForceForwardJump(float factor, ForceMode force = ForceMode.VelocityChange) => playerRB.AddForce(transform.TransformDirection(movementAmount).normalized * factor, force);
 }

@@ -47,11 +47,11 @@ MonoBehaviour:
   whatIsWall:
     serializedVersion: 2
     m_Bits: 1
-  wallRunForce: 50
-  wallJumpUpForce: 12
-  wallJumpSideForce: 16
-  maxWallRunTime: 1
-  wallJumpKey: 32
+  wallRunForce: 25
+  wallJumpUpForce: 6
+  wallJumpSideForce: 9
+  maxWallRunTime: 1.2
+  verticalVelocityDampening: 0.96
   wallCheckDistance: 0.7
   minJumpHeight: 2
   exitWallTime: 0.2
