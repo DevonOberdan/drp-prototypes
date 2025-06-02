@@ -3,88 +3,47 @@ using UnityEngine;
 public class Grapple : MonoBehaviour
 {
     [Header("Reference")]
-    private FPSMovementRB fpsMovement;
-    public Transform cam;
-    public Transform grappleTip;
-    public LayerMask grappleLayers;
-    public LineRenderer grappleLr;
+    [SerializeField] private Transform grappleTip;
+    [SerializeField] private LayerMask grappleLayers;
+    [SerializeField] private LineRenderer grappleLr;
 
     [Header("Grappling")]
-    public float maxGrappleDistance;
-    public float grappleDelayTime;
-    public float overshootYAxis;
-
-    private Vector3 grapplePoint;
+    [SerializeField] private float maxGrappleDistance;
+    [SerializeField] private float grappleDelayTime;
+    [SerializeField] private float overshootYAxis;
 
     [Header("Cooldown")]
-    public float grappleCd;
-    private float grappleCdTimer;
-
+    [SerializeField] private float grappleCd;
     [Header("Input")]
-    public KeyCode grappleKey = KeyCode.Mouse1;
+    [SerializeField] private KeyCode grappleKey = KeyCode.Mouse1;
 
+    private FPSMovementRB playerController;
+    private Camera cam;
+    private Vector3 grapplePoint;
+    private float grappleCdTimer;
     private bool grappling;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        fpsMovement = GetComponent<FPSMovementRB>();
-    }
-
-    private void StartGrapple()
-    {
-        if (grappleCdTimer > 0) return;
-
-        grappling = true;
-
-        fpsMovement.freeze = true;
-
-        RaycastHit hit;
-        if(Physics.Raycast(cam.position, cam.forward, out hit, maxGrappleDistance, grappleLayers))
+        if(Camera.main == null)
         {
-            grapplePoint = hit.point;
-
-            Invoke(nameof(ExecuteGrapple), grappleDelayTime);
-        }
-        else
-        {
-            grapplePoint = cam.position + cam.forward * maxGrappleDistance;
-            Invoke(nameof(StopGrapple), grappleDelayTime);
+            Debug.LogError("Player camera should be set to the `MainCamera` tag.");
+            return;
         }
 
-        grappleLr.enabled = true;
-        grappleLr.SetPosition(1, grapplePoint);
-
+        cam = Camera.main;
+        playerController = GetComponentInParent<FPSMovementRB>();
+        playerController.onCollision += StopGrapple;
     }
 
-    private void ExecuteGrapple()
+    private void Update()
     {
-        fpsMovement.freeze = false;
+        if (Input.GetKeyDown(grappleKey))
+        {
+            StartGrapple();
+        }
 
-        Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
-
-        float grapplePointRelativeYPos = grapplePoint.y - lowestPoint.y;
-        float highestPointOnArc = grapplePointRelativeYPos + overshootYAxis;
-
-        fpsMovement.JumpToPosition(grapplePoint, highestPointOnArc);
-        Invoke(nameof(StopGrapple), 1f);
-    }
-
-    public void StopGrapple()
-    {
-        fpsMovement.freeze = false;
-        grappling = false;
-        grappleCdTimer = grappleCd;
-
-
-        grappleLr.enabled = false;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(grappleKey)) StartGrapple();
-
-        if(grappleCdTimer > 0)
+        if (grappleCdTimer > 0)
         {
             grappleCdTimer -= Time.deltaTime;
         }
@@ -96,5 +55,49 @@ public class Grapple : MonoBehaviour
         {
             grappleLr.SetPosition(0, grappleTip.position);
         }
+    }
+
+    private void StartGrapple()
+    {
+        if (grappleCdTimer > 0)
+            return;
+
+        grappling = true;
+
+        playerController.Freeze = true;
+
+        if (Physics.Raycast(cam.transform.position, cam.transform.transform.forward, out RaycastHit hit, maxGrappleDistance, grappleLayers))
+        {
+            grapplePoint = hit.point;
+            Invoke(nameof(ExecuteGrapple), grappleDelayTime);
+        }
+        else
+        {
+            grapplePoint = cam.transform.position + cam.transform.forward * maxGrappleDistance;
+            Invoke(nameof(StopGrapple), grappleDelayTime);
+        }
+
+        grappleLr.enabled = true;
+        grappleLr.SetPosition(1, grapplePoint);
+    }
+
+    private void ExecuteGrapple()
+    {
+        playerController.Freeze = false;
+
+        float grapplePointRelativeYPos = grapplePoint.y - (transform.position.y - 1f);
+        float highestPointOnArc = grapplePointRelativeYPos + overshootYAxis;
+
+        playerController.JumpToPosition(grapplePoint, highestPointOnArc);
+        Invoke(nameof(StopGrapple), 1f);
+    }
+
+    public void StopGrapple()
+    {
+        playerController.Freeze = false;
+        grappling = false;
+        grappleCdTimer = grappleCd;
+
+        grappleLr.enabled = false;
     }
 }

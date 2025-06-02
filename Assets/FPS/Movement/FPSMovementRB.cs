@@ -16,55 +16,59 @@
  * 1. Weird behavior with crouching, but we likely just won't use it.
  */
 
-using System.Collections;
+using FinishOne.GeneralUtilities;
+using System;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
-using UnityEditor.XR;
 
 public class FPSMovementRB : FPSMovement
 {
-    [SerializeField] float jumpFactor = 8f;
-    [SerializeField] float defaultMoveSpeed = 6f;
-    [SerializeField] float sprintSpeedFactor = 1.75f;
+    [SerializeField] private float jumpFactor = 8f;
+    [SerializeField] private float defaultMoveSpeed = 6f;
+    [SerializeField] private float sprintSpeedFactor = 1.75f;
 
     [Header("Dampening Values")]
     [Tooltip("Time it takes to lerp in-air speed from ground speed down to the divided air speed. Higher values retains ground speed longer.")]
-    [SerializeField] float timeToLerpAirSpeedFromMoving = 4f;
+    [SerializeField] private float timeToLerpAirSpeedFromMoving = 4f;
 
     [Tooltip("Time it takes to lerp in-air speed from defaultMoveSpeed down to the divided air speed. Value < 1 to limit air-steering due to lack of momentum.")]
-    [SerializeField] float timeToLerpAirSpeedFromStill = .2f;
+    [SerializeField] private float timeToLerpAirSpeedFromStill = .2f;
 
-    [SerializeField] float airSpeedQuotient;
+    [SerializeField] private  float airSpeedQuotient;
 
-    float oldAirSpeedQuotient;
+    private float oldAirSpeedQuotient;
 
-    Rigidbody playerRB;
-    GravityObject playerGravity;
+    private Rigidbody playerRB;
+    private GravityObject playerGravity;
 
-    Vector3 inputVect, targetMoveAmount, movementAmount;
-    Vector3 smoothMoveVel;
+    private Vector3 inputVect, targetMoveAmount, movementAmount;
+    private Vector3 smoothMoveVel;
 
-    float currentMoveSpeed, sprintSpeed, activeGroundSpeed, moveLerpSpeed;
+    private Vector3 movementVelocity;
 
-    float jumpBuffer, jumpCooldown, timeSinceJump;
-    float timeToLerpAirSpeed, speedAtJump, inAirSmoothLerpTime;
+    private float currentMoveSpeed, sprintSpeed, activeGroundSpeed, moveLerpSpeed;
 
-    public float wallrunSpeed;
-    
-    float standingTime;
+    private float jumpBuffer, jumpCooldown, timeSinceJump;
+    private float timeToLerpAirSpeed, speedAtJump, inAirSmoothLerpTime;
 
-    int playerMask, jumpCounter;
-    bool inAir;
+    private float standingTime;
+
+    private int playerMask, jumpCounter;
+    private bool inAir;
+	
+    private readonly int MAX_JUMPS = 1;
+
     private bool enableMovementOnNextTouch;
-    public bool freeze;
-    public bool activeGrapple;
-    public bool wallRunning;
-
+    private Vector3 velocityToSet;
     public FPSCameraRB playerCam;
     public float grappleFOV = 90f;
 
-    readonly int MAX_JUMPS = 1;
+    public Action onCollision;
+
+    public bool Freeze { get; set; }
+    public bool InFreeMovement { get; set; }
 
     public float AirSpeedQuotient { get => airSpeedQuotient; set => airSpeedQuotient = value; }
     public float OldAirSpeedQuotient { get => oldAirSpeedQuotient; set => oldAirSpeedQuotient = value; }
@@ -80,7 +84,10 @@ public class FPSMovementRB : FPSMovement
     public override bool IsSprinting => currentMoveSpeed == sprintSpeed && inputVect.z > 0;
     public override bool IsRunning => IsGrounded && !IsSprinting && !IsIdle;  //the same
 
-    bool stallInput;
+    public Vector3 CurrentVelocity => playerRB.linearVelocity + movementVelocity;
+    public Vector3 MovementInputDir => inputVect;
+
+    private bool stallInput;
     public bool StallInput
     {
         get => stallInput;
@@ -89,23 +96,19 @@ public class FPSMovementRB : FPSMovement
             stallInput = value;
             if (stallInput)
             {
-                //targetMoveAmount = inputVect * currentMoveSpeed;
-
-                movementAmount = Vector3.zero;//Vector3.Lerp(movementAmount, Vector3.zero, 0.9f);
+                movementAmount = Vector3.zero;
             }
         }
     }
 
-    public Vector3 MovementInputDir => inputVect;
-    public bool HasForwardInput => inputVect.z > 0;
 
-    void Awake()
+    private void Awake()
     {
         playerRB = GetComponent<Rigidbody>();
         playerGravity = GetComponent<GravityObject>();
     }
 
-    void Start()
+    private void Start()
     {
         currentMoveSpeed = defaultMoveSpeed;
         sprintSpeed = defaultMoveSpeed * sprintSpeedFactor;
@@ -120,18 +123,18 @@ public class FPSMovementRB : FPSMovement
         jumpCounter = 0;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         PlayerMovement();
     }
 
-    void Update()
+    private void Update()
     {
         PlayerMovementHelper();
         PlayerJump();
         Juice.Instance.ExpandFOV(IsSprinting);
 
-        if (freeze)
+        if (Freeze)
         {
             playerRB.linearVelocity = Vector3.zero;
         }
@@ -139,9 +142,10 @@ public class FPSMovementRB : FPSMovement
 
     private void PlayerMovement()
     {
-        playerRB.MovePosition(playerRB.position + transform.TransformDirection(movementAmount)* Time.fixedDeltaTime);
+        movementVelocity = transform.TransformDirection(movementAmount);
+        playerRB.MovePosition(playerRB.position + movementVelocity * Time.fixedDeltaTime);
 
-        if (IsGrounded && !activeGrapple)
+        if (IsGrounded && InFreeMovement)
         {
             standingTime += Time.fixedDeltaTime;
             standingTime = Mathf.Clamp(standingTime, 0, 1);
@@ -182,7 +186,7 @@ public class FPSMovementRB : FPSMovement
         }
     }
 
-    void HandleInput()
+    private void HandleInput()
     {
         inputVect = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 
@@ -192,7 +196,7 @@ public class FPSMovementRB : FPSMovement
             SetMoveSpeed(defaultMoveSpeed);
     }
 
-    void SetMoveSpeed(float speed)
+    private void SetMoveSpeed(float speed)
     {
         if (IsGrounded)
             currentMoveSpeed = speed;
@@ -200,7 +204,7 @@ public class FPSMovementRB : FPSMovement
         activeGroundSpeed = speed;
     }
 
-    void JumpStart()
+    private void JumpStart()
     {
         if (inputVect.magnitude > 0)
             timeToLerpAirSpeed = timeToLerpAirSpeedFromMoving;
@@ -213,7 +217,7 @@ public class FPSMovementRB : FPSMovement
         inAir = true;
     }
 
-    void CalculateAirSpeed()
+    private void CalculateAirSpeed()
     {
         inAirSmoothLerpTime += Time.deltaTime;
         Mathf.Clamp(inAirSmoothLerpTime, 0, timeToLerpAirSpeed);
@@ -243,12 +247,7 @@ public class FPSMovementRB : FPSMovement
         if (timeSinceJump < jumpCooldown)
             timeSinceJump += Time.deltaTime;
     }
-    public void ResetRestrictions()
-    {
-        playerCam.DoFOV(80f);
-        activeGrapple = false;
-
-    }
+	
     private void OnCollisionEnter(Collision collision)
     {
         if (enableMovementOnNextTouch)
@@ -256,10 +255,17 @@ public class FPSMovementRB : FPSMovement
             enableMovementOnNextTouch = false;
             ResetRestrictions();
 
-            GetComponent<Grapple>().StopGrapple();
+            onCollision?.Invoke();
         }
     }
-    private Vector3 velocityToSet;
+
+    #region Grapple
+    public void ResetRestrictions()
+    {
+        playerCam.DoFOV(80f);
+        InFreeMovement = true;
+    }
+
     private void SetVelocity()
     {
         enableMovementOnNextTouch = true;
@@ -267,25 +273,34 @@ public class FPSMovementRB : FPSMovement
 
         playerCam.DoFOV(grappleFOV);
     }
+	
     public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
     {
-        activeGrapple = true;
+        InFreeMovement = false;
         velocityToSet = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
         Invoke(nameof(SetVelocity), 0.1f);
 
         Invoke(nameof(ResetRestrictions), 3f);
     }
 
-    public Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
+    private Vector3 CalculateJumpVelocity(Vector3 startPoint, Vector3 endPoint, float trajectoryHeight)
     {
-        float gravity = Physics.gravity.y;
+        float gravityForce = Mathf.Abs(Physics.gravity.y);
         float displacementY = endPoint.y - startPoint.y;
-        Vector3 displacementXZ = new Vector3(endPoint.x - startPoint.x, 0f, endPoint.z - startPoint.z);
+        Vector3 displacementXZ = (endPoint - startPoint).NewY(0);
 
-        Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * gravity * trajectoryHeight);
-        Vector3 velocityXZ = displacementXZ / (Mathf.Sqrt(-2 * trajectoryHeight / gravity) + Mathf.Sqrt(2 * displacementY - trajectoryHeight) / gravity);
+        // will pull us down if we grapple below us
+        float dir = Mathf.Sign(trajectoryHeight);
+        Vector3 velocityY = dir * Mathf.Sqrt(Mathf.Abs(2 * gravityForce * trajectoryHeight)) * Vector3.up;
+
+        float heightGravCalc = Mathf.Sqrt(Mathf.Abs(2 * trajectoryHeight / gravityForce));
+        float displacementHeightCalc = Mathf.Sqrt(Mathf.Abs(2 * displacementY - trajectoryHeight)) / gravityForce;
+        
+        Vector3 velocityXZ = displacementXZ / (heightGravCalc + displacementHeightCalc);
         return velocityXZ + velocityY;
     }
+
+    #endregion
 
     public void ForceJump(float factor, ForceMode force = ForceMode.VelocityChange) => playerRB.AddForce(transform.up * factor, force);
     public void ForceForwardJump(float factor, ForceMode force = ForceMode.VelocityChange) => playerRB.AddForce(transform.TransformDirection(movementAmount).normalized * factor, force);
