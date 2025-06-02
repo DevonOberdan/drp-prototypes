@@ -1,155 +1,47 @@
-using Mono.Cecil.Cil;
+using FinishOne.GeneralUtilities;
 using UnityEngine;
 
 public class WallRun : MonoBehaviour
 {
-
     [Header("Wallrunning")]
-    public LayerMask whatIsWall;
-    public LayerMask whatIsGround;
-    public float wallRunForce;
-    public float wallJumpUpForce;
-    public float wallJumpSideForce;
-    public float maxWallRunTime;
-    private float wallRunTimer;
+    [SerializeField] private LayerMask whatIsWall;
+
+    [SerializeField] private float wallRunForce;
+    [SerializeField] private float wallJumpUpForce;
+    [SerializeField] private float wallJumpSideForce;
+    [SerializeField] private float maxWallRunTime;
 
     [Header("Input")]
-    public KeyCode wallJumpKey = KeyCode.Space;
-    private float horizontalInput;
-    private float verticalInput;
+    [SerializeField] private KeyCode wallJumpKey = KeyCode.Space;
 
     [Header("Detection")]
-    public float wallCheckDistance;
-    public float minJuimpHeight;
-    private RaycastHit leftWallhit;
-    private RaycastHit rightWallhit;
-    private bool wallLeft;
-    private bool wallRight;
-
-    [Header("References")]
-    public Transform orientation;
-    private FPSMovementRB FPSMovementRB;
-    private Rigidbody PlayerRB;
+    [SerializeField] private float wallCheckDistance;
+    [SerializeField] private float minJumpHeight;
 
     [Header("Exiting")]
-    private bool exitWall;
-    public float exitWallTime;
-    private float exitwallTimer;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private float exitWallTime;
+
+    private FPSMovementRB playerMovement;
+    private Rigidbody rb;
+    private Camera cam;
+    private RaycastHit leftWallHit;
+    private RaycastHit rightWallHit;
+    private bool wallLeft;
+    private bool wallRight;
+    private float wallRunTimer;
+
+    private bool wallRunning;
+
+    private Transform Player => playerMovement.transform;
+
     private void Start()
     {
-        FPSMovementRB  = GetComponent<FPSMovementRB>();
-        PlayerRB = GetComponent<Rigidbody>();
+        playerMovement = GetComponentInParent<FPSMovementRB>();
+        rb = GetComponentInParent<Rigidbody>();
+        cam = Camera.main;
     }
 
-    private void CheckForWall()
-    {
-        wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallhit, wallCheckDistance, whatIsWall);
-        wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallhit, wallCheckDistance, whatIsWall);
-    }
-
-    private bool AboveGround()
-    {
-        return !Physics.Raycast(transform.position, Vector3.down, minJuimpHeight, whatIsGround);
-    }
-
-    private void StateMachine()
-    {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-
-        if((wallLeft || wallRight) && verticalInput > 0 && AboveGround() && !exitWall)
-        {
-            if (!FPSMovementRB.wallRunning)
-            {
-                StartWallRun();
-            }
-            if(wallRunTimer > 0)
-            {
-                wallRunTimer -= Time.deltaTime;
-            }
-            if (wallLeft || wallRight) 
-            {
-                exitwallTimer = exitWallTime;
-            }
-            if (wallRunTimer <= 0 && FPSMovementRB.wallRunning)
-            {
-                exitWall = true;
-                exitwallTimer = exitWallTime;
-                StopWallRun();
-            }
-            if(Input.GetKeyDown(wallJumpKey))
-            {
-                WallJump();
-            }
-        }
-        else if (exitWall)
-        {
-            if (FPSMovementRB.wallRunning)
-            {
-                StopWallRun();
-            }
-        }
-        else
-        {
-            if (FPSMovementRB.wallRunning)
-            {
-                StopWallRun();
-            }
-            if (exitwallTimer > 0)
-            {
-                exitwallTimer -= Time.deltaTime;
-            }
-            if (exitwallTimer <= 0)
-            {
-                exitWall = false;
-            }
-        }
-    }
-
-    private void StartWallRun()
-    {
-        FPSMovementRB.wallRunning = true;
-
-        wallRunTimer = maxWallRunTime;
-    }
-
-    private void WallRunMovement()
-    {
-        PlayerRB.useGravity = false;
-        PlayerRB.linearVelocity = new Vector3(PlayerRB.linearVelocity.x, 0f, PlayerRB.linearVelocity.z);
-
-        Vector3 wallNormal = wallRight ? rightWallhit.normal : leftWallhit.normal;
-        Vector3 wallForward = Vector3.Cross(wallNormal, transform.up);
-
-        if((orientation.forward - wallForward).magnitude > (orientation.forward - -wallForward).magnitude)
-        {
-            wallForward = -wallForward;
-        }
-
-        PlayerRB.AddForce(wallForward * wallRunForce, ForceMode.Force);
-        if(!(wallLeft && horizontalInput > 0) &&  (wallRight && horizontalInput < 0))
-            PlayerRB.AddForce(-wallNormal * 100, ForceMode.Force); 
-    }
-
-    private void StopWallRun()
-    {
-            FPSMovementRB.wallRunning = false;
-    }
-
-    private void WallJump()
-    {
-        exitWall = true;
-        exitwallTimer = exitWallTime;
-        Vector3 wallNormal = wallRight ? rightWallhit.normal: leftWallhit.normal;
-        Vector3 forceToApply = transform.up * wallJumpUpForce + wallNormal * wallJumpSideForce;
-
-        PlayerRB.linearVelocity = new Vector3(PlayerRB.linearVelocity.x, 0f, PlayerRB.linearVelocity.z);
-        PlayerRB.AddForce(forceToApply, ForceMode.Impulse);
-    }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         CheckForWall();
         StateMachine();
@@ -157,9 +49,85 @@ public class WallRun : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (FPSMovementRB.wallRunning)
+        if (wallRunning)
         {
             WallRunMovement();
         }
+    }
+
+    private void CheckForWall()
+    {
+        wallRight = Physics.Raycast(Player.position, cam.transform.right, out rightWallHit, wallCheckDistance, whatIsWall);
+        wallLeft = Physics.Raycast(Player.position, -cam.transform.right, out leftWallHit, wallCheckDistance, whatIsWall);
+    }
+
+    private void StateMachine()
+    {
+        //conditions for wall-running
+        if((wallLeft || wallRight) && playerMovement.MovementInputDir.z > 0 && !playerMovement.IsGrounded)
+        {
+            if (!wallRunning)
+            {
+                StartWallRun();
+            }
+            else if(wallRunTimer > 0)
+            {
+                wallRunTimer -= Time.deltaTime;
+            }
+
+            if (Input.GetKeyDown(wallJumpKey))
+            {
+                WallJump();
+            }
+
+            if (wallRunTimer <= 0 && wallRunning)
+            {
+                StopWallRun();
+            }
+        }
+        else if (wallRunning)
+        {
+            StopWallRun();
+        }
+    }
+
+    private void StartWallRun()
+    {
+        wallRunning = true;
+        wallRunTimer = maxWallRunTime;
+    }
+
+    private void WallRunMovement()
+    {
+        rb.useGravity = false;
+
+        Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
+        Vector3 wallRunDir = Vector3.Cross(wallNormal, transform.up);
+
+        //flip if player approaching in opposite direction
+        wallRunDir *= Mathf.Sign(Vector3.Dot(cam.transform.forward, wallRunDir));
+
+        rb.AddForce(wallRunDir * wallRunForce, ForceMode.Force);
+
+        bool pushingFromRight = wallRight && playerMovement.MovementInputDir.x < 0;
+        bool pushingFromLeft = wallLeft && playerMovement.MovementInputDir.x > 0;
+
+        if ((pushingFromRight && !pushingFromLeft) || (pushingFromLeft && !pushingFromRight))
+        {
+            rb.AddForce(-wallNormal * 100, ForceMode.Force);
+        }
+    }
+
+    private void StopWallRun()
+    {
+        wallRunning = false;
+    }
+
+    private void WallJump()
+    {
+        Vector3 wallNormal = wallRight ? rightWallHit.normal: leftWallHit.normal;
+        Vector3 forceToApply = transform.up * wallJumpUpForce + wallNormal * wallJumpSideForce;
+        rb.linearVelocity = rb.linearVelocity.WithNew(y: 0f);
+        rb.AddForce(forceToApply, ForceMode.Impulse);
     }
 }

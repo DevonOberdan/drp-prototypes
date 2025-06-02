@@ -96,6 +96,9 @@ public class FPSMovementRB : FPSMovement
         }
     }
 
+    public Vector3 MovementInputDir => inputVect;
+    public bool HasForwardInput => inputVect.z > 0;
+
     void Awake()
     {
         playerRB = GetComponent<Rigidbody>();
@@ -148,11 +151,6 @@ public class FPSMovementRB : FPSMovement
         {
             standingTime = 0f;
         }
-        if (wallRunning)
-        {
-            currentMoveSpeed = wallrunSpeed;
-        }
-
     }
 
     private void PlayerMovementHelper()
