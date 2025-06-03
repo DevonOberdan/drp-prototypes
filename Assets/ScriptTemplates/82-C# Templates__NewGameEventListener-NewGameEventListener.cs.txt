@@ -1,0 +1,3 @@
+using UnityEngine.Events;
+
+public class #SCRIPTNAME# : GameEventBaseListener<bool, GameEventBase, UnityEvent<bool>> { }

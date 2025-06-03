@@ -30,8 +30,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 57705ac19cd8608429d5c4cf5e1753e4
+    m_Address: Assets/_Prototypes/BrutalistCity/scenes/city.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 99c9720ab356a0642a771bea13969a05
     m_Address: Assets/_Prototypes/BrutalistCity/SampleScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f56e66992e9c0348bc8f909628497ba
+    m_Address: Assets/_Prototypes/BrutalistCity/scenes/cityConfig.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

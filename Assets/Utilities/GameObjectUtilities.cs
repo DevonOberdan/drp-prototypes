@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +15,16 @@ public class GameObjectUtilities : MonoBehaviour
         if(TryGetComponent(out Button button))
         {
             button.interactable = !enabled;
+        }
+    }
+
+    public void SetCanvasGroupVisibility(bool visible)
+    {
+        if(TryGetComponent(out CanvasGroup cg))
+        {
+            cg.alpha = visible ? 1 : 0;
+            cg.interactable = visible;
+            cg.blocksRaycasts = visible;
         }
     }
 }
