@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48f45c90d8fa82a45b4d4fb65ec996a9, type: 3}
-  m_Name: BoosterAbilityConfig
+  m_Name: WallRunAbilityConfig
   m_EditorClassIdentifier: 
   Type: 0
-  Title: Booster
-  Description: Fly high!
-  AbilityPrefab: {fileID: 395415029599694080, guid: 842c99301a35b3a4abe27cb4e934bc66, type: 3}
+  Title: Wall Run
+  Description: While mid-air, move onto a wall to run along it and keep your momentum
+    going!
+  AbilityPrefab: {fileID: 7963127772067661892, guid: 9b7e9b9325a4afb4b89fe6bb7f0effd1, type: 3}

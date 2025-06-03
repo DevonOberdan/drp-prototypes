@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48f45c90d8fa82a45b4d4fb65ec996a9, type: 3}
-  m_Name: BoosterAbilityConfig
+  m_Script: {fileID: 11500000, guid: e96fbf1a8b81e83419f81f4c4b8fdb9f, type: 3}
+  m_Name: BroadcastNewAbility
   m_EditorClassIdentifier: 
-  Type: 0
-  Title: Booster
-  Description: Fly high!
-  AbilityPrefab: {fileID: 395415029599694080, guid: 842c99301a35b3a4abe27cb4e934bc66, type: 3}
