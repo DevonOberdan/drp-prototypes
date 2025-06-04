@@ -1,8 +1,6 @@
 using DG.Tweening;
 using FinishOne.GeneralUtilities;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Detection : MonoBehaviour
 {
@@ -15,58 +13,84 @@ public class Detection : MonoBehaviour
     [SerializeField] private float detectAngle = 45f;
 
     [SerializeField] private float lockOnSpeed = 30f;
-    [SerializeField] private float timeToLockOn = 0.5f;
     [SerializeField] private float timeToReturn = 1f;
 
-    RaycastHit[] playerHit;
-    private float angle;
+    [SerializeField] private InteractionBuffer detectionBuffer;
 
-    private InteractionBuffer visibilityBuffer;
+    private RaycastHit[] playerHit;
+    private InteractionBuffer chargeBuffer;
     private RotateObject rotateObj;
-
-    private bool wasVisible;
-    bool currentlyVisible;
     private Vector3 rotationAtDetection;
+    private bool currentlyVisible;
+    private float dot;
+    private Vector3 TargetDir => target.position - transform.position;
 
-    private Vector3 VecToPlayer => target.position - transform.position;
+    private bool Detected 
+    {
+        get => rotateObj.enabled == false;
+        set => rotateObj.enabled = !value;
+    }
 
-    private void Start()
+    private void Awake()
     {
         playerHit = new RaycastHit[1];
-        visibilityBuffer = GetComponent<InteractionBuffer>();
+        chargeBuffer = GetComponent<InteractionBuffer>();
         rotateObj = GetComponent<RotateObject>();
+
+        detectionBuffer.CooldownAndReset = false;
+        detectionBuffer.OnComplete.AddListener(BeginLockOn);
+    }
+
+    private void BeginLockOn()
+    {
+        if (!Detected)
+        {
+            rotationAtDetection = transform.eulerAngles;
+            Detected = true;
+        }
     }
 
     void Update()
     {
         currentlyVisible = InRange() && InViewingAngle() && HasLineOfSight();
-        visibilityBuffer.Interacting = currentlyVisible;
 
         //currently patrolling && just saw player
-        if(rotateObj.enabled && !wasVisible && currentlyVisible)
+        if(!Detected)
         {
-            rotationAtDetection = transform.eulerAngles;
-            rotateObj.enabled = false;
-            Debug.Log("Spotted!: " + rotationAtDetection);
+            detectionBuffer.Interacting = currentlyVisible;
         }
+        else
+        {
+            //been seen and fully detected, charge laser
+            if(detectionBuffer.Percentage == 1)
+            {
+                chargeBuffer.Interacting = currentlyVisible;
+            }
 
-        if (currentlyVisible)
-        {
-            Quaternion newRot = Quaternion.LookRotation(VecToPlayer+Vector3.up*90, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, newRot, lockOnSpeed*Time.deltaTime);
-        }
-        else if(!rotateObj.enabled && visibilityBuffer.CurrentTime == 0)
-        {
-            transform.DORotate(rotationAtDetection, timeToReturn, RotateMode.Fast).OnComplete(ReturnToPatrol);
-        }
+            if (chargeBuffer.Percentage == 0)
+            {
+                detectionBuffer.Interacting = currentlyVisible;
 
-        wasVisible = currentlyVisible;
+                if (currentlyVisible)
+                    detectionBuffer.Complete();
+            }
+
+            if (currentlyVisible)
+            {
+                Quaternion newRot = Quaternion.LookRotation(TargetDir, Vector3.up);
+                transform.rotation = Quaternion.Slerp(transform.rotation, newRot, lockOnSpeed * Time.deltaTime);
+            }
+
+            if (detectionBuffer.Percentage == 0)
+            {
+                transform.DORotate(rotationAtDetection, timeToReturn, RotateMode.Fast).SetEase(Ease.Linear).OnComplete(ReturnToPatrol);
+            }
+        }
     }
-
 
     private void ReturnToPatrol()
     {
-        rotateObj.enabled = true;
+        Detected = false;
     }
     
     private bool InRange()
@@ -76,11 +100,8 @@ public class Detection : MonoBehaviour
 
     private bool InViewingAngle()
     {
-        Vector3 side1 = target.position - transform.position;
-        Vector3 side2 = -transform.right;
-        
-        angle = Vector3.Angle(side1, side2);
-        return angle < detectAngle;
+        dot = Vector3.Dot(TargetDir.normalized, transform.forward);
+        return dot > Mathf.Cos(detectAngle * Mathf.Deg2Rad);
     }
 
     private bool HasLineOfSight()
@@ -97,10 +118,7 @@ public class Detection : MonoBehaviour
         }
 
         Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transform.position, target.transform.position - transform.position);
-        Gizmos.DrawRay(transform.position, -transform.right*detectRange);
-
-        Gizmos.color = Color.green;
-        Gizmos.DrawRay(transform.position, Vector3.up*detectRange);
+        Gizmos.DrawRay(transform.position, TargetDir);
+        Gizmos.DrawRay(transform.position, transform.forward*detectRange);
     }
 }
