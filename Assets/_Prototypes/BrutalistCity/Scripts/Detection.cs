@@ -1,76 +1,106 @@
+using DG.Tweening;
+using FinishOne.GeneralUtilities;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Detection : MonoBehaviour
 {
-    public float detectRange = 50.0f;
-    public float detectAngle = 45f;
-    public GameObject Player;
-    public Image detectImg;
+    [Header("Target")]
+    [SerializeField] private Transform target;
+    [SerializeField] private LayerMask targetLayer;
 
-    private FPSMovementRB playerMovement;
-    float detectTime = Mathf.Clamp(0.00000f, 0.00000f, 1.00000f);
-    bool isInAngle, isinInRange, isNotHidden;
+    [Header("Configuration")]
+    [SerializeField] private float detectRange = 50.0f;
+    [SerializeField] private float detectAngle = 45f;
 
-   
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private float lockOnSpeed = 30f;
+    [SerializeField] private float timeToLockOn = 0.5f;
+    [SerializeField] private float timeToReturn = 1f;
+
+    RaycastHit[] playerHit;
+    private float angle;
+
+    private InteractionBuffer visibilityBuffer;
+    private RotateObject rotateObj;
+
+    private bool wasVisible;
+    bool currentlyVisible;
+    private Vector3 rotationAtDetection;
+
+    private Vector3 VecToPlayer => target.position - transform.position;
+
+    private void Start()
     {
-        playerMovement = GameObject.FindAnyObjectByType<FPSMovementRB>();
+        playerHit = new RaycastHit[1];
+        visibilityBuffer = GetComponent<InteractionBuffer>();
+        rotateObj = GetComponent<RotateObject>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        isInAngle = false;
-        isinInRange = false;
-        isNotHidden = false;
-        detectImg.fillAmount = detectTime;
+        currentlyVisible = InRange() && InViewingAngle() && HasLineOfSight();
+        visibilityBuffer.Interacting = currentlyVisible;
 
-        if (Vector3.Distance(transform.position, Player.transform.position) < detectRange)
+        //currently patrolling && just saw player
+        if(rotateObj.enabled && !wasVisible && currentlyVisible)
         {
-            isinInRange = true;
-
+            rotationAtDetection = transform.eulerAngles;
+            rotateObj.enabled = false;
+            Debug.Log("Spotted!: " + rotationAtDetection);
         }
 
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, (Player.transform.position - transform.position), out hit, Mathf.Infinity))
+        if (currentlyVisible)
         {
-            if(hit.transform == Player.transform)
-            {
-                isNotHidden=true;
-            }
+            Quaternion newRot = Quaternion.LookRotation(VecToPlayer+Vector3.up*90, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRot, lockOnSpeed*Time.deltaTime);
         }
-        DetectionStatus();
+        else if(!rotateObj.enabled && visibilityBuffer.CurrentTime == 0)
+        {
+            transform.DORotate(rotationAtDetection, timeToReturn, RotateMode.Fast).OnComplete(ReturnToPatrol);
+        }
 
+        wasVisible = currentlyVisible;
     }
-    public void DetectionStatus()
-    {
-        Vector3 side1 = Player.transform.position - transform.position;
-        Vector3 side2 = transform.forward;
-        float angle = Vector3.SignedAngle(side1, side2, Vector3.up);
-        if (angle < detectAngle && angle < -1 * detectAngle)
-        {
-            isInAngle = true;
-        }
-        if (isInAngle && isinInRange && isNotHidden)
-        {
-            detectTime += 0.0008f;
-            Debug.Log("They are tracking you. Hide!");
-            //Debug.Log("Increasing to: " + detectTime);
 
-        }
-        if (!isInAngle && detectTime > 0)
+
+    private void ReturnToPatrol()
+    {
+        rotateObj.enabled = true;
+    }
+    
+    private bool InRange()
+    {
+        return Vector3.Distance(transform.position, target.position) < detectRange;
+    }
+
+    private bool InViewingAngle()
+    {
+        Vector3 side1 = target.position - transform.position;
+        Vector3 side2 = -transform.right;
+        
+        angle = Vector3.Angle(side1, side2);
+        return angle < detectAngle;
+    }
+
+    private bool HasLineOfSight()
+    {
+        Ray ray = new(transform.position, target.transform.position-transform.position);
+        return Physics.SphereCastNonAlloc(ray, 10f, playerHit, detectRange, targetLayer) > 0;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (target == null)
         {
-            detectTime = detectTime - 0.0001f;
-            //Debug.Log("Decreasing to: " + detectTime);
+            return;
         }
-        if (detectTime >= 1.0f)
-        {
-            playerMovement.Freeze = true;
-            detectTime = 0.0f;
-            Debug.Log("you were spotted, but we will help you out with that for now");
-        }
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(transform.position, target.transform.position - transform.position);
+        Gizmos.DrawRay(transform.position, -transform.right*detectRange);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(transform.position, Vector3.up*detectRange);
     }
 }
