@@ -219,8 +219,8 @@ MonoBehaviour:
     m_Bits: 128
   detectRange: 100
   detectAngle: 40
-  lockOnSpeed: 5
-  timeToReturn: 1
+  lockOnSpeed: 1
+  timeToReturn: 2
   detectionBuffer: {fileID: 6089815649762133707}
 --- !u!65 &1813443395494982945
 BoxCollider:
@@ -271,8 +271,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalSeconds: 5
   decaySeconds: 6
-  CooldownAndReset: 1
-  cooldownSeconds: 5
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -291,6 +289,8 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
+  CooldownAndReset: 1
+  cooldownSeconds: 5
   curvedBuffer: 0
   forceLinearDecay: 0
   bufferEase: 1
@@ -562,8 +562,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalSeconds: 2.5
   decaySeconds: 3
-  CooldownAndReset: 0
-  cooldownSeconds: 1
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -582,6 +580,8 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
+  CooldownAndReset: 0
+  cooldownSeconds: 1
   curvedBuffer: 0
   forceLinearDecay: 0
   bufferEase: 1

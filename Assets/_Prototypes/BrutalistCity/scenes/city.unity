@@ -2680,22 +2680,6 @@ PrefabInstance:
       propertyPath: targetLayer.m_Bits
       value: 128
       objectReference: {fileID: 0}
-    - target: {fileID: 4178317852249477795, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
-      propertyPath: decaySeconds
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4178317852249477795, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
-      propertyPath: totalSeconds
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4178317852249477795, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
-      propertyPath: cooldownSeconds
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4178317852249477795, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
-      propertyPath: CooldownAndReset
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8735176454132259276, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
       propertyPath: m_LocalPosition.x
       value: -31.23
@@ -6551,22 +6535,6 @@ PrefabInstance:
       propertyPath: targetLayer.m_Bits
       value: 128
       objectReference: {fileID: 0}
-    - target: {fileID: 4178317852249477795, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
-      propertyPath: decaySeconds
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4178317852249477795, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
-      propertyPath: totalSeconds
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4178317852249477795, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
-      propertyPath: cooldownSeconds
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4178317852249477795, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
-      propertyPath: CooldownAndReset
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8735176454132259276, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27.74
@@ -9660,22 +9628,6 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1306521840}
-    - target: {fileID: 8112563708496504542, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
-      propertyPath: decaySeconds
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8112563708496504542, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
-      propertyPath: totalSeconds
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8112563708496504542, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
-      propertyPath: cooldownSeconds
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8112563708496504542, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
-      propertyPath: CooldownAndReset
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10775,26 +10727,6 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1306521840}
-    - target: {fileID: 3904915845217044097, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
-      propertyPath: lockOnSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4178317852249477795, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
-      propertyPath: decaySeconds
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4178317852249477795, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
-      propertyPath: totalSeconds
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4178317852249477795, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
-      propertyPath: cooldownSeconds
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4178317852249477795, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
-      propertyPath: CooldownAndReset
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8735176454132259276, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.54
@@ -11418,22 +11350,6 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1306521840}
-    - target: {fileID: 4178317852249477795, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
-      propertyPath: decaySeconds
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4178317852249477795, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
-      propertyPath: totalSeconds
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4178317852249477795, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
-      propertyPath: cooldownSeconds
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4178317852249477795, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
-      propertyPath: CooldownAndReset
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8735176454132259276, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.926175
@@ -11539,38 +11455,6 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1306521840}
-    - target: {fileID: 3613156712981404783, guid: ab99864566b22644abd99cdb80d6b9d3, type: 3}
-      propertyPath: decaySeconds
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3613156712981404783, guid: ab99864566b22644abd99cdb80d6b9d3, type: 3}
-      propertyPath: totalSeconds
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3613156712981404783, guid: ab99864566b22644abd99cdb80d6b9d3, type: 3}
-      propertyPath: cooldownSeconds
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3613156712981404783, guid: ab99864566b22644abd99cdb80d6b9d3, type: 3}
-      propertyPath: CooldownAndReset
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4673541459501549120, guid: ab99864566b22644abd99cdb80d6b9d3, type: 3}
-      propertyPath: decaySeconds
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4673541459501549120, guid: ab99864566b22644abd99cdb80d6b9d3, type: 3}
-      propertyPath: totalSeconds
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4673541459501549120, guid: ab99864566b22644abd99cdb80d6b9d3, type: 3}
-      propertyPath: cooldownSeconds
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4673541459501549120, guid: ab99864566b22644abd99cdb80d6b9d3, type: 3}
-      propertyPath: CooldownAndReset
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5406837407163893219, guid: ab99864566b22644abd99cdb80d6b9d3, type: 3}
       propertyPath: m_Camera
       value: 
@@ -11648,10 +11532,6 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1306521840}
-    - target: {fileID: 4134017684073623914, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
-      propertyPath: timeToReturn
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

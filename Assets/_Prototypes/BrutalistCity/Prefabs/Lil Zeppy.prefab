@@ -109,8 +109,8 @@ MonoBehaviour:
     m_Bits: 128
   detectRange: 125
   detectAngle: 35
-  lockOnSpeed: 30
-  timeToReturn: 1
+  lockOnSpeed: 1
+  timeToReturn: 2
   detectionBuffer: {fileID: 1697303479788923711}
 --- !u!114 &7916367348704302740
 MonoBehaviour:
@@ -140,8 +140,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalSeconds: 5
   decaySeconds: 6
-  CooldownAndReset: 1
-  cooldownSeconds: 5
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -160,6 +158,8 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
+  CooldownAndReset: 1
+  cooldownSeconds: 5
   curvedBuffer: 0
   forceLinearDecay: 0
   bufferEase: 1
@@ -366,8 +366,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalSeconds: 2.5
   decaySeconds: 3
-  CooldownAndReset: 0
-  cooldownSeconds: 1
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -386,6 +384,8 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
+  CooldownAndReset: 0
+  cooldownSeconds: 1
   curvedBuffer: 0
   forceLinearDecay: 0
   bufferEase: 1

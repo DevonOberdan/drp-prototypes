@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Detection : MonoBehaviour
 {
-    [Header("Target")]
     [SerializeField] private Transform target;
     [SerializeField] private LayerMask targetLayer;
 

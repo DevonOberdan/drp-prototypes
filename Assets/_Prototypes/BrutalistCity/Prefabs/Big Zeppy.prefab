@@ -468,7 +468,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalSeconds: 3
   decaySeconds: 5
-  cooldownSeconds: 1
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -487,6 +486,8 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
+  CooldownAndReset: 1
+  cooldownSeconds: 1
   curvedBuffer: 0
   forceLinearDecay: 0
   bufferEase: 1
@@ -655,7 +656,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalSeconds: 3
   decaySeconds: 5
-  cooldownSeconds: 1
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -674,6 +674,8 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
+  CooldownAndReset: 1
+  cooldownSeconds: 1
   curvedBuffer: 0
   forceLinearDecay: 0
   bufferEase: 1
@@ -903,7 +905,7 @@ MonoBehaviour:
     m_Bits: 128
   detectRange: 1000
   detectAngle: 35
-  lockOnSpeed: 30
+  lockOnSpeed: 0.2
   timeToReturn: 1
   detectionBuffer: {fileID: 1786348701676043840}
 --- !u!114 &4673541459501549120
@@ -918,9 +920,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdfabaf545df194fae66e5b6e12805e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalSeconds: 1.25
-  decaySeconds: 0.5
-  cooldownSeconds: 1
+  totalSeconds: 5
+  decaySeconds: 6
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -939,6 +940,8 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
+  CooldownAndReset: 1
+  cooldownSeconds: 5
   curvedBuffer: 0
   forceLinearDecay: 0
   bufferEase: 1
@@ -1065,7 +1068,7 @@ MonoBehaviour:
     m_Bits: 128
   detectRange: 1000
   detectAngle: 35
-  lockOnSpeed: 30
+  lockOnSpeed: 0.2
   timeToReturn: 1
   detectionBuffer: {fileID: 2036003554979910506}
 --- !u!114 &3613156712981404783
@@ -1080,9 +1083,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdfabaf545df194fae66e5b6e12805e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalSeconds: 1.25
-  decaySeconds: 0.5
-  cooldownSeconds: 1
+  totalSeconds: 5
+  decaySeconds: 6
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1101,6 +1103,8 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
+  CooldownAndReset: 1
+  cooldownSeconds: 5
   curvedBuffer: 0
   forceLinearDecay: 0
   bufferEase: 1
