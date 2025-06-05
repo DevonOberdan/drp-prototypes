@@ -40,16 +40,16 @@ MonoBehaviour:
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.25
+    m_Value: 1
   scatter:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.272
   clamp:
     m_OverrideState: 0
     m_Value: 65472
   tint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.6367924, b: 0.6367924, a: 1}
   highQualityFiltering:
     m_OverrideState: 1
     m_Value: 1
@@ -118,7 +118,7 @@ MonoBehaviour:
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: -100
+    m_Value: -35
 --- !u!114 &-3357603926938260329
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -231,7 +231,7 @@ MonoBehaviour:
   active: 1
   mode:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 2
   neutralHDRRangeReductionMode:
     m_OverrideState: 0
     m_Value: 2
@@ -311,7 +311,7 @@ MonoBehaviour:
     m_Value: -5
   maximumHeight:
     m_OverrideState: 1
-    m_Value: 7000
+    m_Value: 700
   enableGround:
     m_OverrideState: 1
     m_Value: 1
@@ -338,10 +338,10 @@ MonoBehaviour:
     m_Value: 0.4
   scattering:
     m_OverrideState: 1
-    m_Value: 0.121
+    m_Value: 0.1
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
+    m_Value: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 1}
   enableAdditionalLightsContribution:
     m_OverrideState: 1
     m_Value: 1
