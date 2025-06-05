@@ -341,8 +341,8 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1000
   m_Range: 150
-  m_SpotAngle: 45
-  m_InnerSpotAngle: 45
+  m_SpotAngle: 50
+  m_InnerSpotAngle: 40
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
