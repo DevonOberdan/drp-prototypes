@@ -17,12 +17,17 @@ public class Booster : MonoBehaviour
     [SerializeField] float boostMovingFactor = 0.5f;
 
     [SerializeField] bool canBoostInAir;
+
+    [SerializeField] private bool canRepeat;
+
     [SerializeField] bool hasAfterburn;
 
     [DrawIf(nameof(hasAfterburn), true)]
     [SerializeField] float afterBurnerTime = 2.5f;
     [DrawIf(nameof(hasAfterburn), true)]
     [SerializeField] float afterburnFactor = 0.5f;
+
+
 
     FPSMovementRB playerController;
     GravityObject playerGravity;
@@ -32,7 +37,7 @@ public class Booster : MonoBehaviour
     public FPSMovementRB PlayerController => playerController = playerController != null ? playerController : GetComponentInParent<FPSMovementRB>();
 
     bool AfterBurnerNeedsTurnedOn => !AfterburnersActive && boosting && PlayerController.IsFalling && !afterBurnerUsed;
-    bool CanBoost => !Restricted && !boosting && (canBoostInAir || PlayerController.IsGrounded);
+    bool CanBoost => !Restricted && (!boosting || canRepeat)  && (canBoostInAir || PlayerController.IsGrounded);
 
     public bool Restricted { get; set; }
 
