@@ -1,4 +1,7 @@
 using FinishOne.GeneralUtilities;
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -30,19 +33,27 @@ public class Detection : MonoBehaviour
 
     private float defaultRange;
 
+    private static OverrideFlagHandler DetectionNetwork = new();
+    private int detectorIdx;
+
     private Vector3 TargetDir => TargetLocation.Value - transform.position;
 
-    private bool Detected 
+    private bool Alerted 
     {
         get => rotateObj.enabled == false;
-        set {
+        set 
+        {
             rotateObj.enabled = !value;
-            OnDetected.Invoke(Detected);
+            OnDetected.Invoke(Alerted);
         }
     }
 
+
+
     private void Awake()
     {
+        detectorIdx = DetectionNetwork.AddFlag();
+
         playerHit = new RaycastHit[1];
         rotateObj = GetComponent<RotateObject>();
 
@@ -56,15 +67,13 @@ public class Detection : MonoBehaviour
         chargeBuffer.OnComplete.AddListener(() => detectRange = defaultRange * 10);
         chargeBuffer.OnReset.AddListener(() => detectRange = defaultRange);
 
-        Detected = false;
+        Alerted = false;
     }
 
     private void BeginLockOn()
     {
-        if (!Detected)
-        {
-            Detected = true;
-        }
+        if(!Alerted)
+            Alerted = true;
     }
 
     void Update()
@@ -72,13 +81,29 @@ public class Detection : MonoBehaviour
         currentlyVisible = InRange() && InViewingAngle() && HasLineOfSight();
 
         //currently patrolling && just saw player
-        if(!Detected)
+        if (!Alerted)
         {
             detectionBuffer.Interacting = currentlyVisible;
             accumulatedAngle += rotateObj.RotationSpeed * rotateObj.DampenFactor * Time.deltaTime;
+
+            if (DetectionNetwork.AnyFlags)
+            {
+                Alerted = true;
+            }
         }
         else
         {
+            DetectionNetwork.SetFlag(detectorIdx, currentlyVisible);
+
+            // keep all other Detectors on alert
+            if (!currentlyVisible && DetectionNetwork.AnyFlags)
+            {
+                detectionBuffer.Complete();
+                chargeBuffer.Interacting = false;
+                FocusOnTarget();
+                return;
+            }
+
             //been seen and fully detected, charge laser
             if(detectionBuffer.Percentage == 1)
             {
@@ -98,9 +123,7 @@ public class Detection : MonoBehaviour
 
             if (currentlyVisible)
             {
-                returning = false;
-                Quaternion newRot = Quaternion.LookRotation(TargetDir, Vector3.up);
-                transform.rotation = Quaternion.Slerp(transform.rotation, newRot, lockOnSpeed * Time.deltaTime);
+                FocusOnTarget();
             }
             else if(detectionBuffer.Percentage == 0)
             {
@@ -124,9 +147,17 @@ public class Detection : MonoBehaviour
         }
     }
 
+    private void FocusOnTarget()
+    {
+        returning = false;
+        Quaternion newRot = Quaternion.LookRotation(TargetDir, Vector3.up);
+        transform.rotation = Quaternion.Slerp(transform.rotation, newRot, lockOnSpeed * Time.deltaTime);
+    }
+
     private void ReturnToPatrol()
     {
-        Detected = false;
+        Alerted = false;
+        DetectionNetwork.SetFlag(detectorIdx, false);
     }
     
     private bool InRange()
