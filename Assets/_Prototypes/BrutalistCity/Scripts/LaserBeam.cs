@@ -4,35 +4,54 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class LaserBeam : MonoBehaviour
 {
-    public float width = 0.1f;
-
+    public float defaultWidth = 0.1f;
     public Vector3 StartPosition;
     public Vector3 EndPosition;
     public Vector3 HitNormal;
-    public Vector3 Direction => (EndPosition - StartPosition).normalized;
-
     public LaserBeam Prefab;
+
+    private OpticalElement _opticalElementThatTheBeamHit;    
+    private LineRenderer _lineRenderer;
 
     private const float _longestBeamDistance = 100f;
 
-    private OpticalElement _opticalElementThatTheBeamHit;
+    public float CurrentWidth 
+    {
+        get => _lineRenderer.startWidth;
+        set 
+        {
+            _lineRenderer.startWidth = value;
+            _lineRenderer.endWidth = value;
+        }
+    }
     
-    private LineRenderer _lineRenderer;
+    public void SetOn(bool isOn)
+    {
+        _lineRenderer.enabled = isOn;
+    }
 
-    public OpticalElement OpticalElementThatTheBeamHit { 
+    public Vector3 Direction => (EndPosition - StartPosition).normalized;
+
+    public OpticalElement OpticalElementThatTheBeamHit 
+    { 
         get => _opticalElementThatTheBeamHit; 
-        set {
-            if (_opticalElementThatTheBeamHit == value) {
+        set 
+        {
+            if (_opticalElementThatTheBeamHit == value) 
+            {
                 return;
             }
-            else {
-                if (_opticalElementThatTheBeamHit != null) {
+            else 
+            {
+                if (_opticalElementThatTheBeamHit != null) 
+                {
                     _opticalElementThatTheBeamHit.UnregisterLaserBeam(this);
                 }
 
                 _opticalElementThatTheBeamHit = value;
 
-                if (_opticalElementThatTheBeamHit != null) {
+                if (_opticalElementThatTheBeamHit != null) 
+                {
                     _opticalElementThatTheBeamHit.RegisterLaserBeam(this);
                 }
             }
@@ -40,14 +59,16 @@ public class LaserBeam : MonoBehaviour
     }
 
 
-    private void Awake() {                                                                                                               
+    private void Awake() 
+    {                                                                                                               
         _lineRenderer = GetComponent<LineRenderer>();
         _lineRenderer.positionCount = 2;
-        _lineRenderer.startWidth = width;
-        _lineRenderer.endWidth = width;
+        _lineRenderer.startWidth = defaultWidth;
+        _lineRenderer.endWidth = defaultWidth;
     }
 
-    public void Propagate(Vector3 startPosition, Vector3 direction) {
+    public void Propagate(Vector3 startPosition, Vector3 direction) 
+    {
         Vector3 endPosition = startPosition + direction * _longestBeamDistance;
         Vector3 hitNormal = Vector3.zero;
 
@@ -76,7 +97,8 @@ public class LaserBeam : MonoBehaviour
         }
     }
 
-    void UpdateVisuals() {
+    void UpdateVisuals()
+    {
         _lineRenderer.SetPosition(0, StartPosition);
         _lineRenderer.SetPosition(1, EndPosition);
     }

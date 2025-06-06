@@ -1,9 +1,10 @@
 using FinishOne.GeneralUtilities;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Detection : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    [SerializeField] private Vector3Atom TargetLocation;
     [SerializeField] private LayerMask targetLayer;
 
     [Header("Configuration")]
@@ -14,10 +15,12 @@ public class Detection : MonoBehaviour
     [SerializeField] private float returnSpeed = 1.5f;
 
     [SerializeField] private InteractionBuffer detectionBuffer;
+    [SerializeField] private InteractionBuffer chargeBuffer;
+
+    [SerializeField] private UnityEvent<bool> OnDetected;
 
     private Quaternion startRotation;
     private RaycastHit[] playerHit;
-    private InteractionBuffer chargeBuffer;
     private RotateObject rotateObj;
 
     private PathPoint returnPoint;
@@ -25,24 +28,35 @@ public class Detection : MonoBehaviour
     private bool currentlyVisible;
     private bool returning;
 
-    private Vector3 TargetDir => target.position - transform.position;
+    private float defaultRange;
+
+    private Vector3 TargetDir => TargetLocation.Value - transform.position;
 
     private bool Detected 
     {
         get => rotateObj.enabled == false;
-        set => rotateObj.enabled = !value;
+        set {
+            rotateObj.enabled = !value;
+            OnDetected.Invoke(Detected);
+        }
     }
 
     private void Awake()
     {
         playerHit = new RaycastHit[1];
-        chargeBuffer = GetComponent<InteractionBuffer>();
         rotateObj = GetComponent<RotateObject>();
 
         startRotation = transform.rotation;
 
+        defaultRange = detectRange;
+
         detectionBuffer.CooldownAndReset = false;
         detectionBuffer.OnComplete.AddListener(BeginLockOn);
+
+        chargeBuffer.OnComplete.AddListener(() => detectRange = defaultRange * 10);
+        chargeBuffer.OnReset.AddListener(() => detectRange = defaultRange);
+
+        Detected = false;
     }
 
     private void BeginLockOn()
@@ -117,7 +131,7 @@ public class Detection : MonoBehaviour
     
     private bool InRange()
     {
-        return Vector3.Distance(transform.position, target.position) < detectRange;
+        return Vector3.Distance(transform.position, TargetLocation.Value) < detectRange;
     }
 
     private bool InViewingAngle()
@@ -166,7 +180,7 @@ public class Detection : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (target == null)
+        if (TargetLocation == null)
         {
             return;
         }

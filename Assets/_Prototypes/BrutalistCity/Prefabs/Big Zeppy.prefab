@@ -330,7 +330,7 @@ Transform:
   m_GameObject: {fileID: 2993413088890654407}
   serializedVersion: 2
   m_LocalRotation: {x: 0.30770728, y: -0.6448829, z: 0.31859297, w: 0.622849}
-  m_LocalPosition: {x: -0.126, y: -0.268, z: -0.004}
+  m_LocalPosition: {x: -0.23, y: -0.41, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -347,7 +347,7 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1200
+  m_Intensity: 10000
   m_Range: 1500
   m_SpotAngle: 50
   m_InnerSpotAngle: 15
@@ -607,6 +607,9 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
+  OnReset:
+    m_PersistentCalls:
+      m_Calls: []
   CooldownAndReset: 1
   cooldownSeconds: 1
   curvedBuffer: 0
@@ -795,6 +798,9 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls: []
+  OnReset:
+    m_PersistentCalls:
+      m_Calls: []
   CooldownAndReset: 1
   cooldownSeconds: 1
   curvedBuffer: 0
@@ -915,8 +921,6 @@ GameObject:
   - component: {fileID: 644842080132663436}
   - component: {fileID: 6933774937011092831}
   - component: {fileID: 1649246940795104098}
-  - component: {fileID: 7590053368023758499}
-  - component: {fileID: 4673541459501549120}
   m_Layer: 0
   m_Name: Spotlight
   m_TagString: Untagged
@@ -1009,64 +1013,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationVector: {x: 0, y: 5, z: 0}
   <RotationSpeed>k__BackingField: 15
---- !u!114 &7590053368023758499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7828999771215880703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5a6a528f03979448a3592a5d17f7d2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  detectRange: 1000
-  detectAngle: 35
-  lockOnSpeed: 0.2
-  timeToReturn: 1
-  detectionBuffer: {fileID: 1786348701676043840}
---- !u!114 &4673541459501549120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7828999771215880703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fdfabaf545df194fae66e5b6e12805e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  totalSeconds: 5
-  decaySeconds: 6
-  OnPercentageChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2035190645266940739}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-        m_MethodName: set_fillAmount
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  CooldownAndReset: 1
-  cooldownSeconds: 5
-  curvedBuffer: 0
-  forceLinearDecay: 0
-  bufferEase: 1
 --- !u!1 &8996837951647583340
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,8 +1146,6 @@ GameObject:
   - component: {fileID: 2300732271782585312}
   - component: {fileID: 4076708859676026390}
   - component: {fileID: 4039591716863449153}
-  - component: {fileID: 3096695107307894100}
-  - component: {fileID: 3613156712981404783}
   m_Layer: 0
   m_Name: Spotlight001
   m_TagString: Untagged
@@ -1294,61 +1238,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationVector: {x: 0, y: 5, z: 0}
   <RotationSpeed>k__BackingField: 15
---- !u!114 &3096695107307894100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9072289754652511185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5a6a528f03979448a3592a5d17f7d2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  detectRange: 1000
-  detectAngle: 35
-  lockOnSpeed: 0.2
-  timeToReturn: 1
-  detectionBuffer: {fileID: 2036003554979910506}
---- !u!114 &3613156712981404783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9072289754652511185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fdfabaf545df194fae66e5b6e12805e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  totalSeconds: 5
-  decaySeconds: 6
-  OnPercentageChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4149138458136514501}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
-        m_MethodName: set_fillAmount
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  CooldownAndReset: 1
-  cooldownSeconds: 5
-  curvedBuffer: 0
-  forceLinearDecay: 0
-  bufferEase: 1
