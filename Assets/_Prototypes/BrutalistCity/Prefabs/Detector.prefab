@@ -417,8 +417,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdfabaf545df194fae66e5b6e12805e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalSeconds: 5
-  decaySeconds: 6
+  totalSeconds: 7
+  decaySeconds: 8
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -449,6 +449,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 3927912147289423787}
+        m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.Audio.AudioPlayRequester,
+          FinishOne.GeneralUtilities.Audio
+        m_MethodName: Request
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: af6e18b2a1144c9438a9f605622d13a5, type: 2}
+          m_ObjectArgumentAssemblyTypeName: FinishOne.GeneralUtilities.Audio.AudioConfigSO,
+            FinishOne.GeneralUtilities.Audio
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnReset:
     m_PersistentCalls:
       m_Calls:
@@ -465,7 +479,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   CooldownAndReset: 1
-  cooldownSeconds: 5
+  cooldownSeconds: 7
   curvedBuffer: 0
   forceLinearDecay: 0
   bufferEase: 1

@@ -1695,6 +1695,38 @@ PrefabInstance:
       propertyPath: OnDetected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2124997295}
+    - target: {fileID: 4908189368052868417, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
+      propertyPath: OnComplete.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908189368052868417, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
+      propertyPath: OnComplete.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908189368052868417, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
+      propertyPath: OnComplete.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1618788496}
+    - target: {fileID: 4908189368052868417, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
+      propertyPath: OnComplete.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908189368052868417, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
+      propertyPath: OnComplete.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Request
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908189368052868417, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
+      propertyPath: OnComplete.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: FinishOne.GeneralUtilities.Audio.AudioPlayRequester, FinishOne.GeneralUtilities.Audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908189368052868417, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
+      propertyPath: OnComplete.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908189368052868417, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
+      propertyPath: OnComplete.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: FinishOne.GeneralUtilities.Audio.AudioConfigSO, FinishOne.GeneralUtilities.Audio
+      objectReference: {fileID: 0}
     - target: {fileID: 8235845388418823820, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
       propertyPath: OnReset.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -8636,6 +8668,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 216174223}
   m_SourcePrefab: {fileID: 100100000, guid: d85513f9e1930ad42b529e69bcd3a79f, type: 3}
+--- !u!114 &1618788496 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9163453137536451411, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
+  m_PrefabInstance: {fileID: 341810163}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d9dc0f09c507f4cb2365db3abe3d9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1621231182 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f02228147b56deb4a9aa0ba346f1aed6, type: 3}
