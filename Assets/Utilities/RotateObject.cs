@@ -8,6 +8,8 @@ public class RotateObject : MonoBehaviour
     [field: SerializeField] public float RotationSpeed { get; set; }
     public float DampenFactor { get; set; } = 1;
 
+    public Vector3 Vector => rotationVector;
+
     private Tweener sloMoTween;
 
     void Update()

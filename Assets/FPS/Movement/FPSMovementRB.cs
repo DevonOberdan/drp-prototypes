@@ -229,7 +229,7 @@ public class FPSMovementRB : FPSMovement
 
     private void PlayerJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && ((IsGrounded || jumpBuffer >= 0.0f) || JumpOverrideHandler.AnyOverride) && jumpCounter<MAX_JUMPS)
+        if (Input.GetKeyDown(KeyCode.Space) && ((IsGrounded || jumpBuffer >= 0.0f) || JumpOverrideHandler.AnyFlags) && jumpCounter<MAX_JUMPS)
         {
             ForceJump(jumpFactor);
             jumpCounter++;

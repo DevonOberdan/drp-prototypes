@@ -6,7 +6,7 @@ public class OverrideFlagHandler
 {
     private List<bool> StatusFlags = new();
 
-    public bool AnyOverride => StatusFlags.Where(f => f).Any();
+    public bool AnyFlags => StatusFlags.Where(f => f).Any();
 
     public void SetFlag(int flag, bool value)
     {
