@@ -11,7 +11,7 @@ public class AbilityManager : MonoBehaviour
         {
             GameObject.Instantiate(abilityCard.AbilityPrefab, abilityContainer);
         }
-        if (abilityCard.Type == AbilityCardSO.CardTypes.Item)
+        else if (abilityCard.Type == AbilityCardSO.CardTypes.Item)
         {
             for (int i = itemContainer.childCount; i > 0; i--)
             {
@@ -20,6 +20,10 @@ public class AbilityManager : MonoBehaviour
             }
 
             GameObject.Instantiate(abilityCard.AbilityPrefab, itemContainer);
+        }
+        else if(abilityCard.Type == AbilityCardSO.CardTypes.Modification)
+        {
+
         }
     }
 }

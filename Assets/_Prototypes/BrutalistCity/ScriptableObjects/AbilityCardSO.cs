@@ -1,3 +1,4 @@
+using FinishOne.GeneralUtilities;
 using System;
 using UnityEngine;
 
@@ -6,10 +7,12 @@ public class AbilityCardSO : ScriptableObject
 {
     public enum CardTypes { Ability, Item, Modification }
 
-    public CardTypes Type;
     public string TypeLabel => Enum.GetName(typeof(CardTypes), Type);
 
     public string Title;
     public string Description;
+
+    public CardTypes Type;
+
     public GameObject AbilityPrefab;
 }
