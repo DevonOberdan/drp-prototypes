@@ -5,15 +5,20 @@ using UnityEngine;
 public class LaserBeam : MonoBehaviour
 {
     public float defaultWidth = 0.1f;
-    public Vector3 StartPosition;
-    public Vector3 EndPosition;
-    public Vector3 HitNormal;
-    public LaserBeam Prefab;
 
-    private OpticalElement _opticalElementThatTheBeamHit;    
+    [SerializeField] private float maxDistance = 100f;
+
+    [field: SerializeField] public Vector3 StartPosition { get; private set; }
+    [field: SerializeField] public Vector3 EndPosition { get; private set; }
+    [field: SerializeField] public LaserBeam Prefab { get; private set; }
+
+
+    private OpticalElement _opticalElementThatTheBeamHit;
     private LineRenderer _lineRenderer;
 
-    private const float _longestBeamDistance = 100f;
+    public Vector3 HitNormal { get; private set; }
+
+    public Vector3 Direction => (EndPosition - StartPosition).normalized;
 
     public float CurrentWidth 
     {
@@ -24,13 +29,6 @@ public class LaserBeam : MonoBehaviour
             _lineRenderer.endWidth = value;
         }
     }
-    
-    public void SetOn(bool isOn)
-    {
-        _lineRenderer.enabled = isOn;
-    }
-
-    public Vector3 Direction => (EndPosition - StartPosition).normalized;
 
     public OpticalElement OpticalElementThatTheBeamHit 
     { 
@@ -69,10 +67,10 @@ public class LaserBeam : MonoBehaviour
 
     public void Propagate(Vector3 startPosition, Vector3 direction) 
     {
-        Vector3 endPosition = startPosition + direction * _longestBeamDistance;
+        Vector3 endPosition = startPosition + direction * maxDistance;
         Vector3 hitNormal = Vector3.zero;
 
-        if (Physics.Raycast(startPosition, direction, out RaycastHit hit, _longestBeamDistance)) {
+        if (Physics.Raycast(startPosition, direction, out RaycastHit hit, maxDistance)) {
             endPosition = hit.point;
             hitNormal = hit.normal;
 
@@ -97,10 +95,14 @@ public class LaserBeam : MonoBehaviour
         }
     }
 
-    void UpdateVisuals()
+    public void SetOn(bool isOn)
+    {
+        _lineRenderer.enabled = isOn;
+    }
+
+    private void UpdateVisuals()
     {
         _lineRenderer.SetPosition(0, StartPosition);
         _lineRenderer.SetPosition(1, EndPosition);
     }
-
 }
