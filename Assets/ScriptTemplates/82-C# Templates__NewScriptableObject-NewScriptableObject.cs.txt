@@ -1,0 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
+
+[CreateAssetMenu(fileName = nameof(#SCRIPTNAME#), menuName = nameof(#SCRIPTNAME#), order=0)]
+public class #SCRIPTNAME# : ScriptableObject
+{
+    
+}

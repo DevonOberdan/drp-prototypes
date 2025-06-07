@@ -1,0 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
+
+[CustomEditor(typeof(#SCRIPTNAME#))]
+public class #SCRIPTNAME# : Editor
+{
+
+    public override void OnInspectorGUI()
+    {
+        
+    }
+
+    private void OnSceneGUI()
+    {
+        
+    }
+}

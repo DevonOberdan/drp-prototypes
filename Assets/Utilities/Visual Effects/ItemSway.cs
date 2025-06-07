@@ -28,8 +28,7 @@ public class ItemSway : MonoBehaviour
     {
         centerRotation = transform.localRotation;
 
-        childTransform = transform.GetChild(0);
-        childCenterRotation = childTransform.localRotation;
+        GetChildReference();
     }
 
     void Update()
@@ -49,7 +48,11 @@ public class ItemSway : MonoBehaviour
 
         newGoalRotation = centerRotation * newSwayRotation * newMovementRotation;
         transform.localRotation = Quaternion.Slerp(transform.localRotation, newGoalRotation, smoothVal * Time.deltaTime);
-        childTransform.localRotation = Quaternion.Slerp(childTransform.localRotation, childCenterRotation * newJumpRotation, jumpTiltVal * Time.deltaTime);
+
+        if(childTransform != null)
+        {
+            childTransform.localRotation = Quaternion.Slerp(childTransform.localRotation, childCenterRotation * newJumpRotation, jumpTiltVal * Time.deltaTime);
+        }
     }
 
     void HandleMouseSway()
@@ -77,5 +80,19 @@ public class ItemSway : MonoBehaviour
 
         inputMoveX = Input.GetAxisRaw("Horizontal");
         inputMoveY = Input.GetAxisRaw("Vertical");
+    }
+
+    private void OnTransformChildrenChanged()
+    {
+        GetChildReference();
+    }
+
+    private void GetChildReference()
+    {
+        if(transform.childCount > 0)
+        {
+            childTransform = transform.GetChild(0);
+            childCenterRotation = childTransform.localRotation;
+        }
     }
 }
