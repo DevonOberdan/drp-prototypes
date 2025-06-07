@@ -91,18 +91,12 @@ public class WallRun : MonoBehaviour
                 {
                     StartWallRun();
                 }
-                else
-                {
-                    return;
-                }
             }
-            
-            if (wallRunTimer > 0)
+            else if (wallRunTimer > 0)
             {
                 wallRunTimer -= Time.deltaTime;
             }
-
-            if (wallRunTimer <= 0 && wallRunning)
+            else if (wallRunTimer <= 0 && wallRunning)
             {
                 StopWallRun();
             }

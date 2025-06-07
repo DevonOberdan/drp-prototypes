@@ -54,7 +54,7 @@ public class FPSMovementRB : FPSMovement
     private int playerMask, jumpCounter;
     private bool inAir;
 	
-    private readonly int MAX_JUMPS = 1;
+    private int maxJumps = 1;
 
     private bool enableMovementOnNextTouch;
     private Vector3 velocityToSet;
@@ -229,7 +229,7 @@ public class FPSMovementRB : FPSMovement
 
     private void PlayerJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && ((IsGrounded || jumpBuffer >= 0.0f) || JumpOverrideHandler.AnyFlags) && jumpCounter<MAX_JUMPS)
+        if (Input.GetKeyDown(KeyCode.Space) && ((IsGrounded || jumpBuffer >= 0.0f) || JumpOverrideHandler.AnyFlags) && jumpCounter<maxJumps)
         {
             ForceJump(jumpFactor);
             jumpCounter++;
