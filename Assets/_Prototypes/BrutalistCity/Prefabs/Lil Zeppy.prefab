@@ -34,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 1550672431464188612}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.047, z: 0.272}
+  m_LocalPosition: {x: -0.2715, y: -1.0307, z: -0.0177}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -74,9 +74,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8bc9b6ff608b5c149abca024ec9ff2f6, type: 2}
-  - {fileID: 8556262120643298411, guid: 7465b92454975d34f9e2d479c4febea9, type: 3}
-  - {fileID: 1788269377728665300, guid: 7465b92454975d34f9e2d479c4febea9, type: 3}
+  - {fileID: 2100000, guid: 8e372cc41bbaaa64db668c6774ed04c9, type: 2}
+  - {fileID: 2100000, guid: 2f5a04f50e785ea449ad6bcd79e6073b, type: 2}
+  - {fileID: 2100000, guid: 428d8d9094a8547448dcb7172d761d93, type: 2}
   - {fileID: 2100000, guid: 428d8d9094a8547448dcb7172d761d93, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b44f60a65eb55a04c929a765075048e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialIndex: 1
+  materialIndex: 2
   fillColor: {r: 95.87451, g: 0, b: 0, a: 0}
   axis: 1
   flipDirection: 0
@@ -237,8 +237,8 @@ MonoBehaviour:
   clampY: 0
   clampZ: 1
   xRange:
-    min: -40
-    max: 90
+    min: -15
+    max: 100
   yRange:
     min: 0
     max: 0
@@ -272,7 +272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1718689796434102855}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.65, y: 10.22, z: 25.81}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
@@ -528,13 +528,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4579555138472955405}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2852457, y: 0.61589193, z: -0.25511077, w: 0.68864405}
-  m_LocalPosition: {x: 0.116, y: -0.179, z: 0.007}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: -0.1681, z: 0.1419}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8178317292888830104}
-  m_LocalEulerAnglesHint: {x: 45, y: 83.616, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!108 &3379934772109495150
 Light:
   m_ObjectHideFlags: 0
@@ -546,7 +546,7 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1000
+  m_Intensity: 10000
   m_Range: 150
   m_SpotAngle: 50
   m_InnerSpotAngle: 40
@@ -755,14 +755,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5891048985831118327}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2852457, y: 0.61589193, z: -0.25511077, w: 0.68864405}
-  m_LocalPosition: {x: 0.116, y: -0.179, z: 0.007}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: -0, y: -0.1749, z: 0.1481}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7102519057294354697}
   m_Father: {fileID: 8178317292888830104}
-  m_LocalEulerAnglesHint: {x: 45, y: 83.616, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!114 &8121860392735067631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -878,7 +878,7 @@ Transform:
   m_GameObject: {fileID: 7703391726669809526}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000043711392, y: 0.000000043711385, z: 0.000000043711392, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.876}
+  m_LocalPosition: {x: 0.9, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -949,7 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2710b4462bff6cd49a276a07eaf925f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationVector: {x: 0, y: 0, z: 15}
+  rotationVector: {x: 15, y: 0, z: 0}
   <RotationSpeed>k__BackingField: 30
 --- !u!1001 &1244727627193845846
 PrefabInstance:
