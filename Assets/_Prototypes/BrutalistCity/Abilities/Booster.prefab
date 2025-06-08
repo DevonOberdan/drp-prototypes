@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 395415029599694081}
   - component: {fileID: 303732847337626685}
+  - component: {fileID: 7676420110796179507}
   m_Layer: 7
   m_Name: Booster
   m_TagString: Untagged
@@ -48,10 +49,40 @@ MonoBehaviour:
   verticalMode: 1
   OnBoost:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7676420110796179507}
+        m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.Audio.AudioPlayRequester,
+          FinishOne.GeneralUtilities.Audio
+        m_MethodName: Request
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 231e745584a870a4d9730d7d646827e2, type: 2}
+          m_ObjectArgumentAssemblyTypeName: FinishOne.GeneralUtilities.Audio.AudioConfigSO,
+            FinishOne.GeneralUtilities.Audio
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   boostFactor: 2.5
   boostMovingFactor: 0.85
   canBoostInAir: 1
+  canRepeat: 0
   hasAfterburn: 0
   afterBurnerTime: 2.5
   afterburnFactor: 0.15
+  yVelocityDampening: 0.101
+--- !u!114 &7676420110796179507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395415029599694080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d9dc0f09c507f4cb2365db3abe3d9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultAudio: {fileID: 0}
+  audioPlayEvent: {fileID: 11400000, guid: 3130a41301c211442b110da9568fea65, type: 2}
