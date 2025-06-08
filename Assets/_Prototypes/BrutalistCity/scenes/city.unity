@@ -10165,7 +10165,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f348193234dab6e4f82960dfcf8688ec, type: 2}
   - {fileID: 11400000, guid: cba8699815f0639438557271d0344d9c, type: 2}
   - {fileID: 11400000, guid: 9d9e5b87fbfc8944798f3bf1a3b14708, type: 2}
-  beginWithAllAbilities: 0
+  beginWithAllAbilities: 1
   SetupNewAbility: {fileID: 11400000, guid: d8c3a97f94d74e24c8f60f83d816cf50, type: 2}
 --- !u!4 &1893931752
 Transform:
