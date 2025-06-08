@@ -43,6 +43,11 @@ public class FPSCameraRB : MonoBehaviour
         player.transform.Rotate(0, Input.GetAxis("Mouse X") * lookHorizontalSensitivity/100f, 0);
     }
 
+    public void DisableInput(bool disable)
+    {
+        this.enabled = !disable;
+    }
+
     private void CameraRotation()
     {
         currentInput = Input.GetAxisRaw("Mouse Y");

@@ -126,9 +126,16 @@ public class Booster : MonoBehaviour
         playerController.StallInput = false;
     }
 
+    [Range(0, 1)]
+    [SerializeField] private float yVelocityDampening;
+
     void Boost(float factor)
     {
-        PlayerController.ForceJump(PlayerController.JumpFactor * factor);
+        Rigidbody rb = PlayerController.GetComponent<Rigidbody>();
+
+        rb.linearVelocity = rb.linearVelocity.WithNew(y:rb.linearVelocity.y* yVelocityDampening);
+
+        PlayerController.ForceJump(PlayerController.JumpFactor * factor, minimumVelocity:true);
         boosting = true;
         OnBoost.Invoke();
     }
