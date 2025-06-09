@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 2475532824987052712}
   - component: {fileID: 3927912147289423787}
   - component: {fileID: 1685968188963459526}
-  - component: {fileID: 400070240013821393}
+  - component: {fileID: 5277330938524252382}
   m_Layer: 0
   m_Name: Detector
   m_TagString: Untagged
@@ -154,7 +154,7 @@ Transform:
   m_GameObject: {fileID: 6641831989677012540}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000059651896, y: 0.00000008741823, z: 0.00000023169585, w: 1}
-  m_LocalPosition: {x: -0.00000058135987, y: 9.25, z: 0.0020115052}
+  m_LocalPosition: {x: -0, y: 0.407, z: 0.002}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -344,7 +344,7 @@ MonoBehaviour:
   zRange:
     min: 0
     max: 0
---- !u!65 &400070240013821393
+--- !u!65 &5277330938524252382
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -363,8 +363,8 @@ BoxCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.7225134, y: 0.5594361, z: 0.635}
-  m_Center: {x: 0.0000006258488, y: 0.2715096, z: -0.000008225441}
+  m_Size: {x: 0.7225134, y: 0.559436, z: 0.63499993}
+  m_Center: {x: 0.0000004917384, y: -0.0035153625, z: -0.000008255242}
 --- !u!1 &7251281800731751592
 GameObject:
   m_ObjectHideFlags: 0
