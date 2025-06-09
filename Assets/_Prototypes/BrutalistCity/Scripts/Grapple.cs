@@ -8,6 +8,7 @@ public class Grapple : MonoBehaviour
     [SerializeField] private Transform grappleTip;
     [SerializeField] private LayerMask grappleLayers;
     [SerializeField] private LineRenderer grappleLr;
+    [SerializeField] private GameObject grappleHook;
 
     [Header("Grappling")]
     [SerializeField] private float maxGrappleDistance;
@@ -35,9 +36,11 @@ public class Grapple : MonoBehaviour
     private Vector3 grapplePoint;
     private float grappleCdTimer;
     private bool grappling;
+    private Vector3 defaultHookPosition;
 
     private void Awake()
     {
+        defaultHookPosition = grappleHook.transform.localPosition;
         if(Camera.main == null)
         {
             Debug.LogError("Player camera should be set to the `MainCamera` tag.");
@@ -75,6 +78,7 @@ public class Grapple : MonoBehaviour
         if (grappling)
         {
             grappleLr.SetPosition(0, grappleTip.position);
+            grappleHook.transform.position = grappleLr.GetPosition(grappleLr.positionCount - 1);
         }
     }
 
@@ -150,5 +154,7 @@ public class Grapple : MonoBehaviour
         grappleCdTimer = grappleCd;
 
         grappleLr.enabled = false;
+        grappleHook.transform.localPosition = defaultHookPosition;
+
     }
 }
