@@ -15,7 +15,6 @@ public class GravityObject : MonoBehaviour, IPausable
     [SerializeField] float rotationSpeed = 5f;
 
     private Rigidbody rb;
-    private RigidbodyConstraints startingConstraints;
 
     public Vector3 GravityDirection { get; set; }
 
@@ -34,7 +33,6 @@ public class GravityObject : MonoBehaviour, IPausable
 
     public bool OverrideDirection { get; set; }
 
-    //public void SetGrabSourceDir(bool stand) => grabSourceDir = stand;
     public void SetStanding(bool stand) => keepStanding = stand;
 
     public GravitySource Source => gSource;
@@ -50,8 +48,6 @@ public class GravityObject : MonoBehaviour, IPausable
         GravityFlipped = gravityFlipped;
 
         rb = GetComponent<Rigidbody>();
-        startingConstraints = rb.constraints;
-      //  OverrideDirection = false;
     }
 
     public Vector3 FinalGravityDirection => gSource.BodyGravityDirection(transform, GravityFlipped);
@@ -73,19 +69,11 @@ public class GravityObject : MonoBehaviour, IPausable
         }
     }
 
-    public void Pause()
-    {
-        SetPause(true);
-    }
-
-    public void Unpause()
-    {
-        SetPause(false);
-    }
+    public void Pause() => SetPause(true);
+    public void Unpause() => SetPause(false);
 
     public void SetPause(bool pause)
     {
         this.enabled = !pause;
-        rb.constraints =  pause ? RigidbodyConstraints.FreezeAll : startingConstraints;
     }
 }

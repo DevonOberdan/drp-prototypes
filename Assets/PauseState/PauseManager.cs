@@ -16,23 +16,28 @@ public static class InterfaceFinder
     }
 }
 
-public class GameManager : MonoBehaviour
+public class PauseManager : MonoBehaviour
 {
+    public static bool PauseState { get; private set; }
+
     [SerializeField] private InputSystemUIInputModule inputModule;
 
     private bool paused;
 
-    public UnityEvent<bool> PauseStateBroadcast;
-    public UnityEvent<bool> PausableBroadcast;
+    [SerializeField] private UnityEvent<bool> PauseStateBroadcast;
+    [SerializeField] private UnityEvent<bool> PausableBroadcast;
 
-    public static bool StartInLevelSelect;
+    [Header("Request Game Events")]
+    [SerializeField] private GameEvent RequestTogglePause;
+    [SerializeField] private BoolGameEvent RequestPauseState;
+    [SerializeField] private BoolGameEvent RequestPreventInput;
 
     public bool Paused 
     {
         get => paused;
         set 
         {
-            if (!CanPause)
+            if (!CanPause || paused == value)
                 return;
 
             paused = value;
@@ -46,15 +51,12 @@ public class GameManager : MonoBehaviour
                 else
                     p.Unpause();
             }
+
+            PauseState = Paused;
         }
     }
 
     public bool CanPause { get; private set; }
-
-    [Header("Request Game Events")]
-    [SerializeField] private GameEvent RequestTogglePause;
-    [SerializeField] private BoolGameEvent RequestPauseState;
-    [SerializeField] private BoolGameEvent RequestPreventInput;
 
     private void Awake()
     {

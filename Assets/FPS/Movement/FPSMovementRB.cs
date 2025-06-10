@@ -103,24 +103,17 @@ public class FPSMovementRB : FPSMovement
         }
     }
 
-    private Vector3 cachedLinearVelocity = Vector3.zero;
     private Vector3 cachedMovementVelocity = Vector3.zero;
 
     public void Pause(bool pause)
     {
         if (pause)
         {
-            cachedLinearVelocity = playerRB.linearVelocity;
-            Debug.Log(cachedLinearVelocity);
             cachedMovementVelocity = movementVelocity;
-
-            playerRB.linearVelocity = Vector3.zero;
             movementAmount = Vector3.zero;
         }
         else
         {
-            // playerRB.linearVelocity = cachedLinearVelocity;
-            playerRB.linearVelocity = cachedLinearVelocity;
             movementVelocity = cachedMovementVelocity;
         }
     }
@@ -164,6 +157,12 @@ public class FPSMovementRB : FPSMovement
         PlayerMovementHelper();
         PlayerJump();
         Juice.Instance.ExpandFOV(IsSprinting);
+
+        if (Freeze)
+        {
+            playerRB.linearVelocity = Vector3.zero;
+            movementVelocity = Vector3.zero;
+        }
     }
 
     private void PlayerMovement()

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Detection : MonoBehaviour
+public class Detection : MonoBehaviour, IPausable
 {
     [SerializeField] private Vector3Atom TargetLocation;
     [SerializeField] private LayerMask targetLayer;
@@ -206,5 +206,27 @@ public class Detection : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, TargetDir);
         Gizmos.DrawRay(transform.position, transform.forward*detectRange);
+    }
+
+    public void Pause()
+    {
+        SetPause(true);
+    }
+
+    public void Unpause()
+    {
+        SetPause(false);
+    }
+
+    public void SetPause(bool pause)
+    {
+        this.enabled = !pause;
+        detectionBuffer.enabled = !pause;
+        chargeBuffer.enabled = !pause;
+
+        if (!Alerted)
+        {
+            rotateObj.enabled = !pause;
+        }
     }
 }

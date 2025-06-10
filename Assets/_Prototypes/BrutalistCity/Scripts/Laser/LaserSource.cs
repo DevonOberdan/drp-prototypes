@@ -1,20 +1,22 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
-
 public class LaserSource : MonoBehaviour
 {
     [SerializeField] private Transform sourceTransform;
     [SerializeField] private LaserBeam laserBeam;
 
-    [SerializeField] private float thinWidth = 0.2f;
-    
+    [SerializeField] private bool tween;
+    [SerializeField] private bool startOn;
+
     private void Start()
     {
         if(laserBeam == null || !laserBeam.gameObject.activeInHierarchy)
         {
             this.enabled = false;
         }
+
+        laserBeam.SetOn(startOn);
     }
 
     private void Update() 
@@ -22,24 +24,45 @@ public class LaserSource : MonoBehaviour
         Vector3 startPosition = sourceTransform.position;
         Vector3 direction = sourceTransform.forward;
 
-        laserBeam.Propagate(startPosition, direction);
+        if(laserBeam.CurrentWidth > 0f)
+        {
+            laserBeam.Propagate(startPosition, direction);
+        }
     }
 
-
-    public void SetupThin()
+    public void SetFire(bool fire)
     {
-        laserBeam.defaultWidth = thinWidth;
+        if (fire)
+            Fire();
+        else
+            EndFire();
     }
 
-    public void SetToFullWidth(bool full)
+    public void Fire()
     {
-        DOTween.To(() => laserBeam.CurrentWidth, x => laserBeam.CurrentWidth = x, full ? laserBeam.defaultWidth : thinWidth, 0.25f);
+        laserBeam.CurrentWidth = 0f;
+        laserBeam.SetOn(true);
+
+        if (tween)
+        {
+            DOTween.To(() => laserBeam.CurrentWidth, x => laserBeam.CurrentWidth = x, laserBeam.defaultWidth, 0.25f);
+        }
+        else
+        {
+            laserBeam.CurrentWidth = laserBeam.defaultWidth;
+        }
     }
 
-    public void SetLaser(bool isOn)
+    public void EndFire()
     {
-        laserBeam.CurrentWidth = thinWidth;
-        laserBeam.SetOn(isOn);
-        this.enabled = isOn;
+        if (tween)
+        {
+            DOTween.To(() => laserBeam.CurrentWidth, x => laserBeam.CurrentWidth = x, 0f, 0.25f).OnComplete(() => laserBeam.SetOn(false));
+        }
+        else
+        {
+            laserBeam.CurrentWidth = 0f;
+            laserBeam.SetOn(false);
+        }
     }
 }
