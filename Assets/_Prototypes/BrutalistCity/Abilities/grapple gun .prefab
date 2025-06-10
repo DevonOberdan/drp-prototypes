@@ -358,7 +358,7 @@ MonoBehaviour:
   grappleTip: {fileID: 3301510556054488778}
   grappleLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1
   grappleLr: {fileID: 1463602225162045663}
   grappleHook: {fileID: 4358989875070778643}
   maxGrappleDistance: 100
