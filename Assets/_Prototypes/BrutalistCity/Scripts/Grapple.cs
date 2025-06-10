@@ -30,7 +30,6 @@ public class Grapple : MonoBehaviour
     [SerializeField] private UnityEvent OnMissed;
 
     private FPSMovementRB playerController;
-    private Rigidbody rb;
     private Transform cam;
     private Vector3 grapplePoint;
     private float grappleCdTimer;
@@ -48,22 +47,16 @@ public class Grapple : MonoBehaviour
         playerController = GetComponentInParent<FPSMovementRB>();
         playerController.onCollision += StopGrapple;
 
-        rb = GetComponentInParent<Rigidbody>();
-
         if (!clampMagnitude)
         {
             maxMagnitude = -1f;
         }
 
+        playerController.InputReader.onAlternateFire += StartGrapple;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(grappleKey))
-        {
-            StartGrapple();
-        }
-
         if (grappleCdTimer > 0)
         {
             grappleCdTimer -= Time.deltaTime;

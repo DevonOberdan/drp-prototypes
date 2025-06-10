@@ -1,9 +1,20 @@
 using FinishOne.GeneralUtilities;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem.UI;
+
+public static class InterfaceFinder
+{
+    public static T[] FindObjectsByType<T>() where T : class
+    {
+        return Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None)
+            .Select(m => m as T)
+            .Where(m => m != null)
+            .ToArray();
+    }
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -25,7 +36,16 @@ public class GameManager : MonoBehaviour
                 return;
 
             paused = value;
+
             PauseStateBroadcast?.Invoke(paused);
+
+            foreach (IPausable p in InterfaceFinder.FindObjectsByType<IPausable>())
+            {
+                if(paused)
+                    p.Pause();
+                else
+                    p.Unpause();
+            }
         }
     }
 

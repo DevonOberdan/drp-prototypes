@@ -118,6 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 350717919725941967}
   - component: {fileID: 333113248398447236}
+  - component: {fileID: 4200156586905712681}
   m_Layer: 0
   m_Name: RotationPoint
   m_TagString: Untagged
@@ -155,6 +156,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationVector: {x: 0, y: 1, z: 0}
   <RotationSpeed>k__BackingField: 20
+--- !u!114 &4200156586905712681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8688744786964661508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7375abee161ce419749aba28d19378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clampX: 1
+  clampY: 0
+  clampZ: 1
+  xRange:
+    min: -45
+    max: 45
+  yRange:
+    min: 0
+    max: 0
+  zRange:
+    min: 0
+    max: 0
 --- !u!1 &8992314418527383840
 GameObject:
   m_ObjectHideFlags: 0

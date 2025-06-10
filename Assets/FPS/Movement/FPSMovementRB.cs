@@ -21,6 +21,8 @@ using UnityEngine;
 
 public class FPSMovementRB : FPSMovement
 {
+    [SerializeField] private InputReader inputReader;
+
     [SerializeField] private float jumpFactor = 8f;
     [SerializeField] private float defaultMoveSpeed = 6f;
     [SerializeField] private float sprintSpeedFactor = 1.75f;
@@ -65,6 +67,8 @@ public class FPSMovementRB : FPSMovement
 
     [field: SerializeField] public OverrideFlagHandler JumpOverrideHandler { get; private set; }
 
+    public InputReader InputReader => inputReader;
+
     public bool Freeze { get; set; }
     public bool InFreeMovement { get; set; }
 
@@ -99,6 +103,29 @@ public class FPSMovementRB : FPSMovement
         }
     }
 
+    private Vector3 cachedLinearVelocity = Vector3.zero;
+    private Vector3 cachedMovementVelocity = Vector3.zero;
+
+    public void Pause(bool pause)
+    {
+        if (pause)
+        {
+            cachedLinearVelocity = playerRB.linearVelocity;
+            Debug.Log(cachedLinearVelocity);
+            cachedMovementVelocity = movementVelocity;
+
+            playerRB.linearVelocity = Vector3.zero;
+            movementAmount = Vector3.zero;
+        }
+        else
+        {
+            // playerRB.linearVelocity = cachedLinearVelocity;
+            playerRB.linearVelocity = cachedLinearVelocity;
+            movementVelocity = cachedMovementVelocity;
+        }
+    }
+
+
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody>();
@@ -122,6 +149,9 @@ public class FPSMovementRB : FPSMovement
 
         playerMask = ~(1 << LayerMask.NameToLayer("Player"));
         jumpCounter = 0;
+
+        inputReader.onSprint += SetSprint;
+        inputReader.EnablePlayerActions();
     }
 
     private void FixedUpdate()
@@ -134,11 +164,6 @@ public class FPSMovementRB : FPSMovement
         PlayerMovementHelper();
         PlayerJump();
         Juice.Instance.ExpandFOV(IsSprinting);
-
-        if (Freeze)
-        {
-            playerRB.linearVelocity = Vector3.zero;
-        }
     }
 
     private void PlayerMovement()
@@ -168,7 +193,6 @@ public class FPSMovementRB : FPSMovement
             movementAmount = Vector3.SmoothDamp(movementAmount, targetMoveAmount, ref smoothMoveVel, moveLerpSpeed);
         }
 
-
         if (IsGrounded)
         {
             if (inAir)
@@ -189,11 +213,14 @@ public class FPSMovementRB : FPSMovement
 
     private void HandleInput()
     {
-        inputVect = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+        inputVect = new(inputReader.MoveDirection.x, 0, inputReader.MoveDirection.y);
+    }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+    private void SetSprint(bool sprint)
+    {
+        if (sprint)
             SetMoveSpeed(sprintSpeed);
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        else
             SetMoveSpeed(defaultMoveSpeed);
     }
 
@@ -228,7 +255,7 @@ public class FPSMovementRB : FPSMovement
 
     private void PlayerJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && ((IsGrounded || jumpBuffer >= 0.0f) || JumpOverrideHandler.AnyFlags) && jumpCounter<maxJumps)
+        if (inputReader.IsJumpPressed && ((IsGrounded || jumpBuffer >= 0.0f) || JumpOverrideHandler.AnyFlags) && jumpCounter<maxJumps)
         {
             ForceJump(jumpFactor);
             jumpCounter++;
