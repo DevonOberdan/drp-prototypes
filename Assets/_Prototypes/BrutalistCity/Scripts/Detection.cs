@@ -19,6 +19,7 @@ public class Detection : MonoBehaviour
 
     [SerializeField] private InteractionBuffer detectionBuffer;
     [SerializeField] private InteractionBuffer chargeBuffer;
+    [SerializeField] private GameObject LaserStartEffect;
 
     [SerializeField] private UnityEvent<bool> OnDetected;
 
@@ -67,6 +68,8 @@ public class Detection : MonoBehaviour
         chargeBuffer.OnReset.AddListener(() => detectRange = defaultRange);
 
         Alerted = false;
+
+        LaserStartEffect.SetActive(false);
     }
 
     private void BeginLockOn()
@@ -107,12 +110,14 @@ public class Detection : MonoBehaviour
             if(detectionBuffer.Percentage == 1)
             {
                 chargeBuffer.Interacting = currentlyVisible;
+                LaserStartEffect.SetActive(true);
             }
 
             // was seen, but is now hidden and not at all charged up
             if (chargeBuffer.Percentage == 0)
             {
                 detectionBuffer.Interacting = currentlyVisible;
+                LaserStartEffect.SetActive(false);
 
                 if (currentlyVisible)
                 {
@@ -129,6 +134,7 @@ public class Detection : MonoBehaviour
                 if (!returning)
                 {
                     returnPoint = FindReturnRotation();
+                    LaserStartEffect.SetActive(false);
                 }
 
                 returning = true;
