@@ -37,10 +37,12 @@ public class LaserSource : MonoBehaviour
         if (full )
         {
             laserBeam.laserHit.SetActive(true);
+            laserBeam.laserStart.SetActive(true);
         }
         else
         {
             laserBeam.laserHit.SetActive(false);
+            laserBeam.laserStart.SetActive(false);
         }
     }
 
