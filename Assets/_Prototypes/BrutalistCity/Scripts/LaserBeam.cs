@@ -11,6 +11,8 @@ public class LaserBeam : MonoBehaviour
     [field: SerializeField] public Vector3 StartPosition { get; private set; }
     [field: SerializeField] public Vector3 EndPosition { get; private set; }
     [field: SerializeField] public LaserBeam Prefab { get; private set; }
+    [field: SerializeField] public GameObject laserStart;
+    [field: SerializeField] public GameObject laserHit;
 
 
     private OpticalElement _opticalElementThatTheBeamHit;
@@ -63,6 +65,8 @@ public class LaserBeam : MonoBehaviour
         _lineRenderer.positionCount = 2;
         _lineRenderer.startWidth = defaultWidth;
         _lineRenderer.endWidth = defaultWidth;
+        laserHit.SetActive(false);
+        laserStart.SetActive(false);
     }
 
     public void Propagate(Vector3 startPosition, Vector3 direction) 
@@ -104,5 +108,7 @@ public class LaserBeam : MonoBehaviour
     {
         _lineRenderer.SetPosition(0, StartPosition);
         _lineRenderer.SetPosition(1, EndPosition);
+        laserHit.transform.position = EndPosition;
+
     }
 }

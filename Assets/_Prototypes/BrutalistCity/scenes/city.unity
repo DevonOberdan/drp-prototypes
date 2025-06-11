@@ -9714,6 +9714,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7558011653830688566, guid: 5d2b3bf42b88e9843b48ac4d92552a47, type: 3}
+--- !u!1 &1754491520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7359540597054657400, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+  m_PrefabInstance: {fileID: 2044935981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1769946282 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: adf518ab082fce94380adda493700c8d, type: 3}
@@ -10912,6 +10917,78 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 489207477}
+    - target: {fileID: 6513478558717178721, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: OnComplete.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513478558717178721, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: OnPercentageChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513478558717178721, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: OnComplete.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513478558717178721, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: OnComplete.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1754491520}
+    - target: {fileID: 6513478558717178721, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: OnComplete.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513478558717178721, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: OnComplete.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513478558717178721, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: OnPercentageChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513478558717178721, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: OnPercentageChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1754491520}
+    - target: {fileID: 6513478558717178721, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: OnPercentageChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513478558717178721, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: OnPercentageChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513478558717178721, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: OnComplete.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513478558717178721, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: OnComplete.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513478558717178721, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: OnComplete.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513478558717178721, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: OnPercentageChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513478558717178721, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: OnPercentageChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513478558717178721, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: OnComplete.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513478558717178721, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: OnPercentageChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7984678704261356495, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
+      propertyPath: LaserStartEffect
+      value: 
+      objectReference: {fileID: 1754491520}
     - target: {fileID: 8000321737999034040, guid: 79c10432e3137044aa566d14262d9b98, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0

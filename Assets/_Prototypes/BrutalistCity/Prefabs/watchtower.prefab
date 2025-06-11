@@ -323,6 +323,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Detector
       objectReference: {fileID: 0}
+    - target: {fileID: 7444009937505613718, guid: aa01dafca2265964f8335532bcb36125, type: 3}
+      propertyPath: m_Intensity
+      value: 3000
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 63845657238880243, guid: aa01dafca2265964f8335532bcb36125, type: 3}
     m_RemovedGameObjects: []
