@@ -125,7 +125,6 @@ public class FPSMovementRB : FPSMovement
         playerGravity = GetComponent<GravityObject>();
 
         JumpOverrideHandler = new OverrideFlagHandler();
-
         InFreeMovement = true;
     }
 
@@ -143,7 +142,6 @@ public class FPSMovementRB : FPSMovement
         playerMask = ~(1 << LayerMask.NameToLayer("Player"));
         jumpCounter = 0;
 
-        //inputReader.onSprint += SetSprint;
         inputReader.EnablePlayerActions();
     }
 
@@ -167,7 +165,7 @@ public class FPSMovementRB : FPSMovement
         PlayerMovementHelper();
         PlayerJump();
         Juice.Instance.ExpandFOV(IsSprinting);
-        Debug.Log($"{currentMoveSpeed == sprintSpeed} -- {inputVect.z > 0}");
+
         if (Freeze)
         {
             playerRB.linearVelocity = Vector3.zero;
@@ -223,16 +221,7 @@ public class FPSMovementRB : FPSMovement
     private void HandleInput()
     {
         inputVect = new(inputReader.MoveDirection.x, 0, inputReader.MoveDirection.y);
-
-        SetSprint(inputReader.IsSprintPressed);
-    }
-
-    private void SetSprint(bool sprint)
-    {
-        if (sprint)
-            SetMoveSpeed(sprintSpeed);
-        else
-            SetMoveSpeed(defaultMoveSpeed);
+        SetMoveSpeed(inputReader.IsSprintPressed ? sprintSpeed : defaultMoveSpeed);
     }
 
     private void SetMoveSpeed(float speed)
@@ -314,9 +303,7 @@ public class FPSMovementRB : FPSMovement
     {
         enableMovementOnNextTouch = true;
 
-        Debug.Log($"{velocityToSet.magnitude} -- vel: {velocityToSet}");
         playerRB.linearVelocity = velocityToSet;
-
         playerCam.DoFOV(grappleFOV);
     }
 	

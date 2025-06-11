@@ -19,11 +19,8 @@ public class Grapple : MonoBehaviour
     [DrawIf(nameof(clampMagnitude), true)]
     [SerializeField] private float maxMagnitude = 50;
 
-
     [Header("Cooldown")]
     [SerializeField] private float grappleCd;
-    [Header("Input")]
-    [SerializeField] private KeyCode grappleKey = KeyCode.Mouse1;
 
     [SerializeField] private UnityEvent OnFired;
     [SerializeField] private UnityEvent OnConnected;

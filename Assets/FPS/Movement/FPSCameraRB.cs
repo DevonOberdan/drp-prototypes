@@ -62,7 +62,6 @@ public class FPSCameraRB : MonoBehaviour
             return;
         }
 
-
         previousInput = currentInput;
 
         verticalRotation += currentInput * lookVerticalSensitivity * Time.deltaTime;
