@@ -143,21 +143,31 @@ public class FPSMovementRB : FPSMovement
         playerMask = ~(1 << LayerMask.NameToLayer("Player"));
         jumpCounter = 0;
 
-        inputReader.onSprint += SetSprint;
+        //inputReader.onSprint += SetSprint;
         inputReader.EnablePlayerActions();
     }
 
     private void FixedUpdate()
     {
+        if (PauseManager.PauseState)
+        {
+            return;
+        }
+
         PlayerMovement();
     }
 
     private void Update()
     {
+        if (PauseManager.PauseState)
+        {
+            return;
+        }
+
         PlayerMovementHelper();
         PlayerJump();
         Juice.Instance.ExpandFOV(IsSprinting);
-
+        Debug.Log($"{currentMoveSpeed == sprintSpeed} -- {inputVect.z > 0}");
         if (Freeze)
         {
             playerRB.linearVelocity = Vector3.zero;
@@ -213,6 +223,8 @@ public class FPSMovementRB : FPSMovement
     private void HandleInput()
     {
         inputVect = new(inputReader.MoveDirection.x, 0, inputReader.MoveDirection.y);
+
+        SetSprint(inputReader.IsSprintPressed);
     }
 
     private void SetSprint(bool sprint)

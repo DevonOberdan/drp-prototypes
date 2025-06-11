@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static FPS_Actions;
 
-
 public interface IInputReader
 {
     Vector2 MoveDirection { get; }
@@ -28,15 +27,18 @@ public class InputReader : ScriptableObject, IFPSActions, IInputReader
 
     public FPS_Actions playerInputActions;
 
-    public bool IsJumpPressed => playerInputActions.FPS.Jump.IsPressed();
-    public bool IsAbilityOnePressed => playerInputActions.FPS.AbilityOne.IsPressed();
+    private bool AcceptingInput = true;
 
-    public Vector2 MoveDirection => playerInputActions.FPS.Move.ReadValue<Vector2>();
-    public Vector2 LookVector => playerInputActions.FPS.Look.ReadValue<Vector2>();
+    public bool IsJumpPressed => AcceptingInput && playerInputActions.FPS.Jump.IsPressed();
+    public bool IsSprintPressed => AcceptingInput && playerInputActions.FPS.Sprint.IsPressed();
+    public bool IsAbilityOnePressed => AcceptingInput && playerInputActions.FPS.AbilityOne.IsPressed();
+
+    public Vector2 MoveDirection => AcceptingInput ? playerInputActions.FPS.Move.ReadValue<Vector2>() : Vector2.zero;
+    public Vector2 LookVector => AcceptingInput ? playerInputActions.FPS.Look.ReadValue<Vector2>() : Vector2.zero;
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (AcceptingInput && context.performed)
         {
             onJump?.Invoke();
         }
@@ -44,16 +46,25 @@ public class InputReader : ScriptableObject, IFPSActions, IInputReader
 
     public void OnLook(InputAction.CallbackContext context)
     {
+        if (!AcceptingInput)
+            return;
+
         onLook?.Invoke(context.ReadValue<Vector2>());
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (!AcceptingInput)
+            return;
+
         onMove?.Invoke(context.ReadValue<Vector2>());
     }
 
     public void OnSprint(InputAction.CallbackContext context)
     {
+        if (!AcceptingInput)
+            return;
+
         if (context.performed)
         {
             onSprint?.Invoke(true);
@@ -66,7 +77,7 @@ public class InputReader : ScriptableObject, IFPSActions, IInputReader
 
     public void OnAbilityOne(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (AcceptingInput && context.performed)
         {
             onAbilityOne?.Invoke();
         }
@@ -74,7 +85,7 @@ public class InputReader : ScriptableObject, IFPSActions, IInputReader
 
     public void OnAlternateFire(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (AcceptingInput && context.performed)
         {
             onAlternateFire?.Invoke();
         }
@@ -82,7 +93,7 @@ public class InputReader : ScriptableObject, IFPSActions, IInputReader
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (AcceptingInput && context.performed)
         {
             onAttack?.Invoke();
         }
@@ -94,16 +105,17 @@ public class InputReader : ScriptableObject, IFPSActions, IInputReader
         {
             playerInputActions = new FPS_Actions();
             playerInputActions.FPS.SetCallbacks(this);
+            playerInputActions.Enable();
         }
 
-        playerInputActions.Enable();
+        AcceptingInput = true;
         Debug.Log("Enabled player input!");
     }
 
     public void DisablePlayerActions()
     {
         Debug.Log("Disabled player input!");
-        playerInputActions.Disable();
+        AcceptingInput = false;
     }
 
     public void SetEnablePlayerActions(bool enable)
@@ -121,10 +133,5 @@ public class InputReader : ScriptableObject, IFPSActions, IInputReader
     public void SetDisablePlayerActions(bool disable)
     {
         SetEnablePlayerActions(!disable);
-    }
-
-    public void OnPause(InputAction.CallbackContext context)
-    {
-        onTogglePause?.Invoke();
     }
 }

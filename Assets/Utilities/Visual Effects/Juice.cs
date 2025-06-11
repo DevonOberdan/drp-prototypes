@@ -37,7 +37,6 @@ public class Juice : MonoBehaviour
             {
                 yield return null;
             }
-
             playerCam.fieldOfView = Mathf.MoveTowards(playerCam.fieldOfView, newFOV, Time.deltaTime * fovTimeScale);
             yield return null;
         }
