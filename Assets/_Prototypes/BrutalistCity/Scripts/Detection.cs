@@ -67,6 +67,7 @@ public class Detection : MonoBehaviour
         chargeBuffer.OnReset.AddListener(() => detectRange = defaultRange);
 
         Alerted = false;
+
     }
 
     private void BeginLockOn()
