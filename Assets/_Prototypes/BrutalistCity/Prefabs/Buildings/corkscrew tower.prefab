@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5243019593273928233}
   - component: {fileID: 745512799761399533}
   - component: {fileID: 6503490799195255599}
+  - component: {fileID: 874022595542668017}
   m_Layer: 0
   m_Name: corkscrew tower
   m_TagString: Untagged
@@ -87,3 +88,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &874022595542668017
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6402064246546790176}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4805729916448369108, guid: 5624b9488157f4d448f09fecbaae3b24, type: 3}
