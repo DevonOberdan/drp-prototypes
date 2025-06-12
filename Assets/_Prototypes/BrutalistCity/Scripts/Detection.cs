@@ -26,7 +26,8 @@ public class Detection : MonoBehaviour
     private RaycastHit[] playerHit;
     private RotateObject rotateObj;
 
-    private PathPoint returnPoint;
+    private (Quaternion Rotation, float Angle) returnPoint;
+
     private float accumulatedAngle;
     private bool currentlyVisible;
     private bool returning;
@@ -48,16 +49,14 @@ public class Detection : MonoBehaviour
         }
     }
 
-
-
     private void Awake()
     {
         detectorIdx = DetectionNetwork.AddFlag();
 
         playerHit = new RaycastHit[1];
-        rotateObj = GetComponent<RotateObject>();
+        rotateObj = GetComponentInParent<RotateObject>();
 
-        startRotation = transform.rotation;
+        startRotation = rotateObj.transform.rotation;
 
         defaultRange = detectRange;
 
@@ -68,6 +67,7 @@ public class Detection : MonoBehaviour
         chargeBuffer.OnReset.AddListener(() => detectRange = defaultRange);
 
         Alerted = false;
+
     }
 
     private void BeginLockOn()
@@ -135,11 +135,11 @@ public class Detection : MonoBehaviour
                 returning = true;
 
                 float dot = Quaternion.Dot(transform.rotation, returnPoint.Rotation);
-                transform.rotation = Quaternion.Slerp(transform.rotation, returnPoint.Rotation, returnSpeed * Mathf.Abs(dot) * Time.deltaTime);
+                rotateObj.transform.rotation = Quaternion.Slerp(rotateObj.transform.rotation, returnPoint.Rotation, returnSpeed * Mathf.Abs(dot) * Time.deltaTime);
 
                 if(Mathf.Abs(dot) >= 0.999999)
                 {
-                    transform.rotation = returnPoint.Rotation;
+                    rotateObj.transform.rotation = returnPoint.Rotation;
                     accumulatedAngle = returnPoint.Angle;
                     ReturnToPatrol();
                 }
@@ -151,7 +151,7 @@ public class Detection : MonoBehaviour
     {
         returning = false;
         Quaternion newRot = Quaternion.LookRotation(TargetDir, Vector3.up);
-        transform.rotation = Quaternion.Slerp(transform.rotation, newRot, lockOnSpeed * Time.deltaTime);
+        rotateObj.transform.rotation = Quaternion.Slerp(rotateObj.transform.rotation, newRot, lockOnSpeed * Time.deltaTime);
     }
 
     private void ReturnToPatrol()
@@ -175,19 +175,7 @@ public class Detection : MonoBehaviour
         return Physics.SphereCastNonAlloc(new Ray(transform.position, TargetDir), 10f, playerHit, detectRange, targetLayer) > 0;
     }
 
-    private struct PathPoint
-    {
-        public Quaternion Rotation;
-        public float Angle;
-
-        public PathPoint(Quaternion Rotation, float Angle)
-        {
-            this.Rotation = Rotation;
-            this.Angle = Angle;
-        }
-    }
-
-    private PathPoint FindReturnRotation()
+    private (Quaternion, float) FindReturnRotation()
     {
         Quaternion bestRotation = Quaternion.identity;
         float bestAngle = accumulatedAngle;
@@ -196,7 +184,7 @@ public class Detection : MonoBehaviour
         for (float testAngle = accumulatedAngle - 180f; testAngle <= accumulatedAngle + 180f; testAngle += 1f)
         {
             Quaternion testRotation = startRotation * Quaternion.AngleAxis(testAngle, rotateObj.Vector.normalized);
-            float angleDiff = Quaternion.Angle(transform.rotation, testRotation);
+            float angleDiff = Quaternion.Angle(rotateObj.transform.rotation, testRotation);
 
             if (angleDiff < smallestDifference)
             {
@@ -206,7 +194,7 @@ public class Detection : MonoBehaviour
             }
         }
 
-        return new PathPoint(bestRotation, bestAngle);
+        return (bestRotation, bestAngle);
     }
 
     private void OnDrawGizmosSelected()

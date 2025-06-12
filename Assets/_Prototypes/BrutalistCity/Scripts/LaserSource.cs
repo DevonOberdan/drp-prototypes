@@ -34,6 +34,16 @@ public class LaserSource : MonoBehaviour
     public void SetToFullWidth(bool full)
     {
         DOTween.To(() => laserBeam.CurrentWidth, x => laserBeam.CurrentWidth = x, full ? laserBeam.defaultWidth : thinWidth, 0.25f);
+        if (full )
+        {
+            laserBeam.laserHit.SetActive(true);
+            laserBeam.laserStart.SetActive(true);
+        }
+        else
+        {
+            laserBeam.laserHit.SetActive(false);
+            laserBeam.laserStart.SetActive(false);
+        }
     }
 
     public void SetLaser(bool isOn)
