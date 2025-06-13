@@ -4251,11 +4251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2480528760156155560, guid: 770298038e52f214d988a643b57774fd, type: 3}
       propertyPath: m_Cameras.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2480528760156155560, guid: 770298038e52f214d988a643b57774fd, type: 3}
-      propertyPath: 'm_Cameras.Array.data[0]'
-      value: 
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2480528760156155562, guid: 770298038e52f214d988a643b57774fd, type: 3}
       propertyPath: far clip plane
