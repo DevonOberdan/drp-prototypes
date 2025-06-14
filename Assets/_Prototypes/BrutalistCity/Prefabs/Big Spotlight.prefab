@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4689188211763796978}
   - component: {fileID: 1471481939373586654}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: DetectionIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdfabaf545df194fae66e5b6e12805e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalSeconds: 3
-  decaySeconds: 4
+  totalSeconds: 30
+  decaySeconds: 45
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 2314321240870410090}
   - component: {fileID: 7544821123501065325}
   - component: {fileID: 2313933075185904945}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 415363051852595309}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Indicators
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 1198122540065436602}
   - component: {fileID: 623783134382555793}
   - component: {fileID: 296278911802963148}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Big Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,8 +357,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   alertSound: {fileID: 771619743781461373}
-  detectRange: 2000
-  detectAngle: 50
+  detectRange: 900
+  detectAngle: 30
   lockOnSpeed: 1.1
   returnSpeed: 1.5
   detectionBuffer: {fileID: 1471481939373586654}
@@ -532,12 +532,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b44f60a65eb55a04c929a765075048e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialIndex: 2
+  materialIndex: 3
   fillColor: {r: 95.87451, g: 0, b: 0, a: 0}
   axis: 1
   flipDirection: 0
   clampRange: 0
-  Range: {x: 0.25, y: 0.73}
+  Range: {x: 0.25, y: 0.365}
 --- !u!114 &623783134382555793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,12 +550,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b44f60a65eb55a04c929a765075048e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialIndex: 3
+  materialIndex: 2
   fillColor: {r: 95.87451, g: 0, b: 0, a: 0}
   axis: 1
   flipDirection: 0
   clampRange: 0
-  Range: {x: 0.25, y: 0.73}
+  Range: {x: 0, y: 0.13}
 --- !u!114 &296278911802963148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,7 +580,7 @@ GameObject:
   m_Component:
   - component: {fileID: 389305888272026334}
   - component: {fileID: 7852202661778049687}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: ChargeIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -614,8 +614,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdfabaf545df194fae66e5b6e12805e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalSeconds: 7
-  decaySeconds: 8
+  totalSeconds: 10
+  decaySeconds: 13
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -676,7 +676,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   CooldownAndReset: 1
-  cooldownSeconds: 7
+  cooldownSeconds: 10
   curvedBuffer: 0
   forceLinearDecay: 0
   bufferEase: 1
@@ -690,7 +690,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6002838154828324562}
   - component: {fileID: 7310666765908817113}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Laser Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -705,14 +705,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5802096043453770719}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.01745245, y: 0, z: 0, w: 0.99984777}
   m_LocalPosition: {x: 0, y: -0.044, z: 0.307}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1738781663595157473}
   m_Father: {fileID: 8340059818685039749}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -2, y: 0, z: 0}
 --- !u!114 &7310666765908817113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -725,7 +725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4278028b7eea7c44f88e1b38ba183d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceTransform: {fileID: 1738781663595157473}
+  sourceTransform: {fileID: 6002838154828324562}
   laserBeam: {fileID: 6011434756268600747}
   thinWidth: 0
 --- !u!1001 &7779540546836805310
@@ -742,11 +742,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2497463395346763930, guid: 498e1a250691bcd429e1622f05d9b0d6, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3730166033789564435, guid: 498e1a250691bcd429e1622f05d9b0d6, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4078733934650137365, guid: 498e1a250691bcd429e1622f05d9b0d6, type: 3}
       propertyPath: maxDistance
@@ -754,7 +754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4078733934650137365, guid: 498e1a250691bcd429e1622f05d9b0d6, type: 3}
       propertyPath: defaultWidth
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4078733934650137365, guid: 498e1a250691bcd429e1622f05d9b0d6, type: 3}
       propertyPath: <Prefab>k__BackingField
@@ -762,11 +762,11 @@ PrefabInstance:
       objectReference: {fileID: 4078733934650137365, guid: 498e1a250691bcd429e1622f05d9b0d6, type: 3}
     - target: {fileID: 5905501642782965395, guid: 498e1a250691bcd429e1622f05d9b0d6, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6898713726207994300, guid: 498e1a250691bcd429e1622f05d9b0d6, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8347173819965366623, guid: 498e1a250691bcd429e1622f05d9b0d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -798,7 +798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8347173819965366623, guid: 498e1a250691bcd429e1622f05d9b0d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8347173819965366623, guid: 498e1a250691bcd429e1622f05d9b0d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y

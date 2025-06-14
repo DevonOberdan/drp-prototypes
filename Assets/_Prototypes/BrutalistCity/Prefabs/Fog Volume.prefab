@@ -4876,14 +4876,14 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 499
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1176.8, y: 145.3359, z: 1520.4679}
-  m_Center: {x: 0, y: 15.73204, z: -42.14618}
+  m_Size: {x: 1176.8, y: 943.77814, z: 1520.4679}
+  m_Center: {x: 0, y: 414.95316, z: -42.14618}

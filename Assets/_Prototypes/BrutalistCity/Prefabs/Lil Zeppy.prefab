@@ -132,7 +132,7 @@ MonoBehaviour:
     m_Bits: 128
   alertSound: {fileID: 7456498180295141648}
   detectRange: 100
-  detectAngle: 40
+  detectAngle: 45
   lockOnSpeed: 1.1
   returnSpeed: 1.5
   detectionBuffer: {fileID: 2896112126375180376}
@@ -1098,7 +1098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4078733934650137365, guid: 498e1a250691bcd429e1622f05d9b0d6, type: 3}
       propertyPath: defaultWidth
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4078733934650137365, guid: 498e1a250691bcd429e1622f05d9b0d6, type: 3}
       propertyPath: <Prefab>k__BackingField

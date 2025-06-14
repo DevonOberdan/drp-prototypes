@@ -251,7 +251,7 @@ MonoBehaviour:
     m_Bits: 128
   alertSound: {fileID: 6091970501440297111}
   detectRange: 100
-  detectAngle: 40
+  detectAngle: 45
   lockOnSpeed: 1.1
   returnSpeed: 1.5
   detectionBuffer: {fileID: 7032531342955316384}
