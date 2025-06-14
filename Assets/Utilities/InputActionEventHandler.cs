@@ -21,7 +21,7 @@ public class InputActionEventHandler : MonoBehaviour
 
     private void Awake()
     {
-        Performable = false;
+        Performable = true;
     }
 
     private void OnEnable()

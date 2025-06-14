@@ -21,6 +21,8 @@ using UnityEngine;
 
 public class FPSMovementRB : FPSMovement
 {
+    [SerializeField] private InputReader inputReader;
+
     [SerializeField] private float jumpFactor = 8f;
     [SerializeField] private float defaultMoveSpeed = 6f;
     [SerializeField] private float sprintSpeedFactor = 1.75f;
@@ -63,7 +65,9 @@ public class FPSMovementRB : FPSMovement
     public Action onCollision;
     public Action onJumped;
 
-    [field: SerializeField] public OverrideFlagHandler JumpOverrideHandler { get; private set; }
+    public OverrideFlagHandler JumpOverrideHandler { get; private set; }
+
+    public InputReader InputReader => inputReader;
 
     public bool Freeze { get; set; }
     public bool InFreeMovement { get; set; }
@@ -99,13 +103,28 @@ public class FPSMovementRB : FPSMovement
         }
     }
 
+    private Vector3 cachedMovementVelocity = Vector3.zero;
+
+    public void Pause(bool pause)
+    {
+        if (pause)
+        {
+            cachedMovementVelocity = movementVelocity;
+            movementAmount = Vector3.zero;
+        }
+        else
+        {
+            movementVelocity = cachedMovementVelocity;
+        }
+    }
+
+
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody>();
         playerGravity = GetComponent<GravityObject>();
 
         JumpOverrideHandler = new OverrideFlagHandler();
-
         InFreeMovement = true;
     }
 
@@ -122,15 +141,32 @@ public class FPSMovementRB : FPSMovement
 
         playerMask = ~(1 << LayerMask.NameToLayer("Player"));
         jumpCounter = 0;
+
+        inputReader.EnablePlayerActions();
+    }
+
+    private void OnDestroy()
+    {
+        JumpOverrideHandler.Clear();
     }
 
     private void FixedUpdate()
     {
+        if (PauseManager.PauseState)
+        {
+            return;
+        }
+
         PlayerMovement();
     }
 
     private void Update()
     {
+        if (PauseManager.PauseState)
+        {
+            return;
+        }
+
         PlayerMovementHelper();
         PlayerJump();
         Juice.Instance.ExpandFOV(IsSprinting);
@@ -138,6 +174,7 @@ public class FPSMovementRB : FPSMovement
         if (Freeze)
         {
             playerRB.linearVelocity = Vector3.zero;
+            movementVelocity = Vector3.zero;
         }
     }
 
@@ -168,7 +205,6 @@ public class FPSMovementRB : FPSMovement
             movementAmount = Vector3.SmoothDamp(movementAmount, targetMoveAmount, ref smoothMoveVel, moveLerpSpeed);
         }
 
-
         if (IsGrounded)
         {
             if (inAir)
@@ -189,12 +225,8 @@ public class FPSMovementRB : FPSMovement
 
     private void HandleInput()
     {
-        inputVect = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-            SetMoveSpeed(sprintSpeed);
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-            SetMoveSpeed(defaultMoveSpeed);
+        inputVect = new(inputReader.MoveDirection.x, 0, inputReader.MoveDirection.y);
+        SetMoveSpeed(inputReader.IsSprintPressed ? sprintSpeed : defaultMoveSpeed);
     }
 
     private void SetMoveSpeed(float speed)
@@ -228,7 +260,7 @@ public class FPSMovementRB : FPSMovement
 
     private void PlayerJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && ((IsGrounded || jumpBuffer >= 0.0f) || JumpOverrideHandler.AnyFlags) && jumpCounter<maxJumps)
+        if (inputReader.IsJumpPressed && ((IsGrounded || jumpBuffer >= 0.0f) || JumpOverrideHandler.AnyFlags) && jumpCounter<maxJumps)
         {
             ForceJump(jumpFactor);
             jumpCounter++;
@@ -276,9 +308,7 @@ public class FPSMovementRB : FPSMovement
     {
         enableMovementOnNextTouch = true;
 
-        Debug.Log($"{velocityToSet.magnitude} -- vel: {velocityToSet}");
         playerRB.linearVelocity = velocityToSet;
-
         playerCam.DoFOV(grappleFOV);
     }
 	

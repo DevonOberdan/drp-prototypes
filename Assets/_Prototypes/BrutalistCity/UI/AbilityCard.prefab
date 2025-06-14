@@ -233,7 +233,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalSeconds: 1.25
   decaySeconds: 0.5
-  cooldownSeconds: 1
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -252,6 +251,18 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 4121811017620372265}
+        m_TargetAssemblyTypeName: AbilityCardDisplay, Assembly-CSharp
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 11400000, guid: 18ec4941ef003df44bb611c4be5d0cc5, type: 2}
         m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[System.Boolean,
           mscorlib
@@ -265,10 +276,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4121811017620372265}
-        m_TargetAssemblyTypeName: AbilityCardDisplay, Assembly-CSharp
-        m_MethodName: Select
-        m_Mode: 1
+      - m_Target: {fileID: 11400000, guid: 168086a528d9d2742a9a8eb01631eb4f, type: 2}
+        m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[System.Boolean,
+          mscorlib
+        m_MethodName: Raise
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -277,6 +289,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnReset:
+    m_PersistentCalls:
+      m_Calls: []
+  CooldownAndReset: 1
+  cooldownSeconds: 1
   curvedBuffer: 1
   forceLinearDecay: 1
   bufferEase: 1

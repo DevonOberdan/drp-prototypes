@@ -1,10 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class GravityObject : MonoBehaviour
+public class GravityObject : MonoBehaviour, IPausable
 {
     public enum CommonSources { Planet, Player };
     [SerializeField] CommonSources defaultSource = CommonSources.Planet;
@@ -16,16 +14,9 @@ public class GravityObject : MonoBehaviour
     [SerializeField] bool capForce;
     [SerializeField] float rotationSpeed = 5f;
 
-    Vector3 gravityDirection;
+    private Rigidbody rb;
 
-    public Vector3 GravityDirection
-    {
-        get => gravityDirection;
-        set 
-        {
-            gravityDirection = value;
-        }
-    }
+    public Vector3 GravityDirection { get; set; }
 
     [field: SerializeField] public float GravityFactor { get; set; } = 1;
     public int GravityDir { get; set; }
@@ -42,7 +33,6 @@ public class GravityObject : MonoBehaviour
 
     public bool OverrideDirection { get; set; }
 
-    //public void SetGrabSourceDir(bool stand) => grabSourceDir = stand;
     public void SetStanding(bool stand) => keepStanding = stand;
 
     public GravitySource Source => gSource;
@@ -54,9 +44,10 @@ public class GravityObject : MonoBehaviour
         if (gSource == null)
             gSource = GameObject.FindGameObjectWithTag(Enum.GetName(typeof(CommonSources), defaultSource)).GetComponentInChildren<GravitySource>();
 
-        gravityDirection = Vector3.zero;
+        GravityDirection = Vector3.zero;
         GravityFlipped = gravityFlipped;
-      //  OverrideDirection = false;
+
+        rb = GetComponent<Rigidbody>();
     }
 
     public Vector3 FinalGravityDirection => gSource.BodyGravityDirection(transform, GravityFlipped);
@@ -73,11 +64,16 @@ public class GravityObject : MonoBehaviour
 
         if (keepStanding)
         {
-            //Quaternion desiredRotation = Quaternion.FromToRotation(-transform.up, GravityDirection) * transform.rotation;
-            //transform.rotation = desiredRotation;
-
             Quaternion desiredRotation = Quaternion.FromToRotation(-transform.up, sourceDir) * transform.rotation;
             transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
         }
+    }
+
+    public void Pause() => SetPause(true);
+    public void Unpause() => SetPause(false);
+
+    public void SetPause(bool pause)
+    {
+        this.enabled = !pause;
     }
 }
