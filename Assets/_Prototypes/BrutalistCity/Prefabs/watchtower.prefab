@@ -319,6 +319,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6091970501440297111, guid: aa01dafca2265964f8335532bcb36125, type: 3}
+      propertyPath: MinDistance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091970501440297111, guid: aa01dafca2265964f8335532bcb36125, type: 3}
+      propertyPath: DopplerLevel
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6641831989677012540, guid: aa01dafca2265964f8335532bcb36125, type: 3}
       propertyPath: m_Name
       value: Detector

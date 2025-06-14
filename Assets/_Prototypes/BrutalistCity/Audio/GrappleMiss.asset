@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GrappleMiss
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 0f96bedc264011d4cbe804c05de16ba1, type: 3}
-  oneShot: 0
-  randomPitch: 1
+  oneShot: 1
+  randomPitch: 0

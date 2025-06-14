@@ -9,6 +9,7 @@ public class Detection : MonoBehaviour
 {
     [SerializeField] private Vector3Atom TargetLocation;
     [SerializeField] private LayerMask targetLayer;
+    [SerializeField] private AudioSource alertSound;
 
     [Header("Configuration")]
     [SerializeField] private float detectRange = 50.0f;
@@ -46,6 +47,7 @@ public class Detection : MonoBehaviour
         {
             rotateObj.enabled = !value;
             OnDetected.Invoke(Alerted);
+            alertSound.mute = !Alerted;
         }
     }
 
