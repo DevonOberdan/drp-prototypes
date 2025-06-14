@@ -252,7 +252,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   alertSound: {fileID: 6091970501440297111}
-  detectRange: 100
+  detectRange: 200
   detectAngle: 45
   lockOnSpeed: 1.1
   returnSpeed: 1.5
@@ -653,7 +653,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1000
-  m_Range: 150
+  m_Range: 200
   m_SpotAngle: 50
   m_InnerSpotAngle: 40
   m_CookieSize: 10

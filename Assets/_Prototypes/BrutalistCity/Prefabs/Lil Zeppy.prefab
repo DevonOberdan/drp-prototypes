@@ -353,6 +353,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 7645266505431332085}
     m_Modifications:
     - target: {fileID: 1030216271842946020, guid: db0ff3cdfce15b84b9bc76b5d738f344, type: 3}
+      propertyPath: detectAngle
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030216271842946020, guid: db0ff3cdfce15b84b9bc76b5d738f344, type: 3}
+      propertyPath: detectRange
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030216271842946020, guid: db0ff3cdfce15b84b9bc76b5d738f344, type: 3}
       propertyPath: OnDetected.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}

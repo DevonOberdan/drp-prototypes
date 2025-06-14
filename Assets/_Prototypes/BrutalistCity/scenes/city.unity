@@ -4234,18 +4234,6 @@ PrefabInstance:
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 8766268403179082965, guid: 770298038e52f214d988a643b57774fd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -93.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8766268403179082965, guid: 770298038e52f214d988a643b57774fd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 135.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 8766268403179082965, guid: 770298038e52f214d988a643b57774fd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -81.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 8766268403179082965, guid: 770298038e52f214d988a643b57774fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -5713,7 +5701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5223788881405610822, guid: b8fc18e773bd878459961de4f70ebafa, type: 3}
       propertyPath: m_Name
-      value: Big Spotlight
+      value: Big Detector 2
       objectReference: {fileID: 0}
     - target: {fileID: 8340059818685039749, guid: b8fc18e773bd878459961de4f70ebafa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8673,7 +8661,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5223788881405610822, guid: b8fc18e773bd878459961de4f70ebafa, type: 3}
       propertyPath: m_Name
-      value: ' Big Spotlight'
+      value: ' Big Detector'
       objectReference: {fileID: 0}
     - target: {fileID: 8340059818685039749, guid: b8fc18e773bd878459961de4f70ebafa, type: 3}
       propertyPath: m_LocalRotation.w

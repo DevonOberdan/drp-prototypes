@@ -123,7 +123,7 @@ Material:
     - _OcclusionStrength: 1
     - _Opacity: 0
     - _Parallax: 0.02
-    - _Percent: 1
+    - _Percent: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1

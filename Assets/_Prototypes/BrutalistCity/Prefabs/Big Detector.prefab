@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdfabaf545df194fae66e5b6e12805e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalSeconds: 30
-  decaySeconds: 45
+  totalSeconds: 25
+  decaySeconds: 20
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 623783134382555793}
   - component: {fileID: 296278911802963148}
   m_Layer: 0
-  m_Name: Big Spotlight
+  m_Name: Big Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -615,7 +615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalSeconds: 10
-  decaySeconds: 13
+  decaySeconds: 10
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -636,7 +636,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7310666765908817113}
         m_TargetAssemblyTypeName: LaserSource, Assembly-CSharp
-        m_MethodName: SetToFullWidth
+        m_MethodName: SetFire
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -665,7 +665,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7310666765908817113}
         m_TargetAssemblyTypeName: LaserSource, Assembly-CSharp
-        m_MethodName: SetToFullWidth
+        m_MethodName: SetFire
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -727,7 +727,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceTransform: {fileID: 6002838154828324562}
   laserBeam: {fileID: 6011434756268600747}
-  thinWidth: 0
+  tween: 0
+  startOn: 0
 --- !u!1001 &7779540546836805310
 PrefabInstance:
   m_ObjectHideFlags: 0
