@@ -9,6 +9,7 @@ public class Detection : MonoBehaviour, IPausable
 {
     [SerializeField] private Vector3Atom TargetLocation;
     [SerializeField] private LayerMask targetLayer;
+    [SerializeField] private AudioSource alertSound;
 
     [Header("Configuration")]
     [SerializeField] private float detectRange = 50.0f;
@@ -46,6 +47,7 @@ public class Detection : MonoBehaviour, IPausable
         {
             rotateObj.enabled = !value;
             OnDetected.Invoke(Alerted);
+            alertSound.mute = !Alerted;
         }
     }
 
@@ -67,6 +69,7 @@ public class Detection : MonoBehaviour, IPausable
         chargeBuffer.OnReset.AddListener(() => detectRange = defaultRange);
 
         Alerted = false;
+
     }
 
     private void BeginLockOn()

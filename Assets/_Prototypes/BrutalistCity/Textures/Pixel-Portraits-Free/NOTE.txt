@@ -1,0 +1,10 @@
+Version History
+
+07/09/2021
+- Added different color hair sheets
+
+07/04/2021
+- Added two new accessories (glasses, aviator glasses)
+- Added four new hair-styles
+- Added four new beards
+- Added expressions (Default, Happy, Sad, Annoyed, Angry)
