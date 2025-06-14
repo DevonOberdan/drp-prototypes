@@ -24,7 +24,7 @@ public class LaserSource : MonoBehaviour
         Vector3 startPosition = sourceTransform.position;
         Vector3 direction = sourceTransform.forward;
 
-        if(laserBeam.CurrentWidth > 0f)
+        if(laserBeam.IsOn)
         {
             laserBeam.Propagate(startPosition, direction);
         }

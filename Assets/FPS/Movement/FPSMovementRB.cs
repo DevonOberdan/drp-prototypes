@@ -65,7 +65,7 @@ public class FPSMovementRB : FPSMovement
     public Action onCollision;
     public Action onJumped;
 
-    [field: SerializeField] public OverrideFlagHandler JumpOverrideHandler { get; private set; }
+    public OverrideFlagHandler JumpOverrideHandler { get; private set; }
 
     public InputReader InputReader => inputReader;
 
@@ -143,6 +143,11 @@ public class FPSMovementRB : FPSMovement
         jumpCounter = 0;
 
         inputReader.EnablePlayerActions();
+    }
+
+    private void OnDestroy()
+    {
+        JumpOverrideHandler.Clear();
     }
 
     private void FixedUpdate()

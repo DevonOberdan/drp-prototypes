@@ -1,22 +1,18 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerLaserImpact : MonoBehaviour, ILaserImpact
 {
+    [SerializeField] private UnityEvent OnPlayerDeath;
+
+    private bool dead;
+
     public void Hit()
     {
-        // pause game input
-        // pull up 
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (!dead)
+        {
+            OnPlayerDeath.Invoke();
+            dead = true;
+        }
     }
 }

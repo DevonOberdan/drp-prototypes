@@ -208,6 +208,12 @@ public class Detection : MonoBehaviour, IPausable
         Gizmos.DrawRay(transform.position, transform.forward*detectRange);
     }
 
+    private void OnDestroy()
+    {
+        Debug.Log($"{gameObject.name} - {detectorIdx}", gameObject);
+        DetectionNetwork.RemoveFlag(detectorIdx);
+    }
+
     public void Pause()
     {
         SetPause(true);

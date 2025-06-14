@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 9163453137536451411}
   - component: {fileID: 6830936439625788734}
   - component: {fileID: 6285482202549327393}
+  - component: {fileID: 2184021503591883084}
   m_Layer: 0
   m_Name: Detector
   m_TagString: Untagged
@@ -245,6 +246,42 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0776308, y: 1.0772303, z: 0.42513856}
   m_Center: {x: 0, y: 0, z: 0.19787867}
+--- !u!114 &2184021503591883084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550672431464188612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2ecb20df5433e4594feb186d1e514a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPaused:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUnpaused:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSetPaused:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSetUnpaused:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8121860392735067631}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1718689796434102855
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +494,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8121860392735067631}
         m_TargetAssemblyTypeName: LaserSource, Assembly-CSharp
-        m_MethodName: SetToFullWidth
+        m_MethodName: SetFire
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -486,7 +523,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8121860392735067631}
         m_TargetAssemblyTypeName: LaserSource, Assembly-CSharp
-        m_MethodName: SetToFullWidth
+        m_MethodName: SetFire
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -777,7 +814,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourceTransform: {fileID: 7102519057294354697}
   laserBeam: {fileID: 3016492325903143747}
-  thinWidth: 0
+  tween: 1
+  startOn: 0
 --- !u!1 &6957125000091901575
 GameObject:
   m_ObjectHideFlags: 0
