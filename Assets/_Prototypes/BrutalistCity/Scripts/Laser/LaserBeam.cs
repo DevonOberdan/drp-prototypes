@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
@@ -14,13 +13,13 @@ public class LaserBeam : MonoBehaviour
     [field: SerializeField] public GameObject laserStart;
     [field: SerializeField] public GameObject laserHit;
 
-
     private OpticalElement _opticalElementThatTheBeamHit;
     private LineRenderer _lineRenderer;
 
     public Vector3 HitNormal { get; private set; }
-
     public Vector3 Direction => (EndPosition - StartPosition).normalized;
+
+    public bool IsOn => _lineRenderer.enabled;
 
     public float CurrentWidth 
     {
@@ -74,18 +73,20 @@ public class LaserBeam : MonoBehaviour
         Vector3 endPosition = startPosition + direction * maxDistance;
         Vector3 hitNormal = Vector3.zero;
 
-        if (Physics.Raycast(startPosition, direction, out RaycastHit hit, maxDistance)) {
+        if (Physics.Raycast(startPosition, direction, out RaycastHit hit, maxDistance)) 
+        {
             endPosition = hit.point;
             hitNormal = hit.normal;
 
-            if (hit.collider.TryGetComponent(out OpticalElement opticalElement)) {
-                OpticalElementThatTheBeamHit = opticalElement;
-            }
-            else {
-                OpticalElementThatTheBeamHit = null;
+            OpticalElementThatTheBeamHit = hit.collider.TryGetComponent(out OpticalElement opticalElement) ? opticalElement : null;
+
+            if(hit.collider.TryGetComponent(out ILaserImpact laserImpact) && IsOn && CurrentWidth == defaultWidth)
+            {
+                laserImpact.Hit();
             }
         }
-        else {
+        else 
+        {
             OpticalElementThatTheBeamHit = null;
         }
 

@@ -1,40 +1,62 @@
 using FinishOne.GeneralUtilities;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem.UI;
 
-public class GameManager : MonoBehaviour
+public static class InterfaceFinder
 {
+    public static T[] FindObjectsByType<T>() where T : class
+    {
+        return Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None)
+            .Select(m => m as T)
+            .Where(m => m != null)
+            .ToArray();
+    }
+}
+
+public class PauseManager : MonoBehaviour
+{
+    public static bool PauseState { get; private set; }
+
     [SerializeField] private InputSystemUIInputModule inputModule;
 
     private bool paused;
 
-    public UnityEvent<bool> PauseStateBroadcast;
-    public UnityEvent<bool> PausableBroadcast;
+    [SerializeField] private UnityEvent<bool> PauseStateBroadcast;
+    [SerializeField] private UnityEvent<bool> PausableBroadcast;
 
-    public static bool StartInLevelSelect;
+    [Header("Request Game Events")]
+    [SerializeField] private GameEvent RequestTogglePause;
+    [SerializeField] private BoolGameEvent RequestPauseState;
+    [SerializeField] private BoolGameEvent RequestPreventInput;
 
     public bool Paused 
     {
         get => paused;
         set 
         {
-            if (!CanPause)
+            if (!CanPause || paused == value)
                 return;
 
             paused = value;
+
             PauseStateBroadcast?.Invoke(paused);
+
+            foreach (IPausable p in InterfaceFinder.FindObjectsByType<IPausable>())
+            {
+                if(paused)
+                    p.Pause();
+                else
+                    p.Unpause();
+            }
+
+            PauseState = Paused;
         }
     }
 
     public bool CanPause { get; private set; }
-
-    [Header("Request Game Events")]
-    [SerializeField] private GameEvent RequestTogglePause;
-    [SerializeField] private BoolGameEvent RequestPauseState;
-    [SerializeField] private BoolGameEvent RequestPreventInput;
 
     private void Awake()
     {

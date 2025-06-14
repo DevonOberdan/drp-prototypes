@@ -221,6 +221,7 @@ MonoBehaviour:
   maxMagnitude: 50
   grappleCd: 0.6
   grappleKey: 324
+  inputGrapple: {fileID: -4520635905282688903, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   OnFired:
     m_PersistentCalls:
       m_Calls: []

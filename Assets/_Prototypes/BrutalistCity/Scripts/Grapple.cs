@@ -19,18 +19,14 @@ public class Grapple : MonoBehaviour
     [DrawIf(nameof(clampMagnitude), true)]
     [SerializeField] private float maxMagnitude = 50;
 
-
     [Header("Cooldown")]
     [SerializeField] private float grappleCd;
-    [Header("Input")]
-    [SerializeField] private KeyCode grappleKey = KeyCode.Mouse1;
 
     [SerializeField] private UnityEvent OnFired;
     [SerializeField] private UnityEvent OnConnected;
     [SerializeField] private UnityEvent OnMissed;
 
     private FPSMovementRB playerController;
-    private Rigidbody rb;
     private Transform cam;
     private Vector3 grapplePoint;
     private float grappleCdTimer;
@@ -48,22 +44,16 @@ public class Grapple : MonoBehaviour
         playerController = GetComponentInParent<FPSMovementRB>();
         playerController.onCollision += StopGrapple;
 
-        rb = GetComponentInParent<Rigidbody>();
-
         if (!clampMagnitude)
         {
             maxMagnitude = -1f;
         }
 
+        playerController.InputReader.onAlternateFire += StartGrapple;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(grappleKey))
-        {
-            StartGrapple();
-        }
-
         if (grappleCdTimer > 0)
         {
             grappleCdTimer -= Time.deltaTime;
