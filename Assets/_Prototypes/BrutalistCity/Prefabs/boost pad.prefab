@@ -50,7 +50,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 1
+  prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -170,8 +170,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 9
-      minScalar: 7
+      scalar: 16
+      minScalar: 10
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -224,7 +224,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
+      maxColor: {r: 0.745283, g: 0.7417675, b: 0.7417675, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -288,8 +288,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4
-      minScalar: 0.5
+      scalar: 6
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -871,7 +871,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 40
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4781,7 +4781,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 241708c12a7ec2e4aa83d63081c63155, type: 2}
+  - {fileID: 2100000, guid: 26a7f3049571ced4aafa3fa46dce1677, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4848,15 +4848,15 @@ AudioSource:
   m_Resource: {fileID: 8300000, guid: 0a800435ad0b85846ababdb3f2497152, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
-  m_Pitch: 1
+  m_Pitch: 0.9
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0.2
   MinDistance: 10
-  MaxDistance: 100
+  MaxDistance: 110
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -4944,7 +4944,6 @@ GameObject:
   - component: {fileID: 8614294273010703290}
   - component: {fileID: 4042364442072645085}
   - component: {fileID: 8722218000620453471}
-  - component: {fileID: 6808325358678675408}
   m_Layer: 0
   m_Name: boost pad
   m_TagString: Untagged
@@ -5034,10 +5033,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 35
-  particleTimer: 6
+  particleTimer: 6.5
   OnParticleStart:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 608568239776219525}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!64 &8722218000620453471
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5060,17 +5071,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5060444177187149915, guid: 2dc244e72a2aad1468c0443062e1df8e, type: 3}
---- !u!114 &6808325358678675408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7091220981875952180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72d9dc0f09c507f4cb2365db3abe3d9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultAudio: {fileID: 0}
-  audioPlayEvent: {fileID: 11400000, guid: 3130a41301c211442b110da9568fea65, type: 2}
