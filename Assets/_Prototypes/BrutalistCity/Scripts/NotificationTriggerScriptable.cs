@@ -14,11 +14,12 @@ public class NotificationTriggerScriptable : MonoBehaviour
 
     [Header("Notification Animation")]
     [SerializeField] private Animator notificationAnim;
+    
     private BoxCollider objectCollider;
 
     private void Awake()
     {
-        objectCollider = this.gameObject.GetComponent<BoxCollider>();
+        objectCollider = gameObject.GetComponent<BoxCollider>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,7 +40,11 @@ public class NotificationTriggerScriptable : MonoBehaviour
 
     IEnumerator EnableNotification()
     {
-        notificationAnim.Play("NotificationFadeIn");
+        if(notificationAnim != null)
+        {
+            notificationAnim.Play("NotificationFadeIn");
+        }
+
         notificationTextUI.text = noteScriptable.notificationMessage;
         characterIconUI.sprite = noteScriptable.yourIcon;
 
@@ -52,7 +57,11 @@ public class NotificationTriggerScriptable : MonoBehaviour
 
     void RemoveNotification()
     {
-        notificationAnim.Play("NotificationFadeOut");
+        if (notificationAnim != null)
+        {
+            notificationAnim.Play("NotificationFadeOut");
+        }
+
         gameObject.SetActive(false);
     }
 }
