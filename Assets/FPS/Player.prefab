@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6507290056106874524}
   - component: {fileID: 1305795152575371881}
+  - component: {fileID: 4577509402778506927}
   m_Layer: 7
   m_Name: GunContainer
   m_TagString: Untagged
@@ -76,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRB: {fileID: 8766268403179082961}
-  inputReader: {fileID: 0}
+  inputReader: {fileID: 11400000, guid: a93a0d16addc6b44c9c000cde6054283, type: 2}
   mouseSwayForce: 1
   movementSwayForce: 1
   smoothVal: 2.5
@@ -84,6 +85,42 @@ MonoBehaviour:
   jumpRange: 5
   tiltOnJump: 0
   jumpTiltVal: 10
+--- !u!114 &4577509402778506927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6507290056106874523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2ecb20df5433e4594feb186d1e514a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPaused:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUnpaused:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSetPaused:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSetUnpaused:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1305795152575371881}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6507290057261780676
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +199,9 @@ GameObject:
   - component: {fileID: 7031659493379973678}
   - component: {fileID: 5954395228406086208}
   - component: {fileID: 35440321375215538}
+  - component: {fileID: 5849661553423103448}
+  - component: {fileID: 5164580582722471924}
+  - component: {fileID: 7485664866757910616}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -302,7 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6ab809d2eed404e826589a66fd7026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputReader: {fileID: 0}
+  inputReader: {fileID: 11400000, guid: a93a0d16addc6b44c9c000cde6054283, type: 2}
   jumpFactor: 12
   defaultMoveSpeed: 15
   sprintSpeedFactor: 1.75
@@ -386,6 +426,86 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionData: {fileID: 11400000, guid: 0efdc119ecb0b6a4b9480032ad277bc7, type: 2}
+--- !u!114 &5849661553423103448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8766268403179082975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c9642d956444304db1f42b9b0b61337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5164580582722471924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8766268403179082975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e77d3cd429e11349b100d8a594343c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 748e8e6447b78ce46979dea0225e04f9, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8845840987248763622}
+        m_TargetAssemblyTypeName: FPSMovementRB, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  registerOnEnable: 0
+--- !u!114 &7485664866757910616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8766268403179082975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d7420495f829ed4499cb781e829a04b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPlayerDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: a93a0d16addc6b44c9c000cde6054283, type: 2}
+        m_TargetAssemblyTypeName: InputReader, Assembly-CSharp
+        m_MethodName: DisablePlayerActions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: b6dd717bc9e2dc74284ede26a8f14076, type: 2}
+        m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.GameEvent, FinishOne.GeneralUtilities.GameEvents
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &6146818433624478120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -394,6 +514,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8766268403179082965}
     m_Modifications:
+    - target: {fileID: 3427062633220628936, guid: ca4722da455b42b45b46359d5cd69413, type: 3}
+      propertyPath: inputReader
+      value: 
+      objectReference: {fileID: 11400000, guid: a93a0d16addc6b44c9c000cde6054283, type: 2}
     - target: {fileID: 3427062633220628936, guid: ca4722da455b42b45b46359d5cd69413, type: 3}
       propertyPath: positionBehaviour
       value: 0
@@ -404,11 +528,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3427062633220628936, guid: ca4722da455b42b45b46359d5cd69413, type: 3}
       propertyPath: lookVerticalSensitivity
-      value: 200
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3427062633220628936, guid: ca4722da455b42b45b46359d5cd69413, type: 3}
       propertyPath: lookHorizontalSensitivity
-      value: 200
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8584275472345333504, guid: ca4722da455b42b45b46359d5cd69413, type: 3}
       propertyPath: m_Dithering
@@ -425,6 +549,10 @@ PrefabInstance:
     - target: {fileID: 8584275472345333506, guid: ca4722da455b42b45b46359d5cd69413, type: 3}
       propertyPath: field of view
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584275472345333506, guid: ca4722da455b42b45b46359d5cd69413, type: 3}
+      propertyPath: far clip plane
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 8584275472345333506, guid: ca4722da455b42b45b46359d5cd69413, type: 3}
       propertyPath: near clip plane
