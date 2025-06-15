@@ -93,8 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdfabaf545df194fae66e5b6e12805e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalSeconds: 3
-  decaySeconds: 4
+  totalSeconds: 5
+  decaySeconds: 6
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -604,7 +604,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   CooldownAndReset: 1
-  cooldownSeconds: 7
+  cooldownSeconds: 15
   curvedBuffer: 0
   forceLinearDecay: 0
   bufferEase: 1
