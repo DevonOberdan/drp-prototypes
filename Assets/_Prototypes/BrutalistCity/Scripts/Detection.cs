@@ -47,7 +47,14 @@ public class Detection : MonoBehaviour, IPausable
         {
             rotateObj.enabled = !value;
             OnDetected.Invoke(Alerted);
-            alertSound.mute = !Alerted;
+            if(Alerted )
+            {
+                alertSound.Play();
+            }
+            else
+            {
+                alertSound.Stop();
+            }
         }
     }
 

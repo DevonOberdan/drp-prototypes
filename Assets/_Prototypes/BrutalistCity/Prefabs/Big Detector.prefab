@@ -366,19 +366,7 @@ MonoBehaviour:
   chargeBuffer: {fileID: 7852202661778049687}
   OnDetected:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7310666765908817113}
-        m_TargetAssemblyTypeName: LaserSource, Assembly-CSharp
-        m_MethodName: SetLaser
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &3345647260851377726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,11 +424,11 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cbb2fb33f49372245a64e5c71638182c, type: 3}
   m_Resource: {fileID: 8300000, guid: cbb2fb33f49372245a64e5c71638182c, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 0.7
   Loop: 1
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 50
@@ -481,7 +469,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
