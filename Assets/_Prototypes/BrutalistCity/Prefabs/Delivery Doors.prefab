@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6493305462636238880}
   - component: {fileID: 1166532970867210337}
+  - component: {fileID: 6990666973880791500}
   m_Layer: 0
   m_Name: Delivery Doors
   m_TagString: Untagged
@@ -93,7 +94,33 @@ MonoBehaviour:
     - {fileID: 6782537730525498508}
     OnWaypointsCompleted:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: d45417e3c1abffc46b2f2ff107c7d0b6, type: 2}
+          m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[AbilityCardSO,
+            Assembly-CSharp
+          m_MethodName: Raise
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: f348193234dab6e4f82960dfcf8688ec, type: 2}
+            m_ObjectArgumentAssemblyTypeName: AbilityCardSO, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 11400000, guid: 18ec4941ef003df44bb611c4be5d0cc5, type: 2}
+          m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[System.Boolean,
+            mscorlib
+          m_MethodName: Raise
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
   - <DestinationPoints>k__BackingField:
     - {fileID: 2094744651530687397}
     - {fileID: 1111863675131431835}
@@ -107,7 +134,33 @@ MonoBehaviour:
     - {fileID: 8683514304769054097}
     OnWaypointsCompleted:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: d45417e3c1abffc46b2f2ff107c7d0b6, type: 2}
+          m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[AbilityCardSO,
+            Assembly-CSharp
+          m_MethodName: Raise
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 9d9e5b87fbfc8944798f3bf1a3b14708, type: 2}
+            m_ObjectArgumentAssemblyTypeName: AbilityCardSO, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 11400000, guid: 18ec4941ef003df44bb611c4be5d0cc5, type: 2}
+          m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[System.Boolean,
+            mscorlib
+          m_MethodName: Raise
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
   - <DestinationPoints>k__BackingField:
     - {fileID: 8002528054242393801}
     - {fileID: 2473240933377157983}
@@ -121,7 +174,33 @@ MonoBehaviour:
     - {fileID: 6047137743077611218}
     OnWaypointsCompleted:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: d45417e3c1abffc46b2f2ff107c7d0b6, type: 2}
+          m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[AbilityCardSO,
+            Assembly-CSharp
+          m_MethodName: Raise
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: cba8699815f0639438557271d0344d9c, type: 2}
+            m_ObjectArgumentAssemblyTypeName: AbilityCardSO, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 11400000, guid: 18ec4941ef003df44bb611c4be5d0cc5, type: 2}
+          m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[System.Boolean,
+            mscorlib
+          m_MethodName: Raise
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
   - <DestinationPoints>k__BackingField:
     - {fileID: 258417284396631163}
     - {fileID: 8893967118890828438}
@@ -137,6 +216,35 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   waypointPrefab: {fileID: 6937245537380113743, guid: c899d1e861972214ca34635dcfecf4cf, type: 3}
+--- !u!114 &6990666973880791500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6040216003322402667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eccc7631b112fe6479c3024ceffb081b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 2c0c73717ecc49543a5f3e763d23a0db, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1166532970867210337}
+        m_TargetAssemblyTypeName: DeliveryPointManager, Assembly-CSharp
+        m_MethodName: DeliveryPointReached
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  registerOnEnable: 0
 --- !u!1001 &69842370071916762
 PrefabInstance:
   m_ObjectHideFlags: 0

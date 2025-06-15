@@ -18,17 +18,27 @@ public class AbilitySelectionUI : MonoBehaviour
     {
         if (display)
         {
-            PullNewCards();
+            PullNewCardsAtRandom();
         }
     }
 
-    private void PullNewCards()
+    private void PullNewCardsAtRandom()
     {
-        List<AbilityCardSO> newAbilities = upgradePool.Grab(cards.Count);
+        List<AbilityCardSO> newAbilities = upgradePool.GrabAtRandom(cards.Count);
 
+        SetCardDisplays(newAbilities.ToArray());
+    }
+
+    public void PresentCard(AbilityCardSO card)
+    {
+        SetCardDisplays(card);
+    }
+
+    public void SetCardDisplays(params AbilityCardSO[] newAbilities)
+    {
         cards.ForEach(c => c.gameObject.SetActive(false));
 
-        for (int i = 0; i < newAbilities.Count; i++)
+        for (int i = 0; i < newAbilities.Length; i++)
         {
             cards[i].SetConfig(newAbilities[i]);
             cards[i].gameObject.SetActive(true);
