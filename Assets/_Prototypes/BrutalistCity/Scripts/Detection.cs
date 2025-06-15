@@ -213,7 +213,6 @@ public class Detection : MonoBehaviour, IPausable
 
     private void OnDestroy()
     {
-        Debug.Log($"{gameObject.name} - {detectorIdx}", gameObject);
         DetectionNetwork.RemoveFlag(detectorIdx);
     }
 
