@@ -143,6 +143,18 @@ public class FPSMovementRB : FPSMovement
         jumpCounter = 0;
 
         inputReader.EnablePlayerActions();
+        inputReader.onJump += HandleJump;
+    }
+
+    private void HandleJump()
+    {
+        Debug.Log(inputReader.IsJumpPressed);
+        if (((IsGrounded || jumpBuffer >= 0.0f) || JumpOverrideHandler.AnyFlags) && jumpCounter < maxJumps)
+        {
+            ForceJump(jumpFactor);
+            jumpCounter++;
+            timeSinceJump = 0f;
+        }
     }
 
     private void OnDestroy()
@@ -168,7 +180,7 @@ public class FPSMovementRB : FPSMovement
         }
 
         PlayerMovementHelper();
-        PlayerJump();
+        ProcessPlayerJump();
         Juice.Instance.ExpandFOV(IsSprinting);
 
         if (Freeze)
@@ -258,15 +270,8 @@ public class FPSMovementRB : FPSMovement
         currentMoveSpeed = Mathf.Lerp(speedAtJump, speedAtJump / airSpeedQuotient, inAirSmoothLerpTime / timeToLerpAirSpeed);
     }
 
-    private void PlayerJump()
+    private void ProcessPlayerJump()
     {
-        if (inputReader.IsJumpPressed && ((IsGrounded || jumpBuffer >= 0.0f) || JumpOverrideHandler.AnyFlags) && jumpCounter<maxJumps)
-        {
-            ForceJump(jumpFactor);
-            jumpCounter++;
-            timeSinceJump = 0f;
-        }
-
         if (!IsGrounded)
         {
             jumpBuffer -= Time.deltaTime;

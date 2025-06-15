@@ -27,4 +27,9 @@ public class GameObjectUtilities : MonoBehaviour
             cg.blocksRaycasts = visible;
         }
     }
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
+    }
 }

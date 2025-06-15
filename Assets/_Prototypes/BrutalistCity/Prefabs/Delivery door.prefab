@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 3324313258524673147}
   - component: {fileID: 3512651686086694838}
   - component: {fileID: 4389693435047888593}
+  - component: {fileID: 6322165651140243917}
   m_Layer: 0
   m_Name: Delivery door
   m_TagString: Untagged
@@ -176,6 +177,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6322165651140243917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5393433624920632139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab2933d3132989458aa8be374863b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypointRoot: {fileID: 2165728895556812914}
 --- !u!1 &5968332678511719272
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +215,7 @@ Transform:
   m_GameObject: {fileID: 5968332678511719272}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.00000009536743, y: 0.005, z: 0.604}
+  m_LocalPosition: {x: 0.00000009536743, y: 0.05, z: 0.604}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
