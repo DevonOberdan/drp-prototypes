@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e96fbf1a8b81e83419f81f4c4b8fdb9f, type: 3}
-  m_Name: BroadcastNewAbility
+  m_Name: RequestDisplayAbility
   m_EditorClassIdentifier: 

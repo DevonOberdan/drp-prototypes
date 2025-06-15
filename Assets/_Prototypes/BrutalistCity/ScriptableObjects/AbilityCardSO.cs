@@ -1,4 +1,3 @@
-using FinishOne.GeneralUtilities;
 using System;
 using UnityEngine;
 
@@ -15,4 +14,6 @@ public class AbilityCardSO : ScriptableObject
     public CardTypes Type;
 
     public GameObject AbilityPrefab;
+
+    public Sprite Icon;
 }

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f45c90d8fa82a45b4d4fb65ec996a9, type: 3}
   m_Name: WallRunAbilityConfig
   m_EditorClassIdentifier: 
-  Type: 0
   Title: Wall Run
   Description: While mid-air, move onto a wall to run along it and keep your momentum
     going!
+  Type: 0
   AbilityPrefab: {fileID: 7963127772067661892, guid: 9b7e9b9325a4afb4b89fe6bb7f0effd1, type: 3}
+  Icon: {fileID: 0}

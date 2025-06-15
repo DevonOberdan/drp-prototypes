@@ -45,8 +45,8 @@ public class NotificationTriggerScriptable : MonoBehaviour
             notificationAnim.Play("NotificationFadeIn");
         }
 
-        notificationTextUI.text = noteScriptable.notificationMessage;
-        characterIconUI.sprite = noteScriptable.yourIcon;
+       // notificationTextUI.text = noteScriptable.notificationMessage;
+       // characterIconUI.sprite = noteScriptable.yourIcon;
 
         if (noteScriptable.disableAfterTimer)
         {
