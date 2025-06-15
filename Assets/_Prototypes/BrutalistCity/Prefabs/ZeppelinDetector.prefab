@@ -368,7 +368,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   CooldownAndReset: 1
-  cooldownSeconds: 7
+  cooldownSeconds: 10
   curvedBuffer: 0
   forceLinearDecay: 0
   bufferEase: 1

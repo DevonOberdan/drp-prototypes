@@ -5032,7 +5032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fadc926da37ff45ab8cebf35a72f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 35
+  force: 60
   particleTimer: 6.5
   OnParticleStart:
     m_PersistentCalls:
