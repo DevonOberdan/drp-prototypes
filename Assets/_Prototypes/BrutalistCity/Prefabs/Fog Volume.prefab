@@ -637,7 +637,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 3500
+    maxNumParticles: 1500
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 1
     rotation3D: 0
@@ -4885,5 +4885,5 @@ BoxCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1176.8, y: 145.3359, z: 1520.4679}
-  m_Center: {x: 0, y: 15.73204, z: -42.14618}
+  m_Size: {x: 1176.8, y: 943.77814, z: 1520.4679}
+  m_Center: {x: 0, y: 414.95316, z: -42.14618}
