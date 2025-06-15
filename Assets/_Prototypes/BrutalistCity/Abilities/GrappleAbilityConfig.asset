@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f45c90d8fa82a45b4d4fb65ec996a9, type: 3}
   m_Name: GrappleAbilityConfig
   m_EditorClassIdentifier: 
-  Type: 1
   Title: Grapple Hook
   Description: It's a grapple hook! :D
+  Type: 1
   AbilityPrefab: {fileID: 2423599105646803029, guid: 9b368bab31ab60248afcdbc7cb4b65d8, type: 3}
+  Icon: {fileID: 21300000, guid: 3d671b53a46214e4baae8b5822a2e0a3, type: 3}

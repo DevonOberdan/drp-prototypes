@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AbilityCardDisplay : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class AbilityCardDisplay : MonoBehaviour
     [SerializeField] private TMP_Text type;
     [SerializeField] private TMP_Text title;
     [SerializeField] private TMP_Text description;
+    [SerializeField] private Image iconImage;
 
     private void Awake()
     {
@@ -25,6 +27,7 @@ public class AbilityCardDisplay : MonoBehaviour
         type.text = abilityCardConfig.TypeLabel;
         title.text = abilityCardConfig.Title;
         description.text = abilityCardConfig.Description;
+        iconImage.sprite = abilityCardConfig.Icon;
     }
 
 
