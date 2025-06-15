@@ -72,6 +72,14 @@ public class Detection : MonoBehaviour, IPausable
 
     }
 
+    Vector3 startRotationAxis;
+
+    private void Start()
+    {
+        startRotation = rotateObj.transform.rotation;
+        startRotationAxis = rotateObj.transform.up;
+    }
+
     private void BeginLockOn()
     {
         if(!Alerted)
@@ -136,7 +144,7 @@ public class Detection : MonoBehaviour, IPausable
 
                 returning = true;
 
-                float dot = Quaternion.Dot(transform.rotation, returnPoint.Rotation);
+                float dot = Quaternion.Dot(rotateObj.transform.rotation, returnPoint.Rotation);
                 rotateObj.transform.rotation = Quaternion.Slerp(rotateObj.transform.rotation, returnPoint.Rotation, returnSpeed * Mathf.Abs(dot) * Time.deltaTime);
 
                 if(Mathf.Abs(dot) >= 0.999999)
@@ -185,7 +193,7 @@ public class Detection : MonoBehaviour, IPausable
 
         for (float testAngle = accumulatedAngle - 180f; testAngle <= accumulatedAngle + 180f; testAngle += 1f)
         {
-            Quaternion testRotation = startRotation * Quaternion.AngleAxis(testAngle, rotateObj.Vector.normalized);
+            Quaternion testRotation = startRotation * Quaternion.AngleAxis(testAngle, startRotationAxis);
             float angleDiff = Quaternion.Angle(rotateObj.transform.rotation, testRotation);
 
             if (angleDiff < smallestDifference)
@@ -196,6 +204,12 @@ public class Detection : MonoBehaviour, IPausable
             }
         }
 
+        if(rotateObj.TryGetComponent(out RotationClamp clamp))
+        {
+            bestRotation.eulerAngles = clamp.ClampRotation(bestRotation.eulerAngles);
+        }
+
+        Debug.Log("Rotation: " + bestRotation.eulerAngles, gameObject);
         return (bestRotation, bestAngle);
     }
 
