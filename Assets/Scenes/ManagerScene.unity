@@ -236,6 +236,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8592202181975428471, guid: 6a5fb0e4fd83d7b43880e3c180f2bc19, type: 3}
       insertIndex: -1
       addedObject: {fileID: 231500237}
+    - targetCorrespondingSourceObject: {fileID: 8592202181975428471, guid: 6a5fb0e4fd83d7b43880e3c180f2bc19, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 231500238}
   m_SourcePrefab: {fileID: 100100000, guid: 6a5fb0e4fd83d7b43880e3c180f2bc19, type: 3}
 --- !u!82 &231500235 stripped
 AudioSource:
@@ -295,6 +298,35 @@ MonoBehaviour:
   OnSetUnpaused:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &231500238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231500236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eccc7631b112fe6479c3024ceffb081b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 7fbf8ea1f116dbb46adb705ec78d05ac, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 231500235}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  registerOnEnable: 0
 --- !u!1 &767685644
 GameObject:
   m_ObjectHideFlags: 0
