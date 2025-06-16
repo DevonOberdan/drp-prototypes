@@ -15,10 +15,15 @@ public class Detection : MonoBehaviour, IPausable
     [SerializeField] private float lockOnSpeed = 30f;
     [SerializeField] private float returnSpeed = 1.5f;
 
+    [Range(0f, 1f)]
+    [SerializeField] private float speedFactorOnVisible = .5f;
+
     [SerializeField] private InteractionBuffer detectionBuffer;
     [SerializeField] private InteractionBuffer chargeBuffer;
 
     [SerializeField] private UnityEvent<bool> OnDetected;
+    [SerializeField] private UnityEvent OnAlerted;
+    [SerializeField] private UnityEvent OnUnalerted;
 
     private RotateObject rotateObj;
 
@@ -47,13 +52,15 @@ public class Detection : MonoBehaviour, IPausable
         {
             rotateObj.enabled = !value;
             OnDetected.Invoke(Alerted);
-            if(Alerted )
+
+            if (Alerted)
             {
-                alertSound.Play();
+                OnAlerted.Invoke();
             }
             else
             {
-                alertSound.Stop();
+                OnUnalerted.Invoke();
+                rotateObj.SetDampenFactor(1, 0.5f);
             }
         }
     }
@@ -73,7 +80,7 @@ public class Detection : MonoBehaviour, IPausable
         chargeBuffer.OnComplete.AddListener(ChargeComplete);
         chargeBuffer.OnReset.AddListener(ChargeReset);
 
-        lineOfSightMask = targetLayer;
+        lineOfSightMask = Physics.AllLayers;
         Alerted = false;
     }
 
@@ -90,6 +97,8 @@ public class Detection : MonoBehaviour, IPausable
         //currently patrolling && just saw player
         if (!Alerted)
         {
+            ProcessSpeedByVisibility();
+
             detectionBuffer.Interacting = currentlyVisible;
             accumulatedAngle += rotateObj.RotationSpeed * rotateObj.DampenFactor * Time.deltaTime;
 
@@ -154,10 +163,25 @@ public class Detection : MonoBehaviour, IPausable
         }
     }
 
+    private void ProcessSpeedByVisibility()
+    {
+        if (!detectionBuffer.Interacting && currentlyVisible)
+        {
+            rotateObj.SetDampenFactor(speedFactorOnVisible, 0.5f);
+        }
+        else if (detectionBuffer.Interacting && !currentlyVisible)
+        {
+            rotateObj.SetDampenFactor(1, 0.5f);
+        }
+    }
+
     private void BeginLockOn()
     {
         if (!Alerted)
+        {
+            alertSound.Play();
             Alerted = true;
+        }
     }
 
     private void ChargeComplete()

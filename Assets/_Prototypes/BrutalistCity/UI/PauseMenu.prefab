@@ -492,7 +492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8950799538117405410, guid: caecd86e8f45aff46a01f8d306e753c4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8950799538117405410, guid: caecd86e8f45aff46a01f8d306e753c4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -501,7 +501,7 @@ PrefabInstance:
     - target: {fileID: 8950799538117405410, guid: caecd86e8f45aff46a01f8d306e753c4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: a85a6cbcc940b0447bb46ee752661e28, type: 2}
+      objectReference: {fileID: 11400000, guid: 7fbf8ea1f116dbb46adb705ec78d05ac, type: 2}
     - target: {fileID: 8950799538117405410, guid: caecd86e8f45aff46a01f8d306e753c4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -524,7 +524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8950799538117405410, guid: caecd86e8f45aff46a01f8d306e753c4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: FinishOne.GeneralUtilities.BaseGameEvent`1[[System.Boolean, mscorlib
+      value: FinishOne.GeneralUtilities.GameEvent, FinishOne.GeneralUtilities.GameEvents
       objectReference: {fileID: 0}
     - target: {fileID: 8950799538117405410, guid: caecd86e8f45aff46a01f8d306e753c4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
