@@ -509,9 +509,16 @@ MonoBehaviour:
   detectAngle: 40
   lockOnSpeed: 1.1
   returnSpeed: 1.5
+  speedFactorOnVisible: 0.5
   detectionBuffer: {fileID: 1023989328951329565}
   chargeBuffer: {fileID: 7068850712528526852}
   OnDetected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAlerted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUnalerted:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1129725597121032519
@@ -660,7 +667,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.8
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
