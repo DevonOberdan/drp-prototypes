@@ -1,9 +1,29 @@
 fileFormatVersion: 2
-guid: 360c150e89f0b784aae729cef72df765
+guid: a16e6788824721c4aa05e34d6ee969d2
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Concrete
+    second: {fileID: 2100000, guid: 8bc9b6ff608b5c149abca024ec9ff2f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: 2f5a04f50e785ea449ad6bcd79e6073b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LightHighlights
+    second: {fileID: 2100000, guid: d2c47a07569eb6b4ca77ca2f01bb8d2a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: angledSkyscraper1 Slot #8
+    second: {fileID: 2100000, guid: d2c47a07569eb6b4ca77ca2f01bb8d2a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
