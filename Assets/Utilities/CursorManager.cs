@@ -12,6 +12,7 @@ public class CursorManager : MonoBehaviour
     public void SetLock(bool lockState)
     {
         Cursor.lockState = lockState ? CursorLockMode.Locked : CursorLockMode.None;
+        Debug.Log(Cursor.lockState);
     }
 
     public void SetUnlocked(bool unlocked)
