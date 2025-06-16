@@ -75,7 +75,21 @@ MonoBehaviour:
         m_CallState: 2
   PausableBroadcast:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: e2207807209d42d48955c782a833d1e2, type: 2}
+        m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[System.Boolean,
+          mscorlib
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   RequestTogglePause: {fileID: 11400000, guid: 7d4ea231fbf1b464694596909b7db2d8, type: 2}
   RequestPauseState: {fileID: 11400000, guid: 168086a528d9d2742a9a8eb01631eb4f, type: 2}
   RequestPreventInput: {fileID: 11400000, guid: 8473bc842cf89a544bf6314e4cea36e7, type: 2}
+  RequestPausableState: {fileID: 11400000, guid: a85a6cbcc940b0447bb46ee752661e28, type: 2}

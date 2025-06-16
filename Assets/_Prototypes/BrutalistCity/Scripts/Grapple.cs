@@ -68,6 +68,11 @@ public class Grapple : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        playerController.InputReader.onAlternateFire -= StartGrapple;
+    }
+
     private void StartGrapple()
     {
         if (grappleCdTimer > 0)
@@ -130,8 +135,6 @@ public class Grapple : MonoBehaviour
 
         return finalVelocity;
     }
-
-
 
     public void StopGrapple()
     {

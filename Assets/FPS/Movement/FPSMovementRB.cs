@@ -148,7 +148,6 @@ public class FPSMovementRB : FPSMovement
 
     private void HandleJump()
     {
-        Debug.Log(inputReader.IsJumpPressed);
         if (((IsGrounded || jumpBuffer >= 0.0f) || JumpOverrideHandler.AnyFlags) && jumpCounter < maxJumps)
         {
             ForceJump(jumpFactor);
@@ -160,6 +159,7 @@ public class FPSMovementRB : FPSMovement
     private void OnDestroy()
     {
         JumpOverrideHandler.Clear();
+        inputReader.onJump -= HandleJump;
     }
 
     private void FixedUpdate()

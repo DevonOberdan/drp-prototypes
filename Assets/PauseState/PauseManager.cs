@@ -31,6 +31,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private GameEvent RequestTogglePause;
     [SerializeField] private BoolGameEvent RequestPauseState;
     [SerializeField] private BoolGameEvent RequestPreventInput;
+    [SerializeField] private BoolGameEvent RequestPausableState;
 
     public bool Paused 
     {
@@ -71,6 +72,7 @@ public class PauseManager : MonoBehaviour
         RequestTogglePause.RegisterListener(new GameEventClassListener(TogglePause));
         RequestPauseState.RegisterListener(new GameEventClassListener<bool>(SetPaused));
         RequestPreventInput.RegisterListener(new GameEventClassListener<bool>(SetDisableInput));
+        RequestPausableState.RegisterListener(new GameEventClassListener<bool>(SetPausable));
     }
 
     public void Pause() => Paused = true;

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PausableUnityEvents : MonoBehaviour, IPausable
+public class PauseStateListenerUnityEvents : MonoBehaviour, IPausable
 {
     [SerializeField] private UnityEvent OnPaused;
     [SerializeField] private UnityEvent OnUnpaused;

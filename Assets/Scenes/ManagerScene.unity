@@ -232,8 +232,69 @@ PrefabInstance:
     - {fileID: 3739460710699531861, guid: 6a5fb0e4fd83d7b43880e3c180f2bc19, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8592202181975428471, guid: 6a5fb0e4fd83d7b43880e3c180f2bc19, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 231500237}
   m_SourcePrefab: {fileID: 100100000, guid: 6a5fb0e4fd83d7b43880e3c180f2bc19, type: 3}
+--- !u!82 &231500235 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 195813533149732136, guid: 6a5fb0e4fd83d7b43880e3c180f2bc19, type: 3}
+  m_PrefabInstance: {fileID: 231500234}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &231500236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8592202181975428471, guid: 6a5fb0e4fd83d7b43880e3c180f2bc19, type: 3}
+  m_PrefabInstance: {fileID: 231500234}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &231500237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231500236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2ecb20df5433e4594feb186d1e514a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnPaused:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 231500235}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnUnpaused:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 231500235}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: UnPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnSetPaused:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSetUnpaused:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &767685644
 GameObject:
   m_ObjectHideFlags: 0

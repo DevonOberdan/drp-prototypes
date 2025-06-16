@@ -1,7 +1,4 @@
 using FinishOne.GeneralUtilities;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,20 +20,23 @@ public class Detection : MonoBehaviour, IPausable
 
     [SerializeField] private UnityEvent<bool> OnDetected;
 
-    private Quaternion startRotation;
-    private RaycastHit[] playerHit;
     private RotateObject rotateObj;
 
     private (Quaternion Rotation, float Angle) returnPoint;
+    private Vector3 startRotationAxis;
+    private Quaternion startRotation;
+    private LayerMask lineOfSightMask;
 
     private float accumulatedAngle;
+    private float defaultRange;
+
     private bool currentlyVisible;
     private bool returning;
 
-    private float defaultRange;
-
     private static OverrideFlagHandler DetectionNetwork = new();
     private int detectorIdx;
+
+    private bool wasAlerted;
 
     private Vector3 TargetDir => TargetLocation.Value - transform.position;
 
@@ -62,9 +62,7 @@ public class Detection : MonoBehaviour, IPausable
     {
         detectorIdx = DetectionNetwork.AddFlag();
 
-        playerHit = new RaycastHit[1];
         rotateObj = GetComponentInParent<RotateObject>();
-
         startRotation = rotateObj.transform.rotation;
 
         defaultRange = detectRange;
@@ -72,14 +70,12 @@ public class Detection : MonoBehaviour, IPausable
         detectionBuffer.CooldownAndReset = false;
         detectionBuffer.OnComplete.AddListener(BeginLockOn);
 
-        chargeBuffer.OnComplete.AddListener(() => detectRange = defaultRange * 10);
-        chargeBuffer.OnReset.AddListener(() => detectRange = defaultRange);
+        chargeBuffer.OnComplete.AddListener(ChargeComplete);
+        chargeBuffer.OnReset.AddListener(ChargeReset);
 
+        lineOfSightMask = targetLayer;
         Alerted = false;
-
     }
-
-    Vector3 startRotationAxis;
 
     private void Start()
     {
@@ -87,13 +83,7 @@ public class Detection : MonoBehaviour, IPausable
         startRotationAxis = rotateObj.transform.up;
     }
 
-    private void BeginLockOn()
-    {
-        if(!Alerted)
-            Alerted = true;
-    }
-
-    void Update()
+    private void Update()
     {
         currentlyVisible = InRange() && InViewingAngle() && HasLineOfSight();
 
@@ -164,6 +154,24 @@ public class Detection : MonoBehaviour, IPausable
         }
     }
 
+    private void BeginLockOn()
+    {
+        if (!Alerted)
+            Alerted = true;
+    }
+
+    private void ChargeComplete()
+    {
+        detectRange = defaultRange * 10;
+        lineOfSightMask = targetLayer;
+    }
+
+    private void ChargeReset()
+    {
+        detectRange = defaultRange;
+        lineOfSightMask = Physics.AllLayers;
+    }
+
     private void FocusOnTarget()
     {
         returning = false;
@@ -177,19 +185,13 @@ public class Detection : MonoBehaviour, IPausable
         DetectionNetwork.SetFlag(detectorIdx, false);
     }
     
-    private bool InRange()
-    {
-        return Vector3.Distance(transform.position, TargetLocation.Value) < detectRange;
-    }
-
-    private bool InViewingAngle()
-    {
-        return Vector3.Dot(TargetDir.normalized, transform.forward) > Mathf.Cos(detectAngle * Mathf.Deg2Rad);
-    }
+    private bool InRange() => Vector3.Distance(transform.position, TargetLocation.Value) < detectRange;
+    private bool InViewingAngle() => Vector3.Dot(TargetDir.normalized, transform.forward) > Mathf.Cos(detectAngle * Mathf.Deg2Rad);
 
     private bool HasLineOfSight()
     {
-        return Physics.SphereCastNonAlloc(new Ray(transform.position, TargetDir), 10f, playerHit, detectRange, targetLayer) > 0;
+        return Physics.Raycast(transform.position, TargetDir, out RaycastHit hitInfo, detectRange, lineOfSightMask)
+               && targetLayer.Contains(hitInfo.collider.gameObject.layer);
     }
 
     private (Quaternion, float) FindReturnRotation()
@@ -216,16 +218,12 @@ public class Detection : MonoBehaviour, IPausable
             bestRotation.eulerAngles = clamp.ClampRotation(bestRotation.eulerAngles);
         }
 
-        Debug.Log("Rotation: " + bestRotation.eulerAngles, gameObject);
         return (bestRotation, bestAngle);
     }
 
     private void OnDrawGizmosSelected()
     {
-        if (TargetLocation == null)
-        {
-            return;
-        }
+        if (TargetLocation == null) return;
 
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, TargetDir);
@@ -253,9 +251,20 @@ public class Detection : MonoBehaviour, IPausable
         detectionBuffer.enabled = !pause;
         chargeBuffer.enabled = !pause;
 
-        if (!Alerted)
+        // ensure RotateObject script set back properly between pause states
+        if (pause)
         {
-            rotateObj.enabled = !pause;
+            wasAlerted = Alerted;
+            rotateObj.enabled = false;
+        }
+        else
+        {
+            if (!wasAlerted)
+            {
+                rotateObj.enabled = true;
+            }
+
+            wasAlerted = false;
         }
     }
 }

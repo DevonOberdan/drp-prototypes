@@ -139,6 +139,7 @@ GameObject:
   - component: {fileID: 3927912147289423787}
   - component: {fileID: 4426276712560928949}
   - component: {fileID: 5277330938524252382}
+  - component: {fileID: 1702850437345755825}
   - component: {fileID: 6091970501440297111}
   m_Layer: 0
   m_Name: Detector
@@ -325,10 +326,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnPaused:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6091970501440297111}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnUnpaused:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6091970501440297111}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: UnPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnSetPaused:
     m_PersistentCalls:
       m_Calls: []
@@ -368,6 +393,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7225134, y: 0.559436, z: 0.63499993}
   m_Center: {x: 0.0000004917384, y: -0.0035153625, z: -0.000008255242}
+--- !u!114 &1702850437345755825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641831989677012540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae3660a07ad80b24f99f65eaa4a6bcae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &6091970501440297111
 AudioSource:
   m_ObjectHideFlags: 0
