@@ -15,5 +15,5 @@ MonoBehaviour:
   Title: Grapple Hook
   Description: It's a grapple hook! :D
   Type: 1
-  AbilityPrefab: {fileID: 2423599105646803029, guid: 9b368bab31ab60248afcdbc7cb4b65d8, type: 3}
+  AbilityPrefab: {fileID: 3573487508917717854, guid: d9d42ada9c51965499e31db846a8dfec, type: 3}
   Icon: {fileID: 21300000, guid: 3d671b53a46214e4baae8b5822a2e0a3, type: 3}
