@@ -3,37 +3,7 @@ guid: bae82597d45f2f144a7688b75acb37c4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Airship Slot #6
-    second: {fileID: 2100000, guid: 428d8d9094a8547448dcb7172d761d93, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Fins
-    second: {fileID: 2100000, guid: addf9a1bd75dba0468bfb0ca45a7a3d4, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Glass
-    second: {fileID: 2100000, guid: 2f5a04f50e785ea449ad6bcd79e6073b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Light
-    second: {fileID: 2100000, guid: 428d8d9094a8547448dcb7172d761d93, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metal
-    second: {fileID: 2100000, guid: 8e372cc41bbaaa64db668c6774ed04c9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Propeller
-    second: {fileID: 2100000, guid: 4d466893faa440a4a8ae368e4169fc5d, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

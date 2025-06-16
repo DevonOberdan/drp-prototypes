@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Boost
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: d2d797899cf02cf4e99d17990a303168, type: 3}
-  oneShot: 0
+  oneShot: 1
   randomPitch: 0

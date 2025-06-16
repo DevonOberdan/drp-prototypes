@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: LaserBlast
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 6d94f048626cb7144be138f34b7a7f50, type: 3}
-  oneShot: 0
+  oneShot: 1
   randomPitch: 0

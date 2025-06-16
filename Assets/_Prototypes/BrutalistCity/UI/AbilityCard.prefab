@@ -233,7 +233,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalSeconds: 1.25
   decaySeconds: 0.5
-  cooldownSeconds: 1
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -252,6 +251,18 @@ MonoBehaviour:
   OnComplete:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 4121811017620372265}
+        m_TargetAssemblyTypeName: AbilityCardDisplay, Assembly-CSharp
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 11400000, guid: 18ec4941ef003df44bb611c4be5d0cc5, type: 2}
         m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[System.Boolean,
           mscorlib
@@ -265,10 +276,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4121811017620372265}
-        m_TargetAssemblyTypeName: AbilityCardDisplay, Assembly-CSharp
-        m_MethodName: Select
-        m_Mode: 1
+      - m_Target: {fileID: 11400000, guid: 168086a528d9d2742a9a8eb01631eb4f, type: 2}
+        m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[System.Boolean,
+          mscorlib
+        m_MethodName: Raise
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -277,6 +289,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnReset:
+    m_PersistentCalls:
+      m_Calls: []
+  CooldownAndReset: 1
+  cooldownSeconds: 1
   curvedBuffer: 1
   forceLinearDecay: 1
   bufferEase: 1
@@ -297,6 +314,7 @@ MonoBehaviour:
   type: {fileID: 1171122033762127466}
   title: {fileID: 2525709258533046444}
   description: {fileID: 611377948575485622}
+  iconImage: {fileID: 155523410336082219}
 --- !u!114 &4228891870370971137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,7 +655,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3d671b53a46214e4baae8b5822a2e0a3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

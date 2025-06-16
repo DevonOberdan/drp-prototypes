@@ -152,7 +152,7 @@ public class WallRun : MonoBehaviour
         }
 
         wallRunning = false;
-
+        Debug.Log("Applying force off wall with jump");
         Vector3 wallNormal = wallRight ? rightWallHit.normal: leftWallHit.normal;
         Vector3 forceToApply = transform.up * wallJumpUpForce + wallNormal * wallJumpSideForce;
         rb.AddForce(forceToApply, ForceMode.Impulse);

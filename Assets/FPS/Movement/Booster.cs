@@ -11,6 +11,8 @@ public class Booster : MonoBehaviour
     public enum VerticalBoostMode { KILL_MOMENTUM, FORCE_STILL }
     public VerticalBoostMode verticalMode;
 
+    [SerializeField] private InputReader inputReader;
+
     [SerializeField] UnityEvent OnBoost;
 
     [SerializeField] float boostFactor = 4f;
@@ -61,6 +63,11 @@ public class Booster : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        
+    }
+
     void Update()
     {
         CheckBoost();
@@ -68,7 +75,7 @@ public class Booster : MonoBehaviour
 
     private void CheckBoost()
     {
-        if (Input.GetKeyDown(KeyCode.E) && CanBoost)
+        if (inputReader.IsAbilityOnePressed && CanBoost)
         {
             if (movement == BoosterMovement.VERTICAL_ONLY)
             {

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f45c90d8fa82a45b4d4fb65ec996a9, type: 3}
   m_Name: BoosterAbilityConfig
   m_EditorClassIdentifier: 
-  Type: 0
   Title: Booster
-  Description: Fly high!
+  Description: Use 'E' to launch into the air!
+  Type: 0
   AbilityPrefab: {fileID: 395415029599694080, guid: 842c99301a35b3a4abe27cb4e934bc66, type: 3}
+  Icon: {fileID: 21300000, guid: eaefcb01052d492438e0fde4673c641e, type: 3}

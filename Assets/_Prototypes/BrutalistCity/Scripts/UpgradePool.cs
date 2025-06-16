@@ -27,7 +27,7 @@ public class UpgradePool : MonoBehaviour
         }
     }
 
-    public List<AbilityCardSO> Grab(int amount)
+    public List<AbilityCardSO> GrabAtRandom(int amount)
     {
         List<AbilityCardSO> tempPool = new(AvailableAbilityPool);
         List<AbilityCardSO> grabbedItems = new();

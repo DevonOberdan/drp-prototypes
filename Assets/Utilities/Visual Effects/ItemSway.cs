@@ -4,6 +4,7 @@ using UnityEngine;
 public class ItemSway : MonoBehaviour
 {
     [SerializeField] Rigidbody playerRB;
+    [SerializeField] private InputReader inputReader;
 
     [SerializeField] float mouseSwayForce = 1.5f;
     [SerializeField] float movementSwayForce = 1.5f;
@@ -21,19 +22,13 @@ public class ItemSway : MonoBehaviour
     Quaternion centerRotation, childCenterRotation;
     Quaternion newGoalRotation, newSwayRotation, newMovementRotation, newJumpRotation;
 
-    float mouseX, mouseY;
-    float inputMoveX, inputMoveY;
-
     void Start()
     {
         centerRotation = transform.localRotation;
 
-        GetChildReference();
-    }
+        inputReader.EnablePlayerActions();
 
-    void Update()
-    {
-        HandleInput();
+        GetChildReference();
     }
 
     /* May want to try independent smoothing values for mouse sway vs. jumping sway, etc.
@@ -57,8 +52,8 @@ public class ItemSway : MonoBehaviour
 
     void HandleMouseSway()
     {
-        Quaternion yRot = Quaternion.AngleAxis(-mouseX * mouseSwayForce, Vector3.up);
-        Quaternion xRot = Quaternion.AngleAxis(mouseY * mouseSwayForce, Vector3.right);
+        Quaternion yRot = Quaternion.AngleAxis(-inputReader.LookVector.x * mouseSwayForce, Vector3.up);
+        Quaternion xRot = Quaternion.AngleAxis(inputReader.LookVector.y * mouseSwayForce, Vector3.right);
         newSwayRotation = yRot * xRot;
     }
 
@@ -67,19 +62,10 @@ public class ItemSway : MonoBehaviour
         Vector3 localVelocity = playerRB.transform.InverseTransformDirection(playerRB.linearVelocity);
         newJumpRotation = Quaternion.AngleAxis(Mathf.Clamp(localVelocity.y,-jumpRange, jumpRange), Vector3.right);
 
-        Quaternion yRot = Quaternion.AngleAxis(-inputMoveX * movementSwayForce, Vector3.up);
-        Quaternion xRot = Quaternion.AngleAxis(inputMoveY *Mathf.Sin(walkFactor * Time.realtimeSinceStartup) * .5f, Vector3.right);
+        Quaternion yRot = Quaternion.AngleAxis(-inputReader.MoveDirection.x * movementSwayForce, Vector3.up);
+        Quaternion xRot = Quaternion.AngleAxis(inputReader.MoveDirection.y * Mathf.Sin(walkFactor * Time.realtimeSinceStartup) * .5f, Vector3.right);
 
         newMovementRotation = yRot * xRot * newJumpRotation;
-    }
-
-    void HandleInput()
-    {
-        mouseX = Input.GetAxis("Mouse X");
-        mouseY = Input.GetAxis("Mouse Y");
-
-        inputMoveX = Input.GetAxisRaw("Horizontal");
-        inputMoveY = Input.GetAxisRaw("Vertical");
     }
 
     private void OnTransformChildrenChanged()

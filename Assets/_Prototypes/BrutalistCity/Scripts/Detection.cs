@@ -1,14 +1,12 @@
 using FinishOne.GeneralUtilities;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Detection : MonoBehaviour
+public class Detection : MonoBehaviour, IPausable
 {
     [SerializeField] private Vector3Atom TargetLocation;
     [SerializeField] private LayerMask targetLayer;
+    [SerializeField] private AudioSource alertSound;
 
     [Header("Configuration")]
     [SerializeField] private float detectRange = 50.0f;
@@ -22,20 +20,23 @@ public class Detection : MonoBehaviour
 
     [SerializeField] private UnityEvent<bool> OnDetected;
 
-    private Quaternion startRotation;
-    private RaycastHit[] playerHit;
     private RotateObject rotateObj;
 
     private (Quaternion Rotation, float Angle) returnPoint;
+    private Vector3 startRotationAxis;
+    private Quaternion startRotation;
+    private LayerMask lineOfSightMask;
 
     private float accumulatedAngle;
+    private float defaultRange;
+
     private bool currentlyVisible;
     private bool returning;
 
-    private float defaultRange;
-
     private static OverrideFlagHandler DetectionNetwork = new();
     private int detectorIdx;
+
+    private bool wasAlerted;
 
     private Vector3 TargetDir => TargetLocation.Value - transform.position;
 
@@ -46,6 +47,14 @@ public class Detection : MonoBehaviour
         {
             rotateObj.enabled = !value;
             OnDetected.Invoke(Alerted);
+            if(Alerted )
+            {
+                alertSound.Play();
+            }
+            else
+            {
+                alertSound.Stop();
+            }
         }
     }
 
@@ -53,9 +62,7 @@ public class Detection : MonoBehaviour
     {
         detectorIdx = DetectionNetwork.AddFlag();
 
-        playerHit = new RaycastHit[1];
         rotateObj = GetComponentInParent<RotateObject>();
-
         startRotation = rotateObj.transform.rotation;
 
         defaultRange = detectRange;
@@ -63,20 +70,20 @@ public class Detection : MonoBehaviour
         detectionBuffer.CooldownAndReset = false;
         detectionBuffer.OnComplete.AddListener(BeginLockOn);
 
-        chargeBuffer.OnComplete.AddListener(() => detectRange = defaultRange * 10);
-        chargeBuffer.OnReset.AddListener(() => detectRange = defaultRange);
+        chargeBuffer.OnComplete.AddListener(ChargeComplete);
+        chargeBuffer.OnReset.AddListener(ChargeReset);
 
+        lineOfSightMask = targetLayer;
         Alerted = false;
-
     }
 
-    private void BeginLockOn()
+    private void Start()
     {
-        if(!Alerted)
-            Alerted = true;
+        startRotation = rotateObj.transform.rotation;
+        startRotationAxis = rotateObj.transform.up;
     }
 
-    void Update()
+    private void Update()
     {
         currentlyVisible = InRange() && InViewingAngle() && HasLineOfSight();
 
@@ -134,7 +141,7 @@ public class Detection : MonoBehaviour
 
                 returning = true;
 
-                float dot = Quaternion.Dot(transform.rotation, returnPoint.Rotation);
+                float dot = Quaternion.Dot(rotateObj.transform.rotation, returnPoint.Rotation);
                 rotateObj.transform.rotation = Quaternion.Slerp(rotateObj.transform.rotation, returnPoint.Rotation, returnSpeed * Mathf.Abs(dot) * Time.deltaTime);
 
                 if(Mathf.Abs(dot) >= 0.999999)
@@ -145,6 +152,24 @@ public class Detection : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void BeginLockOn()
+    {
+        if (!Alerted)
+            Alerted = true;
+    }
+
+    private void ChargeComplete()
+    {
+        detectRange = defaultRange * 10;
+        lineOfSightMask = targetLayer;
+    }
+
+    private void ChargeReset()
+    {
+        detectRange = defaultRange;
+        lineOfSightMask = Physics.AllLayers;
     }
 
     private void FocusOnTarget()
@@ -160,19 +185,13 @@ public class Detection : MonoBehaviour
         DetectionNetwork.SetFlag(detectorIdx, false);
     }
     
-    private bool InRange()
-    {
-        return Vector3.Distance(transform.position, TargetLocation.Value) < detectRange;
-    }
-
-    private bool InViewingAngle()
-    {
-        return Vector3.Dot(TargetDir.normalized, transform.forward) > Mathf.Cos(detectAngle * Mathf.Deg2Rad);
-    }
+    private bool InRange() => Vector3.Distance(transform.position, TargetLocation.Value) < detectRange;
+    private bool InViewingAngle() => Vector3.Dot(TargetDir.normalized, transform.forward) > Mathf.Cos(detectAngle * Mathf.Deg2Rad);
 
     private bool HasLineOfSight()
     {
-        return Physics.SphereCastNonAlloc(new Ray(transform.position, TargetDir), 10f, playerHit, detectRange, targetLayer) > 0;
+        return Physics.Raycast(transform.position, TargetDir, out RaycastHit hitInfo, detectRange, lineOfSightMask)
+               && targetLayer.Contains(hitInfo.collider.gameObject.layer);
     }
 
     private (Quaternion, float) FindReturnRotation()
@@ -183,7 +202,7 @@ public class Detection : MonoBehaviour
 
         for (float testAngle = accumulatedAngle - 180f; testAngle <= accumulatedAngle + 180f; testAngle += 1f)
         {
-            Quaternion testRotation = startRotation * Quaternion.AngleAxis(testAngle, rotateObj.Vector.normalized);
+            Quaternion testRotation = startRotation * Quaternion.AngleAxis(testAngle, startRotationAxis);
             float angleDiff = Quaternion.Angle(rotateObj.transform.rotation, testRotation);
 
             if (angleDiff < smallestDifference)
@@ -194,18 +213,58 @@ public class Detection : MonoBehaviour
             }
         }
 
+        if(rotateObj.TryGetComponent(out RotationClamp clamp))
+        {
+            bestRotation.eulerAngles = clamp.ClampRotation(bestRotation.eulerAngles);
+        }
+
         return (bestRotation, bestAngle);
     }
 
     private void OnDrawGizmosSelected()
     {
-        if (TargetLocation == null)
-        {
-            return;
-        }
+        if (TargetLocation == null) return;
 
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, TargetDir);
         Gizmos.DrawRay(transform.position, transform.forward*detectRange);
+    }
+
+    private void OnDestroy()
+    {
+        DetectionNetwork.RemoveFlag(detectorIdx);
+    }
+
+    public void Pause()
+    {
+        SetPause(true);
+    }
+
+    public void Unpause()
+    {
+        SetPause(false);
+    }
+
+    public void SetPause(bool pause)
+    {
+        this.enabled = !pause;
+        detectionBuffer.enabled = !pause;
+        chargeBuffer.enabled = !pause;
+
+        // ensure RotateObject script set back properly between pause states
+        if (pause)
+        {
+            wasAlerted = Alerted;
+            rotateObj.enabled = false;
+        }
+        else
+        {
+            if (!wasAlerted)
+            {
+                rotateObj.enabled = true;
+            }
+
+            wasAlerted = false;
+        }
     }
 }

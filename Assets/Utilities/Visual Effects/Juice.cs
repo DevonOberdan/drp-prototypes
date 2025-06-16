@@ -33,6 +33,10 @@ public class Juice : MonoBehaviour
     {
         while(playerCam.fieldOfView != newFOV)
         {
+            while (PauseManager.PauseState)
+            {
+                yield return null;
+            }
             playerCam.fieldOfView = Mathf.MoveTowards(playerCam.fieldOfView, newFOV, Time.deltaTime * fovTimeScale);
             yield return null;
         }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GrappleHit
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: a2916af39c22a6041991fa19b4f99cfb, type: 3}
-  oneShot: 0
-  randomPitch: 1
+  oneShot: 1
+  randomPitch: 0
