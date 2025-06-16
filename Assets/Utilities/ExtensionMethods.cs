@@ -1,3 +1,4 @@
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public static class ExtensionMethods
@@ -14,5 +15,10 @@ public static class ExtensionMethods
         angle %= 360f;
         if (angle < 0f) angle += 360f;
         return angle;
+    }
+    
+    public static bool Contains(this LayerMask mask, int layer)
+    {
+        return (mask & (1 << layer)) != 0;
     }
 }

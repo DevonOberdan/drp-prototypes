@@ -23,7 +23,6 @@ public class InputReader : ScriptableObject, IFPSActions, IInputReader
     public Action onAttack;
     public Action<Vector2> onMove;
     public Action<Vector2> onLook;
-    public Action onTogglePause;
 
     public FPS_Actions playerInputActions;
 
@@ -109,12 +108,10 @@ public class InputReader : ScriptableObject, IFPSActions, IInputReader
         }
 
         AcceptingInput = true;
-        Debug.Log("Enabled player input!");
     }
 
     public void DisablePlayerActions()
     {
-        Debug.Log("Disabled player input!");
         AcceptingInput = false;
     }
 

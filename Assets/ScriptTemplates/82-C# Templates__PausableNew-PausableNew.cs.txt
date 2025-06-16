@@ -1,0 +1,27 @@
+using UnityEngine;
+
+//[RequireComponent(typeof())]
+public class #SCRIPTNAME# : MonoBehaviour, IPausable
+{
+    // grab reference to be paused
+
+    private void Awake()
+    {
+        //GetComponent
+    }
+
+    public void Pause()
+    {
+        SetPause(true);
+    }
+
+    public void Unpause()
+    {
+        SetPause(false);
+    }
+
+    public void SetPause(bool pause)
+    {
+
+    }
+}
