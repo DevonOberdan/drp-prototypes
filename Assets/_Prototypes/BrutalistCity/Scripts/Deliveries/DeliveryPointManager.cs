@@ -1,6 +1,7 @@
 using FinishOne.GeneralUtilities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,20 +16,21 @@ public struct DestinationPointGroup
 public class DeliveryPointManager : MonoBehaviour
 {
     [SerializeField] private DestinationPointGroup[] deliveryGroups;
-
     [SerializeField] private Transform waypointPrefab;
+    [SerializeField] private bool firstGroupOnStart;
 
     private DestinationPointGroup CurrentGroup => deliveryGroups[groupIndex];
 
     private int groupIndex;
     private int completedCount;
 
-    [SerializeField] private bool firstGroupOnStart;
-
-
-    void Start()
+    private void Awake()
     {
+        groupIndex = -1;
         completedCount = 0;
+    }
+    private void Start()
+    {
 
         if (firstGroupOnStart)
         {
@@ -42,31 +44,31 @@ public class DeliveryPointManager : MonoBehaviour
 
         if (completedCount == CurrentGroup.DestinationPoints.Count)
         {
-            Debug.Log("Group done!");
             CurrentGroup.OnWaypointsCompleted.Invoke();
 
             foreach (DestinationPoint point in CurrentGroup.DestinationPoints)
             {
-                for(int i = point.WayPointRoot.childCount - 1; i >= 0; i--)
-                {
-                    Destroy(point.WayPointRoot.GetChild(i).gameObject);
-                }
+                point.ClearWaypoint();
             }
-
-            groupIndex = Mathf.Clamp(groupIndex + 1, 0, deliveryGroups.Length);
-
-            SetupGroup();
+            StartNextGroup();
         }
     }
 
     public void SetupGroup()
     {
         completedCount = 0;
-        Debug.Log("Setting up group!");
 
-        foreach (var root in CurrentGroup.DestinationPoints)
+        foreach (DestinationPoint root in CurrentGroup.DestinationPoints)
         {
-            Instantiate(waypointPrefab, root.WayPointRoot);
+            root.SetupWaypoint(waypointPrefab.gameObject);
+        }
+    }
+    public void StartNextGroup()
+    {
+        if(groupIndex < 0 || completedCount == CurrentGroup.DestinationPoints.Count)
+        {
+            groupIndex = Mathf.Clamp(groupIndex + 1, 0, deliveryGroups.Length);
+            SetupGroup();
         }
     }
 }
