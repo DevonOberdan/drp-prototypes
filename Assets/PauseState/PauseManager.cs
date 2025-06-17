@@ -1,5 +1,4 @@
 using FinishOne.GeneralUtilities;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -38,7 +37,7 @@ public class PauseManager : MonoBehaviour
         get => paused;
         set 
         {
-            if (!CanPause || paused == value)
+            if (!CanPause)
                 return;
 
             paused = value;

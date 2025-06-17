@@ -5253,19 +5253,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: a85a6cbcc940b0447bb46ee752661e28, type: 2}
-        m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[System.Boolean,
-          mscorlib
-        m_MethodName: Raise
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1564198841}
         m_TargetAssemblyTypeName: CursorManager, Assembly-CSharp
         m_MethodName: SetUnlocked
@@ -5321,93 +5308,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4378547400436916973, guid: 558ae29cc62869044bb632c2db8657b6, type: 3}
   m_PrefabInstance: {fileID: 808360806}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1564198837 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4293153875104328626, guid: e3a066b8d36cb094787b0df99b679b62, type: 3}
-  m_PrefabInstance: {fileID: 2081570990}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1564198841 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5329287108342979046, guid: e3a066b8d36cb094787b0df99b679b62, type: 3}
   m_PrefabInstance: {fileID: 2081570990}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564198837}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6672e79f2077ed343bd827952a72b2ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1564198844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564198837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e77d3cd429e11349b100d8a594343c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 748e8e6447b78ce46979dea0225e04f9, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1564198841}
-        m_TargetAssemblyTypeName: CursorManager, Assembly-CSharp
-        m_MethodName: SetUnlocked
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  registerOnEnable: 0
---- !u!114 &1564198845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564198837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bcdb3a30bfa98d438e544959f769a65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startup: 0
-  OnStartup:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: a85a6cbcc940b0447bb46ee752661e28, type: 2}
-        m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[System.Boolean,
-          mscorlib
-        m_MethodName: Raise
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 168086a528d9d2742a9a8eb01631eb4f, type: 2}
-        m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[System.Boolean,
-          mscorlib
-        m_MethodName: Raise
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1001 &1564830950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7271,13 +7182,7 @@ PrefabInstance:
     - {fileID: 1567303319909614204, guid: e3a066b8d36cb094787b0df99b679b62, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4293153875104328626, guid: e3a066b8d36cb094787b0df99b679b62, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1564198844}
-    - targetCorrespondingSourceObject: {fileID: 4293153875104328626, guid: e3a066b8d36cb094787b0df99b679b62, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1564198845}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3a066b8d36cb094787b0df99b679b62, type: 3}
 --- !u!1001 &2086528726
 PrefabInstance:

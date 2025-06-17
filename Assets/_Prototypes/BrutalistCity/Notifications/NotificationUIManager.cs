@@ -1,5 +1,3 @@
-using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -17,7 +15,6 @@ public class NotificationUIManager : MonoBehaviour
     [SerializeField] private UnityEvent<bool> OnQueueActive;
 
     private Queue<NotificationSO> queue;
-
     private CanvasGroup group;
 
     private bool continueText;
@@ -26,11 +23,10 @@ public class NotificationUIManager : MonoBehaviour
     private void Awake()
     {
         group = GetComponent<CanvasGroup>();
-
         queue = new Queue<NotificationSO>();
+
         continueText = true;
     }
-
 
     public void QueueNotification(NotificationSO notification)
     {
@@ -58,10 +54,9 @@ public class NotificationUIManager : MonoBehaviour
             await DisplayNotification(notification);
             
             canContinue = true;
-
             queue.Dequeue();
 
-            await AwaitableMethods.WaitUntil(() => continueText);
+            await AwaitableMethods.WaitUntil(() => !PauseManager.PauseState && continueText);
         }
 
         Close();
@@ -70,16 +65,14 @@ public class NotificationUIManager : MonoBehaviour
     private async Awaitable DisplayNotification(NotificationSO notification)
     {
         image.sprite = notification.Icon;
-
-        Awaitable textType = textField.GetComponent<ITextDisplay>().SetText(notification.NotificationMessage);
-
-        await textType;
-
-        Debug.Log("Typing done!");
+        await textField.GetComponent<ITextDisplay>().SetText(notification.NotificationMessage);
     }
 
     public void Continue()
     {
+        if (PauseManager.PauseState)
+            return;
+
         if (canContinue)
         {
             continueText = true;

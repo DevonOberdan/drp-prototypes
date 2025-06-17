@@ -4,14 +4,20 @@ public class CursorManager : MonoBehaviour
 {
     [SerializeField] bool startLocked;
 
+    private int requestCount;
+
     private void Awake()
     {
-        SetLock(startLocked);
+        if (startLocked)
+        {
+            SetLock(true);
+        }
     }
 
     public void SetLock(bool lockState)
     {
-        Cursor.lockState = lockState ? CursorLockMode.Locked : CursorLockMode.None;
+        requestCount += lockState ? 1 : -1;
+        Cursor.lockState = requestCount > 0 ? CursorLockMode.Locked : CursorLockMode.None;
     }
 
     public void SetUnlocked(bool unlocked)
