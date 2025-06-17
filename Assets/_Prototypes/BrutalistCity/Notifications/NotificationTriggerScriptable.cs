@@ -10,7 +10,7 @@ public class NotificationTriggerScriptable : MonoBehaviour
     [SerializeField] private Image characterIconUI;
 
     [Header("Scriptable Object")]
-    [SerializeField] private NotificationScriptable noteScriptable;
+    [SerializeField] private NotificationSO noteScriptable;
 
     [Header("Notification Animation")]
     [SerializeField] private Animator notificationAnim;
@@ -32,7 +32,7 @@ public class NotificationTriggerScriptable : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && noteScriptable.removeAfterExit)
+        if (other.CompareTag("Player") && noteScriptable.RemoveAfterExit)
         {
             RemoveNotification();
         }
@@ -48,9 +48,9 @@ public class NotificationTriggerScriptable : MonoBehaviour
        // notificationTextUI.text = noteScriptable.notificationMessage;
        // characterIconUI.sprite = noteScriptable.yourIcon;
 
-        if (noteScriptable.disableAfterTimer)
+        if (noteScriptable.DisableAfterTimer)
         {
-            yield return new WaitForSeconds(noteScriptable.disableTimer);
+            yield return new WaitForSeconds(noteScriptable.DisableTime);
             RemoveNotification();
         }
     }

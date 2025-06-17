@@ -4,7 +4,7 @@ public class CursorManager : MonoBehaviour
 {
     [SerializeField] bool startLocked;
 
-    private void Start()
+    private void Awake()
     {
         SetLock(startLocked);
     }

@@ -26,7 +26,8 @@ public class InputReader : ScriptableObject, IFPSActions, IInputReader
 
     public FPS_Actions playerInputActions;
 
-    private bool AcceptingInput = true;
+    private bool acceptingInput;
+    private bool AcceptingInput => !PauseManager.PauseState && acceptingInput;
 
     public bool IsJumpPressed => AcceptingInput && playerInputActions.FPS.Jump.IsPressed();
     public bool IsSprintPressed => AcceptingInput && playerInputActions.FPS.Sprint.IsPressed();
@@ -100,6 +101,7 @@ public class InputReader : ScriptableObject, IFPSActions, IInputReader
 
     public void EnablePlayerActions()
     {
+        Debug.Log("Actions enabled!");
         if (playerInputActions == null)
         {
             playerInputActions = new FPS_Actions();
@@ -107,12 +109,12 @@ public class InputReader : ScriptableObject, IFPSActions, IInputReader
             playerInputActions.Enable();
         }
 
-        AcceptingInput = true;
+        acceptingInput = true;
     }
 
     public void DisablePlayerActions()
     {
-        AcceptingInput = false;
+        acceptingInput = false;
     }
 
     public void SetEnablePlayerActions(bool enable)

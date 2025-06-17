@@ -23,10 +23,17 @@ public class DeliveryPointManager : MonoBehaviour
     private int groupIndex;
     private int completedCount;
 
+    [SerializeField] private bool firstGroupOnStart;
+
+
     void Start()
     {
         completedCount = 0;
-        SetupGroup();
+
+        if (firstGroupOnStart)
+        {
+            SetupGroup();
+        }
     }
 
     public void DeliveryPointReached()
@@ -52,9 +59,10 @@ public class DeliveryPointManager : MonoBehaviour
         }
     }
 
-    private void SetupGroup()
+    public void SetupGroup()
     {
         completedCount = 0;
+        Debug.Log("Setting up group!");
 
         foreach (var root in CurrentGroup.DestinationPoints)
         {
