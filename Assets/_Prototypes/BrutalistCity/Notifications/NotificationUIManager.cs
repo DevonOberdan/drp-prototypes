@@ -1,5 +1,3 @@
-using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -61,7 +59,7 @@ public class NotificationUIManager : MonoBehaviour
 
             queue.Dequeue();
 
-            await AwaitableMethods.WaitUntil(() => continueText);
+            await AwaitableMethods.WaitUntil(() => !PauseManager.PauseState && continueText);
         }
 
         Close();
@@ -80,6 +78,9 @@ public class NotificationUIManager : MonoBehaviour
 
     public void Continue()
     {
+        if (PauseManager.PauseState)
+            return;
+
         if (canContinue)
         {
             continueText = true;

@@ -101,7 +101,6 @@ public class InputReader : ScriptableObject, IFPSActions, IInputReader
 
     public void EnablePlayerActions()
     {
-        Debug.Log("Actions enabled!");
         if (playerInputActions == null)
         {
             playerInputActions = new FPS_Actions();

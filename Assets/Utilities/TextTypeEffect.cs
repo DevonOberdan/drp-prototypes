@@ -40,6 +40,7 @@ public class TextTypeEffect : MonoBehaviour, ITextDisplay
             counter++;
             textComponent.maxVisibleCharacters = counter;
             float interval = 1f / charactersPerSecond;
+            await AwaitableMethods.WaitUntil(() => !PauseManager.PauseState);
             await Awaitable.WaitForSecondsAsync(interval);
         }
     }
