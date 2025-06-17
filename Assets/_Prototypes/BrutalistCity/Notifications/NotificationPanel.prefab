@@ -408,7 +408,7 @@ MonoBehaviour:
     fits on here before it reaches the bottom. Cool story bro.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f81766955ca2e7445b7ccc9738df771a, type: 2}
-  m_sharedMaterial: {fileID: -6566758086868774712, guid: f81766955ca2e7445b7ccc9738df771a, type: 2}
+  m_sharedMaterial: {fileID: 471285196979955282, guid: f81766955ca2e7445b7ccc9738df771a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -432,8 +432,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37
-  m_fontSizeBase: 37
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -443,8 +443,8 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: -2
-  m_wordSpacing: -10
-  m_lineSpacing: 0
+  m_wordSpacing: -20
+  m_lineSpacing: -2
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0

@@ -122,6 +122,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: NotificationUIManager, Assembly-CSharp
+          m_MethodName: QueueNotification
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 853b3d65e1e49da4f8e241550813370f, type: 2}
+            m_ObjectArgumentAssemblyTypeName: NotificationSO, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
   - <DestinationPoints>k__BackingField:
     - {fileID: 2094744651530687397}
     - {fileID: 1111863675131431835}
@@ -162,6 +174,30 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: NotificationUIManager, Assembly-CSharp
+          m_MethodName: QueueNotification
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: c7e475bb9860c994aaf2232d391e9afa, type: 2}
+            m_ObjectArgumentAssemblyTypeName: NotificationSO, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: NotificationUIManager, Assembly-CSharp
+          m_MethodName: QueueNotification
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 5a8349df20c75df4dbc7350084eb6b84, type: 2}
+            m_ObjectArgumentAssemblyTypeName: NotificationSO, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
   - <DestinationPoints>k__BackingField:
     - {fileID: 8002528054242393801}
     - {fileID: 2473240933377157983}
@@ -197,6 +233,30 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: NotificationUIManager, Assembly-CSharp
+          m_MethodName: QueueNotification
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 2701ae06b02925f489e5e27bd62e53a8, type: 2}
+            m_ObjectArgumentAssemblyTypeName: NotificationSO, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: NotificationUIManager, Assembly-CSharp
+          m_MethodName: QueueNotification
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 7412296c90255254f977dddae43f8f03, type: 2}
+            m_ObjectArgumentAssemblyTypeName: NotificationSO, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 

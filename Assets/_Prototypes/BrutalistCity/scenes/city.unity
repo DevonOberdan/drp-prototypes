@@ -3807,6 +3807,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1551102387}
+        m_TargetAssemblyTypeName: NotificationUIManager, Assembly-CSharp
+        m_MethodName: QueueNotification
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: e43d23ae6f607f0429973accf48900ca, type: 2}
+          m_ObjectArgumentAssemblyTypeName: NotificationSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1165907733
 Transform:
   m_ObjectHideFlags: 0
@@ -5609,6 +5621,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 99216015}
     m_Modifications:
+    - target: {fileID: 1166532970867210337, guid: a4e59d579c11aa541a7b903aa2d4b3ad, type: 3}
+      propertyPath: deliveryGroups.Array.data[1].OnWaypointsCompleted.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1551102387}
+    - target: {fileID: 1166532970867210337, guid: a4e59d579c11aa541a7b903aa2d4b3ad, type: 3}
+      propertyPath: deliveryGroups.Array.data[3].OnWaypointsCompleted.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1551102387}
+    - target: {fileID: 1166532970867210337, guid: a4e59d579c11aa541a7b903aa2d4b3ad, type: 3}
+      propertyPath: deliveryGroups.Array.data[3].OnWaypointsCompleted.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1551102387}
+    - target: {fileID: 1166532970867210337, guid: a4e59d579c11aa541a7b903aa2d4b3ad, type: 3}
+      propertyPath: deliveryGroups.Array.data[5].OnWaypointsCompleted.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1551102387}
+    - target: {fileID: 1166532970867210337, guid: a4e59d579c11aa541a7b903aa2d4b3ad, type: 3}
+      propertyPath: deliveryGroups.Array.data[5].OnWaypointsCompleted.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1551102387}
     - target: {fileID: 3412964140299381869, guid: a4e59d579c11aa541a7b903aa2d4b3ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.025

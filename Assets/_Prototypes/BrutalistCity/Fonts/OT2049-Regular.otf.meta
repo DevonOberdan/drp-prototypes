@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0d0c0021008d53848be4df96b0add359
+guid: 38b14b96c7fb4464991ece349c2a39c2
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Hanson
+  - OT 2049
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
