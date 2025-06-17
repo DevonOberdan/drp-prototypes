@@ -435,6 +435,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -3161709617562154852, guid: a16e6788824721c4aa05e34d6ee969d2, type: 3}
+    - target: {fileID: 987690628971223481, guid: aa01dafca2265964f8335532bcb36125, type: 3}
+      propertyPath: cooldownSeconds
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4095644951260335200, guid: aa01dafca2265964f8335532bcb36125, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5000001

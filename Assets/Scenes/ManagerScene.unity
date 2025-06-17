@@ -462,6 +462,10 @@ PrefabInstance:
       propertyPath: inputModule
       value: 
       objectReference: {fileID: 767685645}
+    - target: {fileID: 8340600932117036509, guid: fd7ccb79feeb5574baa5774eada24b43, type: 3}
+      propertyPath: PauseStateBroadcast.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdfabaf545df194fae66e5b6e12805e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalSeconds: 25
-  decaySeconds: 20
+  totalSeconds: 30
+  decaySeconds: 35
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -359,8 +359,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   alertSound: {fileID: 771619743781461373}
-  detectRange: 900
-  detectAngle: 30
+  detectRange: 1100
+  detectAngle: 35
   lockOnSpeed: 1.1
   returnSpeed: 1.5
   detectionBuffer: {fileID: 1471481939373586654}
@@ -745,7 +745,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   CooldownAndReset: 1
-  cooldownSeconds: 30
+  cooldownSeconds: 7
   curvedBuffer: 0
   forceLinearDecay: 0
   bufferEase: 1
