@@ -26,10 +26,7 @@ public class FPSCameraRB : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
 
-    private void Start()
-    {       
         minAngle = -90.0f;
         maxAngle = 90.0f;
         rotationLerpSpeed = 25.0f;

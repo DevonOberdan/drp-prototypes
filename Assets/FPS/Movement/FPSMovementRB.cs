@@ -126,6 +126,9 @@ public class FPSMovementRB : FPSMovement
 
         JumpOverrideHandler = new OverrideFlagHandler();
         InFreeMovement = true;
+
+        inputReader.EnablePlayerActions();
+        inputReader.onJump += HandleJump;
     }
 
     private void Start()
@@ -141,9 +144,6 @@ public class FPSMovementRB : FPSMovement
 
         playerMask = ~(1 << LayerMask.NameToLayer("Player"));
         jumpCounter = 0;
-
-        inputReader.EnablePlayerActions();
-        inputReader.onJump += HandleJump;
     }
 
     private void HandleJump()

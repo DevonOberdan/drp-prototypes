@@ -63,11 +63,6 @@ public class Booster : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        
-    }
-
     void Update()
     {
         CheckBoost();
