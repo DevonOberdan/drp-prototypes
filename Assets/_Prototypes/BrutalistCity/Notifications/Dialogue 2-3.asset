@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff389e22c8bf5684e84b9219c5f170dd, type: 3}
   m_Name: Dialogue 2-3
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 8bcb670495de2504bb0c50f40e29e2fb, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 002b027ac53dec043b6122c46241b075, type: 3}
   <NotificationMessage>k__BackingField: You better quit now before they catch on
     to you, they always do. Don't give them a reason.
   <RemoveAfterExit>k__BackingField: 0

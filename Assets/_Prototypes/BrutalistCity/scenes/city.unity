@@ -7668,17 +7668,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 99216015}
     m_Modifications:
-    - target: {fileID: 1494901197760354944, guid: b03df1d01d1183847aea64c5270778ef, type: 3}
-      propertyPath: m_ProvidesContacts
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1969186561737185028, guid: b03df1d01d1183847aea64c5270778ef, type: 3}
       propertyPath: m_Name
       value: Boost Pads
-      objectReference: {fileID: 0}
-    - target: {fileID: 3160574403051698462, guid: b03df1d01d1183847aea64c5270778ef, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8143874103224784227, guid: b03df1d01d1183847aea64c5270778ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7720,12 +7712,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8145795650695415888, guid: b03df1d01d1183847aea64c5270778ef, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
