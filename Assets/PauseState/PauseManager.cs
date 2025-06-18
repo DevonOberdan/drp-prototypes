@@ -1,4 +1,5 @@
 using FinishOne.GeneralUtilities;
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,7 +9,7 @@ public static class InterfaceFinder
 {
     public static T[] FindObjectsByType<T>() where T : class
     {
-        return Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None)
+        return UnityEngine.Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None)
             .Select(m => m as T)
             .Where(m => m != null)
             .ToArray();
@@ -22,6 +23,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private InputSystemUIInputModule inputModule;
 
     private bool paused;
+    private int requestCount;
 
     [SerializeField] private UnityEvent<bool> PauseStateBroadcast;
     [SerializeField] private UnityEvent<bool> PausableBroadcast;
@@ -76,8 +78,15 @@ public class PauseManager : MonoBehaviour
 
     public void Pause() => Paused = true;
     public void Play() => Paused = false;
-    public void TogglePause() => Paused = !Paused;
-    public void SetPaused(bool value) => Paused = value;
+    public void TogglePause() => SetPaused(!Paused);
+    
+    public void SetPaused(bool value)
+    {
+        requestCount += value ? 1 : -1;
+        requestCount = Math.Max(requestCount, 0);
+        //Debug.Log("Pause: " + requestCount);
+        Paused = requestCount > 0;
+    }
 
     public void SetPausable(bool pausable)
     {

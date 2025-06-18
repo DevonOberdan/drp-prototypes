@@ -18,20 +18,6 @@ public class GameObjectUtilities : MonoBehaviour
         }
     }
 
-    public void SetCanvasGroupVisibility(bool visible)
-    {
-        if(TryGetComponent(out CanvasGroup cg))
-        {
-            cg.alpha = visible ? 1 : 0;
-            cg.blocksRaycasts = visible;
-        }
-    }
-
-    public void SetCanvasGroupHidden(bool hidden)
-    {
-        SetCanvasGroupVisibility(!hidden);
-    }
-
     public void DestroySelf()
     {
         Destroy(gameObject);
