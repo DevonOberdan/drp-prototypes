@@ -146,7 +146,7 @@ MonoBehaviour:
   - <DestinationPoints>k__BackingField:
     - {fileID: 8875385847653379127}
     - {fileID: 4561178784107893162}
-    - {fileID: 8683514304769054097}
+    - {fileID: 6047137743077611218}
     OnWaypointsCompleted:
       m_PersistentCalls:
         m_Calls:
@@ -212,7 +212,7 @@ MonoBehaviour:
   - <DestinationPoints>k__BackingField:
     - {fileID: 8476992740063370176}
     - {fileID: 8448551557113134248}
-    - {fileID: 6047137743077611218}
+    - {fileID: 8683514304769054097}
     OnWaypointsCompleted:
       m_PersistentCalls:
         m_Calls:
@@ -281,7 +281,46 @@ MonoBehaviour:
     - {fileID: 5486563023032792807}
     OnWaypointsCompleted:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: e403ab3d1a3e97d4e8cce630dd01f7cc, type: 2}
+          m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[NotificationSO,
+            Assembly-CSharp
+          m_MethodName: Raise
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 714996ad387251b46aef6eda412ce792, type: 2}
+            m_ObjectArgumentAssemblyTypeName: NotificationSO, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 11400000, guid: e403ab3d1a3e97d4e8cce630dd01f7cc, type: 2}
+          m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[NotificationSO,
+            Assembly-CSharp
+          m_MethodName: Raise
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: bdeec8a64d6c1b343bececafe8346394, type: 2}
+            m_ObjectArgumentAssemblyTypeName: NotificationSO, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 11400000, guid: e403ab3d1a3e97d4e8cce630dd01f7cc, type: 2}
+          m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[NotificationSO,
+            Assembly-CSharp
+          m_MethodName: Raise
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: f939aaff16bf9e844bad8078b381dd91, type: 2}
+            m_ObjectArgumentAssemblyTypeName: NotificationSO, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   waypointPrefab: {fileID: 6937245537380113743, guid: c899d1e861972214ca34635dcfecf4cf, type: 3}
   firstGroupOnStart: 0
 --- !u!114 &6990666973880791500
@@ -587,6 +626,66 @@ PrefabInstance:
     - target: {fileID: 5393433624920632139, guid: d88830337faff314fab1a8f1643273e7, type: 3}
       propertyPath: m_Name
       value: Delivery door (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: e403ab3d1a3e97d4e8cce630dd01f7cc, type: 2}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: e403ab3d1a3e97d4e8cce630dd01f7cc, type: 2}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Raise
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Raise
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FinishOne.GeneralUtilities.BaseGameEvent`1[[NotificationSO, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: FinishOne.GeneralUtilities.BaseGameEvent`1[[NotificationSO, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 342ae8cb85bb4ee469f3d998dfd858a3, type: 2}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 4328677513804af449ce1e01341df60f, type: 2}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: NotificationSO, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: NotificationSO, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2011,6 +2110,66 @@ PrefabInstance:
       propertyPath: m_Name
       value: Delivery door (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: e403ab3d1a3e97d4e8cce630dd01f7cc, type: 2}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: e403ab3d1a3e97d4e8cce630dd01f7cc, type: 2}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Raise
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Raise
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FinishOne.GeneralUtilities.BaseGameEvent`1[[NotificationSO, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: FinishOne.GeneralUtilities.BaseGameEvent`1[[NotificationSO, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: e1e006ff44e87fd42955d623cc28e246, type: 2}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: e05fb1f567f456348a7d361e04d8a72a, type: 2}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: NotificationSO, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: NotificationSO, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3090,6 +3249,66 @@ PrefabInstance:
       propertyPath: m_Name
       value: Delivery door (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: e403ab3d1a3e97d4e8cce630dd01f7cc, type: 2}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: e403ab3d1a3e97d4e8cce630dd01f7cc, type: 2}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Raise
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Raise
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FinishOne.GeneralUtilities.BaseGameEvent`1[[NotificationSO, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: FinishOne.GeneralUtilities.BaseGameEvent`1[[NotificationSO, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 84759642f1ccac747bcd5ba7c531fe13, type: 2}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 38d4babd46011814493bd17be1d3b09e, type: 2}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: NotificationSO, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: NotificationSO, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3782,6 +4001,38 @@ PrefabInstance:
     - target: {fileID: 5393433624920632139, guid: d88830337faff314fab1a8f1643273e7, type: 3}
       propertyPath: m_Name
       value: Delivery door (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: e403ab3d1a3e97d4e8cce630dd01f7cc, type: 2}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Raise
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FinishOne.GeneralUtilities.BaseGameEvent`1[[NotificationSO, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 76ba5210b6034374098109068113c567, type: 2}
+    - target: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
+      propertyPath: OnReached.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: NotificationSO, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
