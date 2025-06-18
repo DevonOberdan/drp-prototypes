@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 8266412261308507449}
   - component: {fileID: 5329287108342979046}
   - component: {fileID: 2403250770328379229}
-  - component: {fileID: 4724857702674097843}
-  - component: {fileID: 4059936314174941146}
   - component: {fileID: 5851452010588431585}
+  - component: {fileID: 6842875219526550571}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -64,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6672e79f2077ed343bd827952a72b2ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startLocked: 0
+  startLocked: 1
 --- !u!114 &2403250770328379229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +99,7 @@ MonoBehaviour:
   OnActionPerformed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 7d4ea231fbf1b464694596909b7db2d8, type: 2}
+      - m_Target: {fileID: 11400000, guid: d4b76af2e108d3e4a853637f678da464, type: 2}
         m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.GameEvent, FinishOne.GeneralUtilities.GameEvents
         m_MethodName: Raise
         m_Mode: 1
@@ -112,64 +111,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4724857702674097843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4293153875104328626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eccc7631b112fe6479c3024ceffb081b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: b6dd717bc9e2dc74284ede26a8f14076, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5329287108342979046}
-        m_TargetAssemblyTypeName: CursorManager, Assembly-CSharp
-        m_MethodName: SetLock
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  registerOnEnable: 0
---- !u!114 &4059936314174941146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4293153875104328626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e77d3cd429e11349b100d8a594343c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 748e8e6447b78ce46979dea0225e04f9, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5329287108342979046}
-        m_TargetAssemblyTypeName: CursorManager, Assembly-CSharp
-        m_MethodName: SetUnlocked
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  registerOnEnable: 0
 --- !u!114 &5851452010588431585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,3 +153,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6842875219526550571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4293153875104328626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e77d3cd429e11349b100d8a594343c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 977ddc4c40e24c44da22926b56cda9d2, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5329287108342979046}
+        m_TargetAssemblyTypeName: CursorManager, Assembly-CSharp
+        m_MethodName: SetUnlocked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  registerOnEnable: 0

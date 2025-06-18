@@ -87,8 +87,8 @@ GameObject:
   - component: {fileID: 7304409772305052835}
   - component: {fileID: 5919842583120096373}
   - component: {fileID: 5943326264952119654}
-  - component: {fileID: 2572297842796621627}
-  - component: {fileID: 479492007152980693}
+  - component: {fileID: 1955062240814443465}
+  - component: {fileID: 3819911982559808630}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadEvent: {fileID: 11400000, guid: c13dca89749dc844f9a9c7f714ec7e54, type: 2}
   defaultScene: {fileID: 0}
---- !u!114 &2572297842796621627
+--- !u!114 &1955062240814443465
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,10 +151,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 4567815903847322276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5de8588d119300e49ab4047215db1dcc, type: 3}
+  m_Script: {fileID: 11500000, guid: 0411a0b015a98394facbc0b19c6bea0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &479492007152980693
+  OnSetVisible:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 168086a528d9d2742a9a8eb01631eb4f, type: 2}
+        m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[System.Boolean,
+          mscorlib
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 977ddc4c40e24c44da22926b56cda9d2, type: 2}
+        m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[System.Boolean,
+          mscorlib
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3819911982559808630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,17 +192,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4567815903847322276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e77d3cd429e11349b100d8a594343c9, type: 3}
+  m_Script: {fileID: 11500000, guid: eccc7631b112fe6479c3024ceffb081b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 748e8e6447b78ce46979dea0225e04f9, type: 2}
+  gameEvent: {fileID: 11400000, guid: d4b76af2e108d3e4a853637f678da464, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2572297842796621627}
-        m_TargetAssemblyTypeName: GameObjectUtilities, Assembly-CSharp
-        m_MethodName: SetCanvasGroupVisibility
-        m_Mode: 0
+      - m_Target: {fileID: 1955062240814443465}
+        m_TargetAssemblyTypeName: PauseUIController, Assembly-CSharp
+        m_MethodName: ToggleUIVisible
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -367,11 +396,11 @@ PrefabInstance:
     - target: {fileID: 8950799538117405410, guid: caecd86e8f45aff46a01f8d306e753c4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: 7d4ea231fbf1b464694596909b7db2d8, type: 2}
+      objectReference: {fileID: 11400000, guid: d4b76af2e108d3e4a853637f678da464, type: 2}
     - target: {fileID: 8950799538117405410, guid: caecd86e8f45aff46a01f8d306e753c4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: 7d4ea231fbf1b464694596909b7db2d8, type: 2}
+      objectReference: {fileID: 11400000, guid: d4b76af2e108d3e4a853637f678da464, type: 2}
     - target: {fileID: 8950799538117405410, guid: caecd86e8f45aff46a01f8d306e753c4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
