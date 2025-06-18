@@ -22,12 +22,14 @@ public class ItemSway : MonoBehaviour
     Quaternion centerRotation, childCenterRotation;
     Quaternion newGoalRotation, newSwayRotation, newMovementRotation, newJumpRotation;
 
-    void Start()
+    private void Awake()
     {
         centerRotation = transform.localRotation;
-
         inputReader.EnablePlayerActions();
+    }
 
+    private void Start()
+    {
         GetChildReference();
     }
 
