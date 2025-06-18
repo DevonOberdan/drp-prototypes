@@ -535,8 +535,7 @@ MonoBehaviour:
     fits on here before it reaches the bottom. Cool story bro.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f81766955ca2e7445b7ccc9738df771a, type: 2}
-  m_sharedMaterial: {fileID: 471285196979955282, guid: f81766955ca2e7445b7ccc9738df771a,
-    type: 2}
+  m_sharedMaterial: {fileID: 471285196979955282, guid: f81766955ca2e7445b7ccc9738df771a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

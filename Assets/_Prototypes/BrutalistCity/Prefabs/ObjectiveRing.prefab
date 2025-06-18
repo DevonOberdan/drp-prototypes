@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 8476288826072974062}
   - component: {fileID: 8883092858884206881}
   - component: {fileID: 6305767531000519957}
-  - component: {fileID: 8362302251106135819}
   - component: {fileID: 4641652031484272250}
   - component: {fileID: 8933759741958392528}
   m_Layer: 0
-  m_Name: Objective Ring
+  m_Name: ObjectiveRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,22 +111,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.0000004, z: 1}
   m_Center: {x: 0, y: -0.00000047683716, z: -0.5}
---- !u!114 &8362302251106135819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1362345432201601500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee76cf47e1ae871418b9fc0399fd5f71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  notificationTextUI: {fileID: 0}
-  characterIconUI: {fileID: 0}
-  noteScriptable: {fileID: 11400000, guid: 453d9a8a4a4f85240b770595cf9e7d79, type: 2}
-  notificationAnim: {fileID: 0}
 --- !u!114 &4641652031484272250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +178,7 @@ GameObject:
   - component: {fileID: 16379125890045898}
   - component: {fileID: 1022809602249247151}
   m_Layer: 0
-  m_Name: Objective beam
+  m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
