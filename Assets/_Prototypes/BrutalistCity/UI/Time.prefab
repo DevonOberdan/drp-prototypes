@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5283662652772977331}
   - component: {fileID: 4599768383603141809}
   - component: {fileID: 4217018938247316496}
+  - component: {fileID: 1507246899039786526}
+  - component: {fileID: 7787449138853993323}
   m_Layer: 5
   m_Name: Time
   m_TagString: Untagged
@@ -54,7 +56,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4750878010434089281}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -156,6 +158,7 @@ MonoBehaviour:
   textField: {fileID: 5283662652772977331}
   msPlaces: 2
   displayHours: 0
+  startOn: 0
 --- !u!114 &4217018938247316496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,3 +188,59 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   registerOnEnable: 0
+--- !u!114 &1507246899039786526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4750878010434089281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bcdb3a30bfa98d438e544959f769a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startup: 1
+  OnStartup:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7787449138853993323}
+        m_TargetAssemblyTypeName: BoolAtomBroadcast, Assembly-CSharp
+        m_MethodName: Broadcast
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7787449138853993323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4750878010434089281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c18f45794431743bdf434263441781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  atom: {fileID: 11400000, guid: 44efe201a5725d340a6a14dc973173ee, type: 2}
+  BroadcastValue:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4599768383603141809}
+        m_TargetAssemblyTypeName: TimeTracker, Assembly-CSharp
+        m_MethodName: SetShowTimer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

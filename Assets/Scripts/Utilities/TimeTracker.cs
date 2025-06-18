@@ -13,6 +13,8 @@ public class TimeTracker : MonoBehaviour
     [SerializeField] private int msPlaces;
     [SerializeField] private bool displayHours;
 
+    [SerializeField] private bool startOn;
+
     private StringBuilder builder;
     private float timePassed;
 
@@ -29,6 +31,8 @@ public class TimeTracker : MonoBehaviour
     private void Awake()
     {
         builder = new StringBuilder();
+        ConfigureFormat();
+        SetShowTimer(startOn);
     }
 
     void Update()
@@ -49,9 +53,8 @@ public class TimeTracker : MonoBehaviour
 
     public void SetShowTimer(bool show)
     {
-        this.enabled = show;
+        SetTimerOn(show);
         textField.enabled = show;
-        textField.gameObject.SetActive(show);
     }
 
     public void ConfigureFormat()
