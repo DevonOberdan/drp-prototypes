@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da1cea117b5eb464fb9da4acb15ecf54, type: 3}
-  m_Name: TargetLocation
+  m_Script: {fileID: 11500000, guid: 9ef904b35acf45144b25bb232dbb8455, type: 3}
+  m_Name: TimerOnAtom
   m_EditorClassIdentifier: 
-  Value: {x: 0, y: 0, z: 0}
+  <Value>k__BackingField: 0
