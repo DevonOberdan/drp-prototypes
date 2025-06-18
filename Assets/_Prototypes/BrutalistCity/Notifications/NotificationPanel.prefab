@@ -381,6 +381,7 @@ GameObject:
   - component: {fileID: 3696493224690136736}
   - component: {fileID: 4439451706900824309}
   - component: {fileID: 3810112400758403840}
+  - component: {fileID: 6222199118134061410}
   m_Layer: 7
   m_Name: Notification Text
   m_TagString: Untagged
@@ -507,3 +508,16 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6222199118134061410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8530356446367053639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7f7db2322dc2a945be9b7b1e9888b64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charactersPerSecond: 25
