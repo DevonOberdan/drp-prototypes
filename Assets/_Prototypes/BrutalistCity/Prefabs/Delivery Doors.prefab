@@ -206,7 +206,7 @@ MonoBehaviour:
   - <DestinationPoints>k__BackingField:
     - {fileID: 258417284396631163}
     - {fileID: 8893967118890828438}
-    - {fileID: 9048539607300381442}
+    - {fileID: 4445703528918193819}
     OnWaypointsCompleted:
       m_PersistentCalls:
         m_Calls: []
@@ -1752,17 +1752,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.25670993, y: 0.42169195, z: 0.35129055}
   m_Center: {x: -0.000000059604645, y: 0.21084693, z: -0.04445002}
---- !u!114 &9048539607300381442 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6322165651140243917, guid: d88830337faff314fab1a8f1643273e7, type: 3}
-  m_PrefabInstance: {fileID: 3039374483062450895}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6987147575641522564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dab2933d3132989458aa8be374863b07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3213155942531816954
 PrefabInstance:
   m_ObjectHideFlags: 0
