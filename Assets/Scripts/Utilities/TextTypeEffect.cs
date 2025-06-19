@@ -1,9 +1,10 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public interface ITextDisplay
 {
-    Awaitable SetText(string text);
+    Awaitable SetText(NotificationSO textData, AudioSource audioSource);
     void CompleteText();
 }
 
@@ -26,23 +27,46 @@ public class TextTypeEffect : MonoBehaviour, ITextDisplay
         }
     }
 
-    public async Awaitable SetText(string text)
-    {
-        textToType = text;
+    [Range(1, 5)]
+    [SerializeField] private int pace = 1;
 
+    public async Awaitable SetText(NotificationSO textData, AudioSource audioSource)
+    {
+        textToType = textData.NotificationMessage;
 
         textComponent.maxVisibleCharacters = 0;
         textComponent.text = textToType;
         counter = 0;
 
+        int paceCount = 0;
+
         while (counter < textToType.Length)
         {
-            counter++;
-            textComponent.maxVisibleCharacters = counter;
+            textComponent.maxVisibleCharacters = counter+1;
+            char c = textComponent.text[counter];
+
+            if(IsAudibleChar(c) && textData != null && textData.VoiceClip != null)
+            {
+                if(paceCount >= pace)
+                {
+                    audioSource.pitch = UnityEngine.Random.Range(textData.PitchRange.x, textData.PitchRange.y);
+                    audioSource.PlayOneShot(textData.VoiceClip);
+                    paceCount = 0;
+                }
+                paceCount++;
+            }
+
             float interval = 1f / charactersPerSecond;
             await AwaitableMethods.WaitUntil(() => !PauseManager.PauseState);
             await Awaitable.WaitForSecondsAsync(interval);
+
+            counter++;
         }
+    }
+
+    private bool IsAudibleChar(char c)
+    {
+        return Char.IsLetterOrDigit(c);
     }
 
     public void CompleteText()

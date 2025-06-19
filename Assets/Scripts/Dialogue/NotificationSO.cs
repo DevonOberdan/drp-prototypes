@@ -12,4 +12,11 @@ public class NotificationSO : ScriptableObject
     [field: SerializeField] public bool RemoveAfterExit { get; private set; } = false;
     [field: SerializeField] public bool DisableAfterTimer { get; private set; } = false;
     [field: SerializeField] public float DisableTime { get; private set; } = 1.0f;
+
+    [field: SerializeField] public AudioClip VoiceClip { get; private set; }
+
+    [MinMaxSlider(-3, 3)]
+    [SerializeField] private Vector2 pitchRange;
+
+    public Vector2 PitchRange => pitchRange;
 }

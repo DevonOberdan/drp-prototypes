@@ -1,7 +1,6 @@
 using FinishOne.GeneralUtilities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,6 +18,13 @@ public class DeliveryPointManager : MonoBehaviour
     [SerializeField] private Transform waypointPrefab;
     [SerializeField] private bool firstGroupOnStart;
 
+    [SerializeField] bool debug;
+
+    [DrawIf(nameof(debug), true)]
+    [SerializeField] private int startDebugIndex;
+
+    public UnityEvent OnAllGroupsComplete;
+
     private DestinationPointGroup CurrentGroup => deliveryGroups[groupIndex];
 
     private int groupIndex;
@@ -28,10 +34,16 @@ public class DeliveryPointManager : MonoBehaviour
     {
         groupIndex = -1;
         completedCount = 0;
+
+        if (debug)
+        {
+            groupIndex = Math.Clamp(startDebugIndex, 0, deliveryGroups.Length-1);
+            firstGroupOnStart = true;
+        }
+
     }
     private void Start()
     {
-
         if (firstGroupOnStart)
         {
             SetupGroup();
@@ -67,7 +79,13 @@ public class DeliveryPointManager : MonoBehaviour
     {
         if(groupIndex < 0 || completedCount == CurrentGroup.DestinationPoints.Count)
         {
-            groupIndex = Mathf.Clamp(groupIndex + 1, 0, deliveryGroups.Length);
+            if(groupIndex == deliveryGroups.Length - 1)
+            {
+                OnAllGroupsComplete.Invoke();
+                return;
+            }
+
+            groupIndex = Mathf.Clamp(groupIndex + 1, 0, deliveryGroups.Length-1);
             SetupGroup();
         }
     }
