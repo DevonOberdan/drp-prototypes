@@ -18,3 +18,5 @@ MonoBehaviour:
   <RemoveAfterExit>k__BackingField: 0
   <DisableAfterTimer>k__BackingField: 0
   <DisableTime>k__BackingField: 1
+  <VoiceClip>k__BackingField: {fileID: 8300000, guid: 299689a16b55e3b48b7dc8e9ce7aa494, type: 3}
+  pitchRange: {x: 0.3, y: 0.5}
