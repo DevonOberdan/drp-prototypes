@@ -120,6 +120,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: boost pad (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 7091220981875952180, guid: 2e2876d1646dcd549bf1ec770590a0bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -401,6 +405,10 @@ PrefabInstance:
     - target: {fileID: 7091220981875952180, guid: 2e2876d1646dcd549bf1ec770590a0bd, type: 3}
       propertyPath: m_Name
       value: boost pad
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091220981875952180, guid: 2e2876d1646dcd549bf1ec770590a0bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1014,6 +1022,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: boost pad (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 7091220981875952180, guid: 2e2876d1646dcd549bf1ec770590a0bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1092,6 +1104,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: boost pad (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 7091220981875952180, guid: 2e2876d1646dcd549bf1ec770590a0bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1165,6 +1181,10 @@ PrefabInstance:
     - target: {fileID: 7091220981875952180, guid: 2e2876d1646dcd549bf1ec770590a0bd, type: 3}
       propertyPath: m_Name
       value: boost pad (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091220981875952180, guid: 2e2876d1646dcd549bf1ec770590a0bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1244,6 +1264,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: boost pad (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 7091220981875952180, guid: 2e2876d1646dcd549bf1ec770590a0bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1318,6 +1342,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: boost pad (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 7091220981875952180, guid: 2e2876d1646dcd549bf1ec770590a0bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1391,6 +1419,10 @@ PrefabInstance:
     - target: {fileID: 7091220981875952180, guid: 2e2876d1646dcd549bf1ec770590a0bd, type: 3}
       propertyPath: m_Name
       value: boost pad (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091220981875952180, guid: 2e2876d1646dcd549bf1ec770590a0bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1614,6 +1646,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: boost pad (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 7091220981875952180, guid: 2e2876d1646dcd549bf1ec770590a0bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1691,6 +1727,10 @@ PrefabInstance:
     - target: {fileID: 7091220981875952180, guid: 2e2876d1646dcd549bf1ec770590a0bd, type: 3}
       propertyPath: m_Name
       value: boost pad (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091220981875952180, guid: 2e2876d1646dcd549bf1ec770590a0bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
