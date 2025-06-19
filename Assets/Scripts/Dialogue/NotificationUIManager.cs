@@ -20,10 +20,15 @@ public class NotificationUIManager : MonoBehaviour
     private bool continueText;
     private bool canContinue;
 
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip clip;
+
     private void Awake()
     {
         group = GetComponent<CanvasGroup>();
         queue = new Queue<NotificationSO>();
+
+        audioSource = GetComponent<AudioSource>();
 
         continueText = true;
     }
@@ -65,7 +70,7 @@ public class NotificationUIManager : MonoBehaviour
     private async Awaitable DisplayNotification(NotificationSO notification)
     {
         image.sprite = notification.Icon;
-        await textField.GetComponent<ITextDisplay>().SetText(notification.NotificationMessage);
+        await textField.GetComponent<ITextDisplay>().SetText(notification, audioSource);
     }
 
     public void Continue()
