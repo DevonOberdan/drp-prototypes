@@ -6,11 +6,6 @@ public class PausableBuffer : MonoBehaviour, IPausable
 {
     private InteractionBuffer buffer;
 
-    private void Awake()
-    {
-        buffer = GetComponent<InteractionBuffer>();
-    }
-
     public void Pause()
     {
         SetPause(true);
@@ -23,6 +18,9 @@ public class PausableBuffer : MonoBehaviour, IPausable
 
     public void SetPause(bool pause)
     {
+        if (buffer == null)
+            buffer = GetComponent<InteractionBuffer>();
+
         buffer.enabled = !pause;
     }
 }

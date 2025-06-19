@@ -5,11 +5,6 @@ public class PausableParticleSystem : MonoBehaviour, IPausable
 {
     private ParticleSystem particles;
 
-    private void Awake()
-    {
-        particles = GetComponent<ParticleSystem>();
-    }
-
     public void Pause()
     {
         SetPause(true);
@@ -22,6 +17,9 @@ public class PausableParticleSystem : MonoBehaviour, IPausable
 
     public void SetPause(bool pause)
     {
+        if (particles == null)
+            particles = GetComponent<ParticleSystem>();
+
         if (pause)
         {
             particles.Pause();
