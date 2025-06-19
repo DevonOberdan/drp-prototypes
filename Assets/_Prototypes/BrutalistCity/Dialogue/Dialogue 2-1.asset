@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Icon>k__BackingField: {fileID: 21300000, guid: 002b027ac53dec043b6122c46241b075, type: 3}
   <NotificationMessage>k__BackingField: Thanks for getting this here so fast! As
-    if the Eyes weren't already bad enough, now they want to tell us what we can
+    if the Eyes weren't already bad enough, now they want to tell us what we can't
     read. Be careful out there!
   <RemoveAfterExit>k__BackingField: 0
   <DisableAfterTimer>k__BackingField: 0
