@@ -361,13 +361,12 @@ MonoBehaviour:
     m_Bits: 1
   grappleLr: {fileID: 1463602225162045663}
   grappleHook: {fileID: 4358989875070778643}
-  maxGrappleDistance: 100
+  maxGrappleDistance: 75
   grappleDelayTime: 0.1
   overshootYAxis: 7
   clampMagnitude: 1
   maxMagnitude: 50
-  grappleCd: 0.6
-  grappleKey: 324
+  grappleCd: 1
   OnFired:
     m_PersistentCalls:
       m_Calls: []
