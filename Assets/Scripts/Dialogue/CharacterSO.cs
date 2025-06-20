@@ -7,6 +7,8 @@ public class CharacterSO : ScriptableObject
 
     [field: SerializeField] public AudioClip VoiceClip { get; private set; }
 
+    [field: SerializeField] public bool SinglePlay { get; private set; }
+
     [MinMaxSlider(-3, 3)]
     [SerializeField] private Vector2 pitchRange;
 

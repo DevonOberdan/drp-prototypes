@@ -535,7 +535,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4567815903847322276}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -1856,7 +1856,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 7eb15ee5b502b16499db321ee1c9a123, type: 3}
     - target: {fileID: 8173514353670210787, guid: caecd86e8f45aff46a01f8d306e753c4, type: 3}
       propertyPath: m_text
-      value: Quit
+      value: Main Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8173514353670210787, guid: caecd86e8f45aff46a01f8d306e753c4, type: 3}
+      propertyPath: m_fontSize
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 8173514353670210787, guid: caecd86e8f45aff46a01f8d306e753c4, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 8173514353670210787, guid: caecd86e8f45aff46a01f8d306e753c4, type: 3}
       propertyPath: m_ActiveFontFeatures.Array.size

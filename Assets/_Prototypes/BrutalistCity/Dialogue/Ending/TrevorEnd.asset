@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff389e22c8bf5684e84b9219c5f170dd, type: 3}
-  m_Name: Ending 3
+  m_Name: TrevorEnd
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 002b027ac53dec043b6122c46241b075, type: 3}
+  <Character>k__BackingField: {fileID: 11400000, guid: f006df0fd08caa1449de2f5a3a40d17f, type: 2}
   <NotificationMessage>k__BackingField: We are so grateful you have played our little
     game to its fullest and hope you had a great time playing it. Please leave feedback
     on our feedback form if you want to help improve the future of the project.
-  <RemoveAfterExit>k__BackingField: 0
-  <DisableAfterTimer>k__BackingField: 0
-  <DisableTime>k__BackingField: 1
+  <PlayWhenPaused>k__BackingField: 1

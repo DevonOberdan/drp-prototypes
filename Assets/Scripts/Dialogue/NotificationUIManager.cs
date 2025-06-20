@@ -21,7 +21,8 @@ public class NotificationUIManager : MonoBehaviour
     private bool canContinue;
 
     private AudioSource audioSource;
-    [SerializeField] private AudioClip clip;
+
+    private NotificationSO currentNotification;
 
     private void Awake()
     {
@@ -52,16 +53,16 @@ public class NotificationUIManager : MonoBehaviour
     {
         while(queue.Count > 0)
         {
-            NotificationSO notification = queue.Peek();
+            currentNotification = queue.Peek();
             continueText = false;
             canContinue = false;
 
-            await DisplayNotification(notification);
+            await DisplayNotification(currentNotification);
             
             canContinue = true;
             queue.Dequeue();
 
-            await AwaitableMethods.WaitUntil(() => !PauseManager.PauseState && continueText);
+            await AwaitableMethods.WaitUntil(() => (!PauseManager.PauseState || currentNotification.PlayWhenPaused) && continueText);
         }
 
         Close();
@@ -69,18 +70,25 @@ public class NotificationUIManager : MonoBehaviour
 
     private async Awaitable DisplayNotification(NotificationSO notification)
     {
-        image.sprite = notification.Character.Icon;
+        image.color = notification.Character != null ? Color.white : Color.clear;
+        image.sprite = notification.Character != null ? notification.Character.Icon : null;
         await textField.GetComponent<ITextDisplay>().SetText(notification, audioSource);
     }
 
     public void Continue()
     {
-        if (PauseManager.PauseState)
+        if (PauseManager.PauseState && !currentNotification.PlayWhenPaused)
+        {
             return;
+        }
 
         if (canContinue)
         {
             continueText = true;
+            if (audioSource != null && audioSource.clip != null)
+            {
+                audioSource.Stop();
+            }
         }
         else
         {

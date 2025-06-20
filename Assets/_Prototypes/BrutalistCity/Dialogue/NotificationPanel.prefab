@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 50}
-  m_SizeDelta: {x: 758.85803, y: 300}
+  m_SizeDelta: {x: 850, y: 300}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &7683023214571673268
 CanvasRenderer:
@@ -92,6 +92,8 @@ GameObject:
   - component: {fileID: 2372591417322011568}
   - component: {fileID: 4925114095142772064}
   - component: {fileID: 8274143132195478328}
+  - component: {fileID: 8296959357460039713}
+  - component: {fileID: 1525341507539567813}
   m_Layer: 7
   m_Name: ScreenWideRoot
   m_TagString: Untagged
@@ -220,7 +222,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  clip: {fileID: 0}
 --- !u!222 &2372591417322011568
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -288,6 +289,115 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   registerOnEnable: 0
+--- !u!82 &8296959357460039713
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024001488263406339}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -3535933569674857627, guid: 261e163d4a2f5c7479e5cd8480384134, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1525341507539567813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3024001488263406339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae3660a07ad80b24f99f65eaa4a6bcae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5688384106785189508
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,8 +641,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello! This is a test of the notification system. I wonder how much text
-    fits on here before it reaches the bottom. Cool story bro.
+  m_text: lorem ipsum testing testing 1 2 3. lorem ipsum testing testing 1 2 3. lorem
+    ipsum testing testing 1 2 3. lorem ipsum testing testing 1 2 3. lorem ipsum testing
+    testing 1 2 3. lorem ipsum testing testing 1 2 3.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f81766955ca2e7445b7ccc9738df771a, type: 2}
   m_sharedMaterial: {fileID: 471285196979955282, guid: f81766955ca2e7445b7ccc9738df771a, type: 2}
@@ -597,7 +708,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -76.98718, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -616,4 +727,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charactersPerSecond: 20
-  pace: 1
+  punctuationDelayFactor: 5
