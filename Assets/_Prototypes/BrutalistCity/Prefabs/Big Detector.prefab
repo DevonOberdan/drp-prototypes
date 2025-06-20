@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalSeconds: 30
-  decaySeconds: 35
+  decaySeconds: 20
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
