@@ -12,11 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff389e22c8bf5684e84b9219c5f170dd, type: 3}
   m_Name: MEMO 1
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 93b07c88ea32fa64fb58a0f581791249, type: 3}
+  <Character>k__BackingField: {fileID: 11400000, guid: 17564ad8275c7f849b7665a69a4dd65f, type: 2}
   <NotificationMessage>k__BackingField: 'MEMO: All unapproved literature is now considered
     Contraband. Return the literature to the city at once.'
-  <RemoveAfterExit>k__BackingField: 0
-  <DisableAfterTimer>k__BackingField: 0
-  <DisableTime>k__BackingField: 1
-  <VoiceClip>k__BackingField: {fileID: 8300000, guid: 299689a16b55e3b48b7dc8e9ce7aa494, type: 3}
-  pitchRange: {x: 0.9, y: 1}

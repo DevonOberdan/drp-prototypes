@@ -69,7 +69,7 @@ public class NotificationUIManager : MonoBehaviour
 
     private async Awaitable DisplayNotification(NotificationSO notification)
     {
-        image.sprite = notification.Icon;
+        image.sprite = notification.Character.Icon;
         await textField.GetComponent<ITextDisplay>().SetText(notification, audioSource);
     }
 

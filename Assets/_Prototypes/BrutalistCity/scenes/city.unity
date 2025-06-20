@@ -898,7 +898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1352270444776376328, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.09
+      value: 9.5
       objectReference: {fileID: 0}
     - target: {fileID: 1352270444776376328, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
       propertyPath: m_LocalPosition.z
@@ -920,8 +920,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lil Zeppy
       objectReference: {fileID: 0}
-    - target: {fileID: 2790497572349905051, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 1978242269484503806, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
+      propertyPath: detectAngle
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978242269484503806, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
+      propertyPath: lockOnSpeed
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774931209848959687, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.042384982
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774931209848959687, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.048900604
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774931209848959687, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7778636437091522128, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
@@ -1165,6 +1181,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 99216015}
     m_Modifications:
+    - target: {fileID: 656121273320332181, guid: 5c514767907ed274a89c582199cc9050, type: 3}
+      propertyPath: lockOnSpeed
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3155895869614587729, guid: 5c514767907ed274a89c582199cc9050, type: 3}
       propertyPath: m_Name
       value: WatchtowerV2
@@ -3319,6 +3339,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 99216015}
     m_Modifications:
+    - target: {fileID: 656121273320332181, guid: 5c514767907ed274a89c582199cc9050, type: 3}
+      propertyPath: lockOnSpeed
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3155895869614587729, guid: 5c514767907ed274a89c582199cc9050, type: 3}
       propertyPath: m_Name
       value: WatchtowerV2
@@ -3784,6 +3808,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 99216015}
     m_Modifications:
+    - target: {fileID: 656121273320332181, guid: 5c514767907ed274a89c582199cc9050, type: 3}
+      propertyPath: lockOnSpeed
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3155895869614587729, guid: 5c514767907ed274a89c582199cc9050, type: 3}
       propertyPath: m_Name
       value: WatchtowerV2
@@ -3990,7 +4018,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1250830369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4026,6 +4054,19 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: f939aaff16bf9e844bad8078b381dd91, type: 2}
           m_ObjectArgumentAssemblyTypeName: NotificationSO, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 168086a528d9d2742a9a8eb01631eb4f, type: 2}
+        m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[System.Boolean,
+          mscorlib
+        m_MethodName: Raise
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5860,6 +5901,10 @@ PrefabInstance:
       propertyPath: OnUnAlerted.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3345647260851377726, guid: b8fc18e773bd878459961de4f70ebafa, type: 3}
+      propertyPath: xRange.min
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5223788881405610822, guid: b8fc18e773bd878459961de4f70ebafa, type: 3}
       propertyPath: m_Name
       value: Big Detector 2
@@ -6388,7 +6433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1352270444776376328, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.56
+      value: 9.5
       objectReference: {fileID: 0}
     - target: {fileID: 1352270444776376328, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6409,6 +6454,10 @@ PrefabInstance:
     - target: {fileID: 1718689796434102855, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
       propertyPath: m_Name
       value: Lil Zeppy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978242269484503806, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
+      propertyPath: lockOnSpeed
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 2790497572349905051, guid: 876628e0c09cdb9458f99732523d7b95, type: 3}
       propertyPath: m_IsActive
@@ -7057,6 +7106,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 99216015}
     m_Modifications:
+    - target: {fileID: 656121273320332181, guid: 5c514767907ed274a89c582199cc9050, type: 3}
+      propertyPath: lockOnSpeed
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3155895869614587729, guid: 5c514767907ed274a89c582199cc9050, type: 3}
       propertyPath: m_Name
       value: WatchtowerV2
@@ -9432,6 +9485,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 99216015}
     m_Modifications:
+    - target: {fileID: 656121273320332181, guid: 5c514767907ed274a89c582199cc9050, type: 3}
+      propertyPath: lockOnSpeed
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3155895869614587729, guid: 5c514767907ed274a89c582199cc9050, type: 3}
       propertyPath: m_Name
       value: WatchtowerV2
@@ -9496,7 +9553,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5223788881405610822, guid: b8fc18e773bd878459961de4f70ebafa, type: 3}
       propertyPath: m_Name
-      value: ' Big Detector'
+      value: Big Detector
       objectReference: {fileID: 0}
     - target: {fileID: 5223788881405610822, guid: b8fc18e773bd878459961de4f70ebafa, type: 3}
       propertyPath: m_IsActive
