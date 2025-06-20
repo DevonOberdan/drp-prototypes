@@ -683,8 +683,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdfabaf545df194fae66e5b6e12805e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalSeconds: 10
-  decaySeconds: 10
+  totalSeconds: 15
+  decaySeconds: 15
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -824,7 +824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4078733934650137365, guid: 498e1a250691bcd429e1622f05d9b0d6, type: 3}
       propertyPath: defaultWidth
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4078733934650137365, guid: 498e1a250691bcd429e1622f05d9b0d6, type: 3}
       propertyPath: <Prefab>k__BackingField

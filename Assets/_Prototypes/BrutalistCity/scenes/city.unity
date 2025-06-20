@@ -5240,7 +5240,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1166532970867210337, guid: a4e59d579c11aa541a7b903aa2d4b3ad, type: 3}
       propertyPath: debug
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1166532970867210337, guid: a4e59d579c11aa541a7b903aa2d4b3ad, type: 3}
       propertyPath: startDebugIndex
@@ -7991,10 +7991,6 @@ PrefabInstance:
     - target: {fileID: 1813776640286494033, guid: eeb6db2257e036040abb2e827c00f717, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7423386012206956925, guid: eeb6db2257e036040abb2e827c00f717, type: 3}
-      propertyPath: beginWithAllAbilities
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
