@@ -3,12 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class PausableAudioSource : MonoBehaviour, IPausable
 {
-    private AudioSource audioSource;
-
-    private void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
+    private AudioSource source;
 
     public void Pause()
     {
@@ -22,13 +17,16 @@ public class PausableAudioSource : MonoBehaviour, IPausable
 
     public void SetPause(bool pause)
     {
+        if (source == null)
+            source = GetComponent<AudioSource>();
+
         if (pause)
         {
-            audioSource.Pause();
+            source.Pause();
         }
         else
         {
-            audioSource.UnPause();
+            source.UnPause();
         }
     }
 }

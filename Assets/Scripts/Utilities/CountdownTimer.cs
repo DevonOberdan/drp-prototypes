@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CountdownTimer : MonoBehaviour
+public class CountdownTimer : MonoBehaviour, IPausable
 {
     public UnityEvent OnCountdownComplete;
 
@@ -9,6 +9,8 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] private bool startTimerOnStart;
 
     private float countdownTimer;
+
+    private bool paused;
 
     void Start()
     {
@@ -22,6 +24,9 @@ public class CountdownTimer : MonoBehaviour
 
     void Update()
     {
+        if (paused)
+            return;
+
         countdownTimer -= Time.deltaTime;
         
         if (countdownTimer < 0)
@@ -36,4 +41,8 @@ public class CountdownTimer : MonoBehaviour
         countdownTimer = startSeconds;
         this.enabled = true;
     }
+
+    public void Pause() => SetPause(true);
+    public void Unpause() => SetPause(false);
+    public void SetPause(bool pause) => paused = pause;
 }

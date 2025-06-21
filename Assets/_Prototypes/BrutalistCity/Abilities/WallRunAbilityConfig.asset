@@ -17,4 +17,4 @@ MonoBehaviour:
     going!
   Type: 0
   AbilityPrefab: {fileID: 7963127772067661892, guid: 9b7e9b9325a4afb4b89fe6bb7f0effd1, type: 3}
-  Icon: {fileID: 21300000, guid: 0e805141d66145542ae517060b3c6964, type: 3}
+  Icon: {fileID: 21300000, guid: c7013f04a67bd6b408ba0e1aa22478a0, type: 3}

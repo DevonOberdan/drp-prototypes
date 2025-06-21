@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalSeconds: 30
-  decaySeconds: 35
+  decaySeconds: 20
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2710b4462bff6cd49a276a07eaf925f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationVector: {x: 0, y: 5, z: 0}
+  rotationVector: {x: 0, y: 2, z: 0}
   <RotationSpeed>k__BackingField: 4
 --- !u!114 &3016452147730814811
 MonoBehaviour:
@@ -363,6 +363,7 @@ MonoBehaviour:
   detectAngle: 35
   lockOnSpeed: 1.1
   returnSpeed: 1.5
+  speedFactorOnVisible: 0.5
   detectionBuffer: {fileID: 1471481939373586654}
   chargeBuffer: {fileID: 7852202661778049687}
   OnDetected:
@@ -398,7 +399,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  speedFactorOnVisible: 0.5
 --- !u!114 &3345647260851377726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,8 +415,8 @@ MonoBehaviour:
   clampY: 0
   clampZ: 1
   xRange:
-    min: 65
-    max: 145
+    min: -35
+    max: 215
   yRange:
     min: 0
     max: 0
@@ -683,8 +683,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdfabaf545df194fae66e5b6e12805e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalSeconds: 10
-  decaySeconds: 10
+  totalSeconds: 15
+  decaySeconds: 15
   OnPercentageChanged:
     m_PersistentCalls:
       m_Calls:
@@ -824,7 +824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4078733934650137365, guid: 498e1a250691bcd429e1622f05d9b0d6, type: 3}
       propertyPath: defaultWidth
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4078733934650137365, guid: 498e1a250691bcd429e1622f05d9b0d6, type: 3}
       propertyPath: <Prefab>k__BackingField

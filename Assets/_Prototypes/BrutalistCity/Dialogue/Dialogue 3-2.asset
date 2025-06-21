@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff389e22c8bf5684e84b9219c5f170dd, type: 3}
   m_Name: Dialogue 3-2
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 002b027ac53dec043b6122c46241b075, type: 3}
+  <Character>k__BackingField: {fileID: 11400000, guid: 984396509e934e849aee2fd243ff1b36, type: 2}
   <NotificationMessage>k__BackingField: I know; probably just some myth made up to
     keep people's spirits up about this whole delivery network, but who knows maybe
     not?
-  <RemoveAfterExit>k__BackingField: 0
-  <DisableAfterTimer>k__BackingField: 0
-  <DisableTime>k__BackingField: 1

@@ -7,9 +7,9 @@ using UnityEngine.InputSystem.UI;
 
 public static class InterfaceFinder
 {
-    public static T[] FindObjectsByType<T>() where T : class
+    public static T[] FindObjectsByType<T>(FindObjectsInactive findType = FindObjectsInactive.Include) where T : class
     {
-        return UnityEngine.Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None)
+        return UnityEngine.Object.FindObjectsByType<MonoBehaviour>(findType, FindObjectsSortMode.None)
             .Select(m => m as T)
             .Where(m => m != null)
             .ToArray();
