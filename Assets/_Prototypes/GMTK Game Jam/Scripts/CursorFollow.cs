@@ -3,6 +3,7 @@ using UnityEngine;
 public class ObjectFollowMouse : MonoBehaviour
 {
     public LayerMask groundLayer; // Assign the layer of your ground in the Inspector
+    public float playerCursorOffset;
 
     void Update()
     {
@@ -14,7 +15,7 @@ public class ObjectFollowMouse : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
         {
             // Move the object to the hit point on the ground
-            transform.position = hit.point;
+            transform.position = Vector3.Lerp(transform.position, hit.point, playerCursorOffset * Time.deltaTime);
         }
     }
 }
