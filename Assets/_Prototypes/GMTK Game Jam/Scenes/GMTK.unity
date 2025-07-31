@@ -519,6 +519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 1502106301}
   maxDist: 0.25
+  minimumPointGap: 10
 --- !u!4 &320238666 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5652f3f205129dc4facf679c99517c04, type: 3}
