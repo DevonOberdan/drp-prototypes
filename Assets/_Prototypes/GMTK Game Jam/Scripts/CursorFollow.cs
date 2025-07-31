@@ -16,6 +16,17 @@ public class ObjectFollowMouse : MonoBehaviour
         {
             // Move the object to the hit point on the ground
             transform.position = Vector3.Lerp(transform.position, hit.point, playerCursorOffset * Time.deltaTime);
+
+            Vector3 targetPosition = hit.point;
+
+            Vector3 direction = targetPosition - transform.position;
+            direction.y = 0f;
+
+            if (direction != Vector3.zero)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Euler(-90f, lookRotation.eulerAngles.y, 0f);
+            }
         }
     }
 }
