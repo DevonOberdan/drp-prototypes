@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: 5652f3f205129dc4facf679c99517c04
+guid: 3b057af1cc240a748b0d020ee7b265fc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Branch0
-    second: {fileID: 2100000, guid: bb276a97303b16343aa7c75b15415099, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Branch1
-    second: {fileID: 2100000, guid: bb276a97303b16343aa7c75b15415099, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Needles
-    second: {fileID: 2100000, guid: 60fbdb14a619ec240ac0e08339c27be3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Trunk
-    second: {fileID: 2100000, guid: 23fce53156201914497fe7cd5430876e, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
