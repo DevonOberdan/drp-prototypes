@@ -2,6 +2,7 @@
   "dependencies": {
     "com.finishone.general-utilities": "git@github.com:DevonOberdan/general-utilities.git",
     "com.finishone.scene-management": "git@github.com:DevonOberdan/scene-management.git",
+    "com.github-glitchenzo.nugetforunity": "https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ai.navigation": "2.0.7",
     "com.unity.collab-proxy": "2.8.2",
