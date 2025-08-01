@@ -152,4 +152,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2c2a4ec1f453e4cbb5d13c3bf153bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPointCount: 400
+  maxPointCount: 250
