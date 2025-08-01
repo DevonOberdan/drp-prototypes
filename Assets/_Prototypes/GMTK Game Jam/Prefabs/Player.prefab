@@ -100,6 +100,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2e94575e9704f994483548c7ca4513d4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6046332225995621536}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2e94575e9704f994483548c7ca4513d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3753252920882226722}
   m_SourcePrefab: {fileID: 100100000, guid: 2e94575e9704f994483548c7ca4513d4, type: 3}
 --- !u!1 &121040552678128252 stripped
 GameObject:
@@ -125,8 +128,8 @@ BoxCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.36206573, y: 0.35631707, z: 0.50677204}
-  m_Center: {x: -0.013905287, y: 0.031351447, z: 0.24661389}
+  m_Size: {x: 0.36206573, y: 0.35045877, z: 0.7516417}
+  m_Center: {x: -0.013905287, y: 0.03428059, z: 0.012434919}
 --- !u!114 &143399680490534223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +145,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
-  moveForce: 8
+  moveForce: 6
   turnSpeed: 20
 --- !u!114 &5977547619517738375
 MonoBehaviour:
@@ -157,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 0}
-  maxDist: 0.25
+  maxDist: 0.75
   minimumPointGap: 10
 --- !u!54 &6046332225995621536
 Rigidbody:
@@ -167,8 +170,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121040552678128252}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0.1
+  m_Mass: 2
+  m_Drag: 0.2
   m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -185,4 +188,26 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!95 &3753252920882226722
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121040552678128252}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 65d207c96a6eef24d8cef56833b7a546, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
