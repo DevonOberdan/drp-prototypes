@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>LibTessDotNet</id>
+    <version>1.1.15</version>
+    <authors>Remi Gillig</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/speps/LibTessDotNet</projectUrl>
+    <description>C# port of the famous GLU Tesselator</description>
+    <releaseNotes>See https://github.com/speps/LibTessDotNet/releases for release notes</releaseNotes>
+    <copyright></copyright>
+  </metadata>
+</package>

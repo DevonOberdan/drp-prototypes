@@ -35,6 +35,21 @@ MonoBehaviour:
   m_Active: 0
   downsampleDepthShader: {fileID: 4800000, guid: cffeaeec0396a2c4dad475266cc8dfeb, type: 3}
   volumetricFogShader: {fileID: 4800000, guid: 08f816187f9af0244a95556ee0cab83f, type: 3}
+--- !u!114 &-324879587237223411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c6069ca71de6d47a251e8be8f95852, type: 3}
+  m_Name: DrawToMaskFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+  fillMaterial: {fileID: 0}
+  maskTexture: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,7 +79,8 @@ MonoBehaviour:
   - {fileID: -3780393675103344867}
   - {fileID: 3288748592304852571}
   - {fileID: -3626190005768482762}
-  m_RendererFeatureMap: ad6b866f10d7b46c1de7545cfb5789cb5b8ee58f6bfba32d361019f2662fadcd
+  - {fileID: -324879587237223411}
+  m_RendererFeatureMap: ad6b866f10d7b46c1de7545cfb5789cb5b8ee58f6bfba32d361019f2662fadcd0d24f397bccb7dfb
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
