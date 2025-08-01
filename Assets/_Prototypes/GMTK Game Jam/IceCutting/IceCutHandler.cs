@@ -3,10 +3,13 @@ using LibTessDotNet;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(LineLoopDetector))]
 public class IceCutHandler : MonoBehaviour
 {
+    public UnityEvent OnIceCut;
+    
     [SerializeField] private Material waterMat;
     [SerializeField] private string holeTag = "Hole";
 
@@ -47,6 +50,7 @@ public class IceCutHandler : MonoBehaviour
         if (loopMesh.bounds.size.x > sizeMinimum && loopMesh.bounds.size.y > sizeMinimum)
         {
             SpawnMesh(loopMesh);
+            OnIceCut.Invoke();
         }
     }
 

@@ -1,8 +1,44 @@
+using FinishOne.GeneralUtilities;
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private Transform player;
+
+    [SerializeField] private List<GameObject> levels;
+
+    private int currentLevel;
+
+    private float playerStartY;
+
+
+    public int CurrentLevel 
+    {
+        get => currentLevel;
+        set 
+        {
+            for(int i = transform.childCount-1; i >= 0; i--)
+            {
+                Destroy(transform.GetChild(i).gameObject);
+            }
+
+            currentLevel = value;
+
+            GameObject level = Instantiate(levels[currentLevel], transform);
+
+            player.position = level.transform.GetChild(level.transform.childCount-1).position;
+            player.position = player.position.NewY(playerStartY);
+        }
+    }
+
+    private void Awake()
+    {
+        playerStartY = player.position.y;
+    }
+
+
     void Start()
     {
         
@@ -13,4 +49,6 @@ public class LevelManager : MonoBehaviour
     {
         
     }
+
+
 }
