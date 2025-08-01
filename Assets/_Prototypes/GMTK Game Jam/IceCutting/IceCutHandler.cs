@@ -4,29 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(LineLoopDetector))]
 public class IceCutHandler : MonoBehaviour
 {
-    [SerializeField] private int minimumPointGap = 15;
-
+    [SerializeField] private Material waterMat;
+    [SerializeField] private float sizeMinimum = 2f;
     private LineRenderer lineRenderer;
+    private LineLoopDetector lineLoopDetector;
+
+    private void Awake()
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+        lineLoopDetector = GetComponent<LineLoopDetector>();
+    }
 
     private void Start()
     {
-        lineRenderer = GetComponent<LineRenderer>();
-    }
-
-
-    private void DetectLoop()
-    {
-        Vector3 newPoint = lineRenderer.GetPosition(lineRenderer.positionCount - 1);
-
-        for (int i = 0; i < lineRenderer.positionCount - minimumPointGap; i++)
-        {
-            if (Vector3.Distance(newPoint, lineRenderer.GetPosition(i)) < 0.15f)
-            {
-                HandleIceCut(i);
-            }
-        }
+        lineLoopDetector.OnLoopCreated.AddListener(HandleIceCut);
     }
 
     private void HandleIceCut(int pointIndex)
@@ -40,12 +34,18 @@ public class IceCutHandler : MonoBehaviour
         }
 
         Mesh loopMesh = Triangulate(loopPoints);
-        SpawnMesh(loopMesh);
+
+        Debug.Log($"X: {loopMesh.bounds.size.x} Y: {loopMesh.bounds.size.y}");
+
+        if(loopMesh.bounds.size.x > sizeMinimum && loopMesh.bounds.size.y > sizeMinimum)
+        {
+            SpawnMesh(loopMesh);
+        }
     }
 
     private void SpawnMesh(Mesh mesh)
     {
-        GameObject filledShape = new GameObject("Hole");
+        GameObject filledShape = new("Hole");
         MeshFilter meshFilter = filledShape.AddComponent<MeshFilter>();
         meshFilter.mesh = mesh;
 
@@ -59,7 +59,7 @@ public class IceCutHandler : MonoBehaviour
 
     public Mesh Triangulate(List<Vector2> loop)
     {
-        Tess tess = new Tess();
+        Tess tess = new();
 
         ContourVertex[] contour = loop.Select(p => new ContourVertex
         {
@@ -76,13 +76,11 @@ public class IceCutHandler : MonoBehaviour
 
         int[] indices = tess.Elements;
 
-        Mesh mesh = new()
+        return new Mesh()
         {
             vertices = vertices,
             triangles = indices
         };
-
-        return mesh;
     }
 
 }

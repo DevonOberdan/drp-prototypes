@@ -8,16 +8,20 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
-public class TracePlayerPath : MonoBehaviour
+[RequireComponent(typeof(LineRenderer))]
+public class LineDrawer : MonoBehaviour
 {
-    [SerializeField] private LineRenderer lineRenderer;
-
+    [SerializeField] private Transform drawPoint;
     [SerializeField] private float maxDist = 0.1f;
 
-    [SerializeField] private UnityEvent OnAddPathPoint;
+    public UnityEvent OnAddPathPoint;
 
-    [SerializeField] private RawImage image;
-    [SerializeField] private Material waterMat;
+    private LineRenderer lineRenderer;
+
+    private void Awake()
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+    }
 
     void Start()
     {
@@ -27,7 +31,7 @@ public class TracePlayerPath : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, lineRenderer.GetPosition(lineRenderer.positionCount - 1)) > maxDist)
+        if (Vector3.Distance(drawPoint.position, lineRenderer.GetPosition(lineRenderer.positionCount - 1)) > maxDist)
         {
             AddPoint();
         }
@@ -36,7 +40,7 @@ public class TracePlayerPath : MonoBehaviour
     private void AddPoint()
     {
         lineRenderer.positionCount++;
-        lineRenderer.SetPosition(lineRenderer.positionCount - 1, transform.position.NewY(.15f));
+        lineRenderer.SetPosition(lineRenderer.positionCount - 1, drawPoint.position.NewY(.15f));
 
         OnAddPathPoint.Invoke();
     }
