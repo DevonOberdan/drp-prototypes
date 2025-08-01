@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2c2a4ec1f453e4cbb5d13c3bf153bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPointCount: 100
+  maxPointCount: 250
 --- !u!114 &6367671186760432717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawPoint: {fileID: 0}
-  maxDist: 0.25
+  maxDist: 0.5
   OnAddPathPoint:
     m_PersistentCalls:
       m_Calls: []
@@ -189,6 +189,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   minimumPointGap: 10
+  coolDownTotalTime: 0.2
   debug: 0
 --- !u!114 &6533986119768986829
 MonoBehaviour:
@@ -203,3 +204,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waterMat: {fileID: 2100000, guid: a1c36b1317bcab141941d6ba33e90bb8, type: 2}
+  holeTag: Hole
+  sizeMinimum: 2
+  debug: 0

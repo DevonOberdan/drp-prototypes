@@ -17,6 +17,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Needles
+    second: {fileID: 2100000, guid: 60fbdb14a619ec240ac0e08339c27be3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Trunk
     second: {fileID: 2100000, guid: 23fce53156201914497fe7cd5430876e, type: 2}
   materials:
