@@ -770,7 +770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultAudio: {fileID: 0}
-  audioPlayEvent: {fileID: 0}
+  audioPlayEvent: {fileID: 11400000, guid: 3130a41301c211442b110da9568fea65, type: 2}
 --- !u!1001 &493618725
 PrefabInstance:
   m_ObjectHideFlags: 0
