@@ -8,7 +8,11 @@ using UnityEngine;
 public class IceCutHandler : MonoBehaviour
 {
     [SerializeField] private Material waterMat;
+    [SerializeField] private string holeTag = "Hole";
+
     [SerializeField] private float sizeMinimum = 2f;
+    [SerializeField] private bool debug = false;
+
     private LineRenderer lineRenderer;
     private LineLoopDetector lineLoopDetector;
 
@@ -35,9 +39,12 @@ public class IceCutHandler : MonoBehaviour
 
         Mesh loopMesh = Triangulate(loopPoints);
 
-        Debug.Log($"X: {loopMesh.bounds.size.x} Y: {loopMesh.bounds.size.y}");
+        if (debug)
+        {
+            Debug.Log($"X: {loopMesh.bounds.size.x} Y: {loopMesh.bounds.size.y}");
+        }
 
-        if(loopMesh.bounds.size.x > sizeMinimum && loopMesh.bounds.size.y > sizeMinimum)
+        if (loopMesh.bounds.size.x > sizeMinimum && loopMesh.bounds.size.y > sizeMinimum)
         {
             SpawnMesh(loopMesh);
         }
@@ -54,6 +61,9 @@ public class IceCutHandler : MonoBehaviour
 
         MeshRenderer meshRenderer = filledShape.AddComponent<MeshRenderer>();
         meshRenderer.material = waterMat;
+
+        _ = filledShape.AddComponent<MeshCollider>();
+        filledShape.tag = holeTag;
     }
 
 
