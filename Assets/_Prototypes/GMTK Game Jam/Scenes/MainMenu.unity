@@ -3695,6 +3695,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenuUI
       objectReference: {fileID: 0}
+    - target: {fileID: 2298709053463649464, guid: 9110a9ab555043d4c91192e5c6120bf4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2298709053463649464, guid: 9110a9ab555043d4c91192e5c6120bf4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2298709053463649464, guid: 9110a9ab555043d4c91192e5c6120bf4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2298709053463649464, guid: 9110a9ab555043d4c91192e5c6120bf4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8341312481991711828, guid: 9110a9ab555043d4c91192e5c6120bf4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -3722,6 +3738,22 @@ PrefabInstance:
     - target: {fileID: 8341312481991711828, guid: 9110a9ab555043d4c91192e5c6120bf4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: FinishOne.SceneManagement.SceneLoadConfigSO, FinishOne.SceneManagement
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537001580082743231, guid: 9110a9ab555043d4c91192e5c6120bf4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537001580082743231, guid: 9110a9ab555043d4c91192e5c6120bf4, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537001580082743231, guid: 9110a9ab555043d4c91192e5c6120bf4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537001580082743231, guid: 9110a9ab555043d4c91192e5c6120bf4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8921953359920037632, guid: 9110a9ab555043d4c91192e5c6120bf4, type: 3}
       propertyPath: m_Name
@@ -4187,6 +4219,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3979347258038470290, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e2e0f14116655d44689495e2ea63aa81, type: 2}
     - target: {fileID: 9203316474228458823, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
       propertyPath: m_Enabled
       value: 0

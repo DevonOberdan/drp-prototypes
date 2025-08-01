@@ -52,7 +52,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0.4716981, g: 0.42052332, b: 0.47085917, a: 1}
-    - _Color: {r: 0.4716981, g: 0.4205233, b: 0.4708591, a: 1}
+    - _BaseColor: {r: 0.8301887, g: 0.07440368, b: 0.09330811, a: 1}
+    - _Color: {r: 0.8301887, g: 0.07440365, b: 0.09330808, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
