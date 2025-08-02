@@ -1,35 +1,43 @@
 using FinishOne.GeneralUtilities;
-using NUnit.Framework;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
+    public UnityEvent OnLevelChanged;
+    public UnityEvent OnLevelComplete;
+    public UnityEvent OnLastLevelComplete;
+
     [SerializeField] private Transform player;
+    [SerializeField] private List<IceSkateLevel> levels;
+    [SerializeField] private TMP_Text holeCountText;
 
-    [SerializeField] private List<GameObject> levels;
-
-    private int currentLevel;
-
+    private IceSkateLevel currentLevel;
+    private int currentLevelIndex;
     private float playerStartY;
 
-
-    public int CurrentLevel 
+    public int CurrentLevelIndex 
     {
-        get => currentLevel;
+        get => currentLevelIndex;
         set 
         {
+            value = Mathf.Clamp(value, 0, levels.Count);
+
             for(int i = transform.childCount-1; i >= 0; i--)
             {
                 Destroy(transform.GetChild(i).gameObject);
             }
 
-            currentLevel = value;
+            currentLevelIndex = value;
 
-            GameObject level = Instantiate(levels[currentLevel], transform);
+            currentLevel = Instantiate(levels[currentLevelIndex], transform);
 
-            player.position = level.transform.GetChild(level.transform.childCount-1).position;
+            player.position = currentLevel.transform.GetChild(currentLevel.transform.childCount-1).position;
             player.position = player.position.NewY(playerStartY);
+
+            OnLevelChanged.Invoke();
         }
     }
 
@@ -38,17 +46,38 @@ public class LevelManager : MonoBehaviour
         playerStartY = player.position.y;
     }
 
-
-    void Start()
+    private void Start()
     {
-        
+        CurrentLevelIndex = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void LateUpdate()
     {
-        
+        if (!currentLevel.LevelFailed && !currentLevel.LevelComplete && currentLevel.SealCount == 0)
+        {
+            currentLevel.LevelComplete = true;
+            OnLevelComplete.Invoke();
+        }
     }
 
+    public void SetLevelFailed()
+    {
+        currentLevel.LevelFailed = true;
+    }
 
+    public void NextLevel()
+    {
+        if(currentLevelIndex == levels.Count - 1)
+        {
+            OnLastLevelComplete.Invoke();
+            return;
+        } 
+
+        CurrentLevelIndex++;
+    }
+
+    public void ResetCurrentLevel()
+    {
+        CurrentLevelIndex = currentLevelIndex;
+    }
 }

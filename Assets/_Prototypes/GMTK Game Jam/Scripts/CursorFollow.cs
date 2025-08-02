@@ -10,11 +10,16 @@ public class ObjectFollowMouse : MonoBehaviour
 
     private float startY;
 
-    void Start()
+    RigidbodyConstraints startConstraints;
+
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         startY = transform.position.y;
+
+        startConstraints = rb.constraints;
     }
+
     void FixedUpdate()
     {
         transform.position = transform.position.NewY(startY);
@@ -45,5 +50,16 @@ public class ObjectFollowMouse : MonoBehaviour
                 rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * turnSpeed));
             }
         }
+    }
+
+    public void SetFollow(bool follow)
+    {
+        rb.constraints = follow ? startConstraints : RigidbodyConstraints.FreezeAll;
+        this.enabled = follow;
+    }
+
+    public void SetFreeze(bool freeze)
+    {
+        SetFollow(!freeze);
     }
 }
