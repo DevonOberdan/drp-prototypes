@@ -1,3 +1,4 @@
+using FinishOne.GeneralUtilities;
 using UnityEngine;
 
 public class ObjectFollowMouse : MonoBehaviour
@@ -8,13 +9,24 @@ public class ObjectFollowMouse : MonoBehaviour
     private Rigidbody rb;
     private AudioSource audioSource;
 
-    void Start()
+    private float startY;
+
+    RigidbodyConstraints startConstraints;
+
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+
+        startY = transform.position.y;
+
+        startConstraints = rb.constraints;
     }
+
     void FixedUpdate()
     {
+        transform.position = transform.position.NewY(startY);
+
         // Create a ray from the camera through the mouse position
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -23,9 +35,6 @@ public class ObjectFollowMouse : MonoBehaviour
         // Perform a raycast, specifically targeting the ground layer
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayer))
         {
-            // Move the object to the hit point on the ground
-           // transform.position = Vector3.Lerp(transform.position, hit.point, Time.deltaTime);
-
             Vector3 targetPosition = hit.point;
 
             Vector3 direction = targetPosition - transform.position;
@@ -45,6 +54,18 @@ public class ObjectFollowMouse : MonoBehaviour
             }
         }
     }
+
+    public void SetFollow(bool follow)
+    {
+        rb.constraints = follow ? startConstraints : RigidbodyConstraints.FreezeAll;
+        this.enabled = follow;
+    }
+
+    public void SetFreeze(bool freeze)
+    {
+        SetFollow(!freeze);
+    }
+
     public void PlaySkateSound(AudioClip clip)
     {
         audioSource.Play();
