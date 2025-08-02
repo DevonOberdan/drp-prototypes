@@ -3,17 +3,7 @@ guid: 3b057af1cc240a748b0d020ee7b265fc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Black Fur
-    second: {fileID: 2100000, guid: b8c2547d18db6464f92f1bbf05472231, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: White fur
-    second: {fileID: 2100000, guid: e9ae5821715ae7f48afefb5c2aac3853, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

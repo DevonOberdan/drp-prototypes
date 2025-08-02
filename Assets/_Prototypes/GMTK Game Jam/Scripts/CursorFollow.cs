@@ -7,6 +7,7 @@ public class ObjectFollowMouse : MonoBehaviour
     public float moveForce = 10f;
     public float turnSpeed = 5f;
     private Rigidbody rb;
+    private AudioSource audioSource;
 
     private float startY;
 
@@ -15,6 +16,8 @@ public class ObjectFollowMouse : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
+
         startY = transform.position.y;
 
         startConstraints = rb.constraints;
@@ -61,5 +64,10 @@ public class ObjectFollowMouse : MonoBehaviour
     public void SetFreeze(bool freeze)
     {
         SetFollow(!freeze);
+    }
+
+    public void PlaySkateSound(AudioClip clip)
+    {
+        audioSource.Play();
     }
 }
