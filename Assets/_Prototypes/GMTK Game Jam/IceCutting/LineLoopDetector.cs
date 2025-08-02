@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,7 +9,6 @@ public class LineLoopDetector : MonoBehaviour
 
     [SerializeField] private int minimumPointGap = 15;
     [SerializeField] private float coolDownTotalTime = 0.2f;
-
     [SerializeField] private bool debug;
 
     private LineDrawer lineDrawer;

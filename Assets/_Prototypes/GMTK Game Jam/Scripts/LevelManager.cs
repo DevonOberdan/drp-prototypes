@@ -9,10 +9,15 @@ public class LevelManager : MonoBehaviour
     public UnityEvent OnLevelChanged;
     public UnityEvent OnLevelComplete;
     public UnityEvent OnLastLevelComplete;
+    public UnityEvent OnMaxHolesReached;
 
     [SerializeField] private Transform player;
     [SerializeField] private List<IceSkateLevel> levels;
+    
+    
     [SerializeField] private TMP_Text holeCountText;
+    [SerializeField] private Transform holeRoot;
+
 
     private IceSkateLevel currentLevel;
     private int currentLevelIndex;
@@ -51,13 +56,40 @@ public class LevelManager : MonoBehaviour
         CurrentLevelIndex = 0;
     }
 
+    private bool checkingForSeals;
+
     private void LateUpdate()
     {
-        if (!currentLevel.LevelFailed && !currentLevel.LevelComplete && currentLevel.SealCount == 0)
+        int holesRemaining = currentLevel.MaxHoleCount - holeRoot.childCount;
+
+        holeCountText.text = holesRemaining.ToString();
+
+        if (!currentLevel.LevelFailed && !currentLevel.LevelComplete)
         {
-            currentLevel.LevelComplete = true;
-            OnLevelComplete.Invoke();
+            if(currentLevel.SealCount == 0)
+            {
+                currentLevel.LevelComplete = true;
+                OnLevelComplete.Invoke();
+            }
+            else if (!checkingForSeals && !currentLevel.LevelFailed && holesRemaining <= 0)
+            {
+                checkingForSeals = true;
+                Invoke(nameof(AllHolesCut), 0.1f);
+            }
         }
+    }
+
+    private void AllHolesCut()
+    {
+        checkingForSeals = false;
+
+        if (currentLevel.LevelComplete)
+        {
+            return;
+        }
+
+        currentLevel.LevelFailed = true;
+        OnMaxHolesReached.Invoke();
     }
 
     public void SetLevelFailed()
