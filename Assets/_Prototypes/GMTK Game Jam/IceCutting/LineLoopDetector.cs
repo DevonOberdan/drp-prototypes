@@ -17,7 +17,7 @@ public class LineLoopDetector : MonoBehaviour
     private LineDrawer lineDrawer;
     private LineRenderer lineRenderer;
 
-    private int loopsCreated = 0;
+    private int loopsLeft;
 
     private float coolDownTime;
 
@@ -25,6 +25,7 @@ public class LineLoopDetector : MonoBehaviour
     {
         lineRenderer = GetComponent<LineRenderer>();
         lineDrawer = GetComponent<LineDrawer>();
+        loopsLeft = maxloopCuts;
     }
 
     private void Start()
@@ -37,7 +38,7 @@ public class LineLoopDetector : MonoBehaviour
     {
         coolDownTime -= Time.deltaTime;
         coolDownTime = Mathf.Clamp(coolDownTime, 0, coolDownTotalTime);
-        loopCountText.text = loopsCreated + "/" + maxloopCuts;
+        loopCountText.text = loopsLeft + "/" + maxloopCuts;
     }
 
     private void DetectLoop()
@@ -49,10 +50,10 @@ public class LineLoopDetector : MonoBehaviour
 
         for (int i = 0; i < lineRenderer.positionCount - minimumPointGap; i++)
         {
-            if (Vector3.Distance(newPoint, lineRenderer.GetPosition(i)) < 0.15f && loopsCreated != maxloopCuts)
+            if (Vector3.Distance(newPoint, lineRenderer.GetPosition(i)) < 0.15f && loopsLeft > 0)
             {
                 OnLoopCreated.Invoke(i);
-                loopsCreated++;
+                loopsLeft--;
 
                 if (debug)
                 {
