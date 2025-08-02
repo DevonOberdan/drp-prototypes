@@ -9,7 +9,7 @@ public class CollisionDetection : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.tag == collisionTag)
+        if(collision.collider.CompareTag(collisionTag))
         {
             OnCollisionDetected.Invoke();
         }

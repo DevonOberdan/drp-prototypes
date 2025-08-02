@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e2459298ead6384a9a9a2b1be6faf0f
+    m_Address: Assets/_Prototypes/GMTK Game Jam/Scenes/GMTKMainMenu.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 31b413a017eb3834087e1a9e3d4e1328
     m_Address: Assets/SceneManagement/Events
     m_ReadOnly: 0
@@ -27,6 +32,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 361efb4a9b9d88a4cbb0d8c4d4265320
     m_Address: Assets/SceneManagement/Scenes/ManagerScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4fe9049573b044d4b80324e44142d766
+    m_Address: Assets/_Prototypes/GMTK Game Jam/Scenes/MainMenu.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -52,6 +62,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b7ac70f70af9a064d98d8ff9ac0826ca
     m_Address: Assets/_Prototypes/BrutalistCity/scenes/Brutalist_MainMenu.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e1fd9f673e438c940a54ba945bd7730c
+    m_Address: Assets/_Prototypes/GMTK Game Jam/Scenes/GMTKGameScene.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

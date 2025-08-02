@@ -9,15 +9,10 @@ public class LineLoopDetector : MonoBehaviour
 
     [SerializeField] private int minimumPointGap = 15;
     [SerializeField] private float coolDownTotalTime = 0.2f;
-    [SerializeField] private int maxloopCuts;
-    [SerializeField] TextMeshProUGUI loopCountText;
-
     [SerializeField] private bool debug;
 
     private LineDrawer lineDrawer;
     private LineRenderer lineRenderer;
-
-    private int loopsCreated = 0;
 
     private float coolDownTime;
 
@@ -37,7 +32,6 @@ public class LineLoopDetector : MonoBehaviour
     {
         coolDownTime -= Time.deltaTime;
         coolDownTime = Mathf.Clamp(coolDownTime, 0, coolDownTotalTime);
-        loopCountText.text = loopsCreated + "/" + maxloopCuts;
     }
 
     private void DetectLoop()
@@ -49,10 +43,9 @@ public class LineLoopDetector : MonoBehaviour
 
         for (int i = 0; i < lineRenderer.positionCount - minimumPointGap; i++)
         {
-            if (Vector3.Distance(newPoint, lineRenderer.GetPosition(i)) < 0.15f && loopsCreated != maxloopCuts)
+            if (Vector3.Distance(newPoint, lineRenderer.GetPosition(i)) < 0.15f)
             {
                 OnLoopCreated.Invoke(i);
-                loopsCreated++;
 
                 if (debug)
                 {

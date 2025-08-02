@@ -1,12 +1,6 @@
 using FinishOne.GeneralUtilities;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(LineRenderer))]
 public class LineDrawer : MonoBehaviour
@@ -25,12 +19,14 @@ public class LineDrawer : MonoBehaviour
 
     void Start()
     {
-        lineRenderer.positionCount = 0;
-        AddPoint();
+        ResetLine();
     }
 
     void Update()
     {
+        if (lineRenderer == null || lineRenderer.positionCount == 0)
+            return;
+
         if (Vector3.Distance(drawPoint.position, lineRenderer.GetPosition(lineRenderer.positionCount - 1)) > maxDist)
         {
             AddPoint();
@@ -43,5 +39,16 @@ public class LineDrawer : MonoBehaviour
         lineRenderer.SetPosition(lineRenderer.positionCount - 1, drawPoint.position.NewY(.15f));
 
         OnAddPathPoint.Invoke();
+    }
+
+    public void Clear()
+    {
+        lineRenderer.positionCount = 0;
+    }
+
+    public void ResetLine()
+    {
+        Clear();
+        AddPoint();
     }
 }

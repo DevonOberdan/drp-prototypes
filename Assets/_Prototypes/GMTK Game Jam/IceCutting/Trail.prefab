@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 6367671186760432717}
   - component: {fileID: 2943139769791945486}
   - component: {fileID: 6533986119768986829}
+  - component: {fileID: 3336008937954518787}
+  - component: {fileID: 1144566597798688441}
   m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
@@ -155,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2c2a4ec1f453e4cbb5d13c3bf153bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPointCount: 250
+  maxPointCount: 100
 --- !u!114 &6367671186760432717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawPoint: {fileID: 0}
-  maxDist: 0.5
+  maxDist: 0.25
   OnAddPathPoint:
     m_PersistentCalls:
       m_Calls: []
@@ -203,7 +205,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b0fcb5b19aca9f4bb09c806290cd4ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnIceCut:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3336008937954518787}
+        m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.Audio.AudioPlayRequester,
+          FinishOne.GeneralUtilities.Audio
+        m_MethodName: Request
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: d213a20e43beecb478cd68f127bc1f42, type: 2}
+          m_ObjectArgumentAssemblyTypeName: FinishOne.GeneralUtilities.Audio.AudioConfigSO,
+            FinishOne.GeneralUtilities.Audio
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   waterMat: {fileID: 2100000, guid: a1c36b1317bcab141941d6ba33e90bb8, type: 2}
+  holeRoot: {fileID: 0}
   holeTag: Hole
   sizeMinimum: 2
   debug: 0
+--- !u!114 &3336008937954518787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8724938133245996194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d9dc0f09c507f4cb2365db3abe3d9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultAudio: {fileID: 0}
+  audioPlayEvent: {fileID: 11400000, guid: 3130a41301c211442b110da9568fea65, type: 2}
+--- !u!114 &1144566597798688441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8724938133245996194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eccc7631b112fe6479c3024ceffb081b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 5bbb186f43c45344db56a060eae23788, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6367671186760432717}
+        m_TargetAssemblyTypeName: LineDrawer, Assembly-CSharp
+        m_MethodName: ResetLine
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6533986119768986829}
+        m_TargetAssemblyTypeName: IceCutHandler, Assembly-CSharp
+        m_MethodName: ClearCuts
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  registerOnEnable: 0
