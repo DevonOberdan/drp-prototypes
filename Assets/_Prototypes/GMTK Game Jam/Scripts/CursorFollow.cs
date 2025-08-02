@@ -6,10 +6,12 @@ public class ObjectFollowMouse : MonoBehaviour
     public float moveForce = 10f;
     public float turnSpeed = 5f;
     private Rigidbody rb;
+    private AudioSource audioSource;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
     void FixedUpdate()
     {
@@ -42,5 +44,9 @@ public class ObjectFollowMouse : MonoBehaviour
                 rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * turnSpeed));
             }
         }
+    }
+    public void PlaySkateSound(AudioClip clip)
+    {
+        audioSource.Play();
     }
 }

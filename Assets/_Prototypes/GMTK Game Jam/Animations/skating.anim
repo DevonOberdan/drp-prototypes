@@ -1478,4 +1478,18 @@ AnimationClip:
     flags: 0
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.41666666
+    functionName: PlaySkateSound
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 88a032292cfbc6949bca7563a6b9e599, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1
+    functionName: PlaySkateSound
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 7b8f7e60e1f079c44a7cf23400e487df, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
