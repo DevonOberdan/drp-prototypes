@@ -108,6 +108,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: idle
+          m_BoolArgument: 0
+        m_CallState: 2
   registerOnEnable: 0
 --- !u!114 &8732733591527169560
 MonoBehaviour:
@@ -349,6 +361,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: idle
+          m_BoolArgument: 0
+        m_CallState: 2
   registerOnEnable: 0
 --- !u!114 &1191643565820938314
 MonoBehaviour:
@@ -455,7 +479,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6091931202436050147}
   m_Enabled: 1
-  m_Alpha: 0.31
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -512,6 +536,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: idle
           m_BoolArgument: 0
         m_CallState: 2
   registerOnEnable: 0
@@ -639,7 +675,7 @@ MonoBehaviour:
     m_Top: 150
     m_Bottom: 150
   m_ChildAlignment: 4
-  m_Spacing: -250
+  m_Spacing: -100
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -879,7 +915,7 @@ MonoBehaviour:
     m_Top: 150
     m_Bottom: 150
   m_ChildAlignment: 4
-  m_Spacing: -250
+  m_Spacing: -100
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -898,7 +934,7 @@ GameObject:
   - component: {fileID: 2432098654822557301}
   - component: {fileID: 6865862950868853803}
   - component: {fileID: 3642906500140804291}
-  - component: {fileID: 3351180341155401156}
+  - component: {fileID: 1383069756388148161}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -953,7 +989,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You couldn't save them...
+  m_text: Splash! You fell in!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 68161f0638489b84e9f5d5569202acc0, type: 2}
   m_sharedMaterial: {fileID: 9075729162495084935, guid: 68161f0638489b84e9f5d5569202acc0, type: 2}
@@ -1024,7 +1060,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &3351180341155401156
+--- !u!114 &1383069756388148161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1033,11 +1069,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 8363777387398601595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7f7db2322dc2a945be9b7b1e9888b64, type: 3}
+  m_Script: {fileID: 11500000, guid: 092f686abce16fb4a9d29c22798fc94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charactersPerSecond: 20
-  punctuationDelayFactor: 5
+  gameEvent: {fileID: 11400000, guid: 8c2adbef79bf81947b9a736ab7e40aef, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3642906500140804291}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  registerOnEnable: 0
 --- !u!1 &8417774120014093527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,7 +1155,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You won!\nThank you for playing :D
+  m_text: The babies are safe!\nThank you for playing <3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 68161f0638489b84e9f5d5569202acc0, type: 2}
   m_sharedMaterial: {fileID: 9075729162495084935, guid: 68161f0638489b84e9f5d5569202acc0, type: 2}
@@ -1357,12 +1408,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 5d01a08d7ced33747827171cbf6eedca, type: 3}
     - target: {fileID: 2663366556413025056, guid: caecd86e8f45aff46a01f8d306e753c4, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8616352
+      objectReference: {fileID: 0}
+    - target: {fileID: 2663366556413025056, guid: caecd86e8f45aff46a01f8d306e753c4, type: 3}
       propertyPath: m_Color.g
-      value: 0.9843137
+      value: 0.8441737
       objectReference: {fileID: 0}
     - target: {fileID: 2663366556413025056, guid: caecd86e8f45aff46a01f8d306e753c4, type: 3}
       propertyPath: m_Color.r
-      value: 0.7882353
+      value: 0.62590474
       objectReference: {fileID: 0}
     - target: {fileID: 2663366556413025056, guid: caecd86e8f45aff46a01f8d306e753c4, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
