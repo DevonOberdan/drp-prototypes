@@ -188,6 +188,10 @@ PrefabInstance:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 345225345467437762, guid: 6a5fb0e4fd83d7b43880e3c180f2bc19, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7462922010169018162, guid: 6a5fb0e4fd83d7b43880e3c180f2bc19, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

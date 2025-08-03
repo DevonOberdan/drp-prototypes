@@ -1386,12 +1386,20 @@ PrefabInstance:
       propertyPath: response.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1407079353006464666}
+    - target: {fileID: 7090295762046587589, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1407079353006464666}
     - target: {fileID: 7169867378185143411, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
       propertyPath: m_Name
       value: InGameUI
       objectReference: {fileID: 0}
     - target: {fileID: 7295682362015457436, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
       propertyPath: response.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1407079353006464666}
+    - target: {fileID: 7435270473236438349, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
+      propertyPath: OnStartup.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1407079353006464666}
     - target: {fileID: 9000548773278695871, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
