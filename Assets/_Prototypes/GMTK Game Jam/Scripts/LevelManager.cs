@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
     
     [SerializeField] private TMP_Text holeCountText;
     [SerializeField] private Transform holeRoot;
-
+    [SerializeField] private bool customStart;
 
     private IceSkateLevel currentLevel;
     private int currentLevelIndex;
@@ -53,7 +53,10 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        CurrentLevelIndex = 0;
+        if (!customStart)
+        {
+            CurrentLevelIndex = 0;
+        }
     }
 
     private bool checkingForSeals;

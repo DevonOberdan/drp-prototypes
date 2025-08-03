@@ -182,7 +182,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 'Not the babies!!! D:'
+          m_StringArgument: Not the babies!
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 11400000, guid: b6dd717bc9e2dc74284ede26a8f14076, type: 2}

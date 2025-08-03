@@ -16,7 +16,9 @@ public class IceCutHandler : MonoBehaviour
     [SerializeField] private string holeTag = "Hole";
 
     [SerializeField] private float sizeMinimum = 2f;
+    [SerializeField] private float playerDetectionTimeBuffer;
     [SerializeField] private bool debug = false;
+
 
     private LineRenderer lineRenderer;
     private LineLoopDetector lineLoopDetector;
@@ -91,7 +93,7 @@ public class IceCutHandler : MonoBehaviour
 
     IEnumerator EnablePlayerCollision(GameObject hole)
     {
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(playerDetectionTimeBuffer);
         hole.layer = 11;
     }
 

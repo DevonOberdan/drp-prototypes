@@ -176,6 +176,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   babyRoot: {fileID: 5824726149272551563}
   sealRoot: {fileID: 615585730620563082}
+  <MaxHoleCount>k__BackingField: 2
+  LevelComplete: 0
+  LevelFailed: 0
 --- !u!1001 &3810955659129898273
 PrefabInstance:
   m_ObjectHideFlags: 0

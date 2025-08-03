@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Hotdog! studios
+  companyName: Hotdog! Studios
   productName: Mama's Penguin Rescue
   defaultCursor: {fileID: 2800000, guid: 7ae4f2732fc005c408a8143083db0644, type: 3}
   cursorHotspot: {x: 0, y: 0}

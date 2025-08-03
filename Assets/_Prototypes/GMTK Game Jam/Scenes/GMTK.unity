@@ -283,6 +283,7 @@ MonoBehaviour:
   - {fileID: 3670328827330486397, guid: a90290377a69f3541b7e3dfa71629e93, type: 3}
   holeCountText: {fileID: 3063086232844415382}
   holeRoot: {fileID: 2106566877}
+  customStart: 0
 --- !u!4 &34907686
 Transform:
   m_ObjectHideFlags: 0
@@ -705,6 +706,14 @@ PrefabInstance:
       propertyPath: holeRoot
       value: 
       objectReference: {fileID: 2106566877}
+    - target: {fileID: 6533986119768986829, guid: c8700d98011957748a2e01b0e25bef83, type: 3}
+      propertyPath: sizeMinimum
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533986119768986829, guid: c8700d98011957748a2e01b0e25bef83, type: 3}
+      propertyPath: playerDetectionTimeBuffer
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 8724938133245996194, guid: c8700d98011957748a2e01b0e25bef83, type: 3}
       propertyPath: m_Name
       value: Trail
@@ -1346,10 +1355,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 34907685}
-    - target: {fileID: 676865698403468140, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1034814374493666710, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
       propertyPath: response.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1432,7 +1437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3642906500140804291, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
       propertyPath: m_text
-      value: You fell in! Nothing is stopping the seals now...
+      value: Splash! You fell in!
       objectReference: {fileID: 0}
     - target: {fileID: 3642906500140804291, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -1537,6 +1542,10 @@ PrefabInstance:
     - target: {fileID: 5157472075541843441, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463144194947753115, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
+      propertyPath: m_text
+      value: The babies are safe!\nThank you for playing <3
       objectReference: {fileID: 0}
     - target: {fileID: 6188177928799226916, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1702,6 +1711,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8310657066221777709, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
+      propertyPath: m_Spacing
+      value: -100
+      objectReference: {fileID: 0}
     - target: {fileID: 8742491120689797716, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1785,7 +1798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 602985817265772976, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
       propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: You fell in! Nothing is stopping the seals now...
+      value: Splash! You fell in!
       objectReference: {fileID: 0}
     - target: {fileID: 602985817265772976, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
       propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
@@ -1847,6 +1860,30 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6062608542338508223, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: m_Size.x
+      value: 0.13766533
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062608542338508223, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: m_Size.y
+      value: 0.10703995
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062608542338508223, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: m_Size.z
+      value: 0.10000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062608542338508223, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: m_Center.x
+      value: 0.0028752983
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062608542338508223, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: m_Center.y
+      value: 0.009219621
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062608542338508223, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: m_Center.z
+      value: -0.35000002
+      objectReference: {fileID: 0}
     - target: {fileID: 7797580587429926682, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.04492952
@@ -1882,6 +1919,18 @@ PrefabInstance:
     - target: {fileID: 9087859265060170704, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.0004342826
+      objectReference: {fileID: 0}
+    - target: {fileID: 9203316474228458823, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: m_Size.x
+      value: 0.26569793
+      objectReference: {fileID: 0}
+    - target: {fileID: 9203316474228458823, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: m_Center.x
+      value: -0.010811374
+      objectReference: {fileID: 0}
+    - target: {fileID: 9203316474228458823, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: m_Center.y
+      value: 0.0342806
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2028,5 +2077,5 @@ SceneRoots:
   - {fileID: 1358825254}
   - {fileID: 1015132831}
   - {fileID: 914891853}
-  - {fileID: 34907686}
   - {fileID: 559820759661707775}
+  - {fileID: 34907686}
