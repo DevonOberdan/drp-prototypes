@@ -259,6 +259,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 8c2adbef79bf81947b9a736ab7e40aef, type: 2}
+        m_TargetAssemblyTypeName: FinishOne.GeneralUtilities.BaseGameEvent`1[[System.String,
+          mscorlib
+        m_MethodName: Raise
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Out of cuts!
+          m_BoolArgument: 0
+        m_CallState: 2
   player: {fileID: 1407079353006464663}
   levels:
   - {fileID: 4641036526323932750, guid: a19a9451b7dd3904d9814e1b05a74b04, type: 3}
@@ -394,6 +407,51 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c6be0a53342569459ebed438b60abb9, type: 3}
+--- !u!1 &696290756 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8363777387398601595, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
+  m_PrefabInstance: {fileID: 559820759661707775}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &696290759 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3642906500140804291, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
+  m_PrefabInstance: {fileID: 559820759661707775}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696290756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &696290761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696290756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 092f686abce16fb4a9d29c22798fc94a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 8c2adbef79bf81947b9a736ab7e40aef, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 696290759}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  registerOnEnable: 0
 --- !u!1 &721659142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,6 +1139,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0411a0b015a98394facbc0b19c6bea0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1958578196 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8443669233543448634, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+  m_PrefabInstance: {fileID: 1407079353006464662}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1958578201 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 6062608542338508223, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+  m_PrefabInstance: {fileID: 1407079353006464662}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1958578202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958578196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eccc7631b112fe6479c3024ceffb081b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: b6dd717bc9e2dc74284ede26a8f14076, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1958578201}
+        m_TargetAssemblyTypeName: UnityEngine.Collider, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  registerOnEnable: 0
 --- !u!1 &2106566875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,6 +1398,18 @@ PrefabInstance:
       propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2605845204305604733, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8616352
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605845204305604733, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8441737
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605845204305604733, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
+      propertyPath: m_Color.r
+      value: 0.62590474
+      objectReference: {fileID: 0}
     - target: {fileID: 2770620256527635401, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1320,6 +1429,10 @@ PrefabInstance:
     - target: {fileID: 3628357911066258919, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
       propertyPath: m_Alpha
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642906500140804291, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
+      propertyPath: m_text
+      value: You fell in! Nothing is stopping the seals now...
       objectReference: {fileID: 0}
     - target: {fileID: 3642906500140804291, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -1609,10 +1722,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 34907685}
-    m_RemovedComponents: []
+    - target: {fileID: 9085022640550386633, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
+      propertyPath: m_Spacing
+      value: -100
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3351180341155401156, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8363777387398601595, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 696290761}
   m_SourcePrefab: {fileID: 100100000, guid: 04c609f92208fd34085fbafab7b9656f, type: 3}
 --- !u!1001 &1407079353006464662
 PrefabInstance:
@@ -1625,6 +1746,54 @@ PrefabInstance:
     - target: {fileID: 121040552678128252, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 602985817265772976, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 602985817265772976, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 602985817265772976, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 602985817265772976, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 8c2adbef79bf81947b9a736ab7e40aef, type: 2}
+    - target: {fileID: 602985817265772976, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: b6dd717bc9e2dc74284ede26a8f14076, type: 2}
+    - target: {fileID: 602985817265772976, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 602985817265772976, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Raise
+      objectReference: {fileID: 0}
+    - target: {fileID: 602985817265772976, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FinishOne.GeneralUtilities.BaseGameEvent`1[[System.String, mscorlib
+      objectReference: {fileID: 0}
+    - target: {fileID: 602985817265772976, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: FinishOne.GeneralUtilities.GameEvent, FinishOne.GeneralUtilities.GameEvents
+      objectReference: {fileID: 0}
+    - target: {fileID: 602985817265772976, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: You fell in! Nothing is stopping the seals now...
+      objectReference: {fileID: 0}
+    - target: {fileID: 602985817265772976, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 602985817265772976, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      propertyPath: TriggerEnterEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 785267980437790918, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1721,6 +1890,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 121040552678128252, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1407079353006464664}
+    - targetCorrespondingSourceObject: {fileID: 8443669233543448634, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1958578202}
   m_SourcePrefab: {fileID: 100100000, guid: 56d8ffefd88dfca4e9fe46d45a53ac9e, type: 3}
 --- !u!4 &1407079353006464663 stripped
 Transform:
